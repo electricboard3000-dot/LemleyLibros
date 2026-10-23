@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -56,7 +55,6 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -210,7 +208,6 @@
             margin-bottom: 3.5rem;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-soft);
-            transition: box-shadow 0.3s ease;
         }
 
         .level-header-title {
@@ -220,7 +217,7 @@
             margin-bottom: 1.75rem;
         }
 
-        /* FILTROS CON ANIMACIÓN */
+        /* FILTROS */
         .filters-wrapper {
             display: flex;
             flex-direction: column;
@@ -341,7 +338,7 @@
         .carousel-nav-btn.prev { left: -22px; }
         .carousel-nav-btn.next { right: -22px; }
 
-        /* TARJETAS CON ANIMACIÓN DE ENTRADA */
+        /* TARJETAS DE LIBROS */
         .book-card {
             min-width: 270px;
             max-width: 270px;
@@ -354,13 +351,13 @@
             box-shadow: var(--shadow-sm);
             transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
             flex-shrink: 0;
-            animation: cardAppear 0.5s ease forwards;
+            animation: cardAppear 0.4s ease forwards;
         }
 
         @keyframes cardAppear {
             from {
                 opacity: 0;
-                transform: scale(0.92) translateY(15px);
+                transform: scale(0.94) translateY(12px);
             }
             to {
                 opacity: 1;
@@ -377,7 +374,7 @@
         .book-cover-wrap {
             position: relative;
             width: 100%;
-            height: 310px;
+            height: 300px;
             overflow: hidden;
             background-color: var(--brand-sand);
         }
@@ -424,7 +421,7 @@
         }
 
         .book-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 800;
             color: var(--brand-dark);
             margin-bottom: 0.5rem;
@@ -432,13 +429,12 @@
         }
 
         .book-description {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 1.4rem;
             flex-grow: 1;
         }
 
-        /* BOTÓN DE PEDIDO CON EFECTO DE ONDA */
         .order-btn {
             position: relative;
             overflow: hidden;
@@ -473,7 +469,6 @@
             font-size: 0.95rem;
             background: var(--brand-cream);
             border-radius: 16px;
-            animation: cardAppear 0.3s ease;
         }
 
         /* FOOTER */
@@ -520,7 +515,7 @@
     <!-- HERO SECTION -->
     <section id="nosotros" class="hero">
         <div class="hero-container">
-            <span class="hero-badge">✨ Catálogo Especializado por Cursos</span>
+            <span class="hero-badge">✨ Catálogo Completo por Grados y Materias</span>
             <h1>Acompañamos el aprendizaje en cada etapa escolar</h1>
             <p>
                 Diseñamos y distribuimos material educativo de excelencia. Explora el catálogo deslizando horizontalmente y solicita tus libros directamente vía WhatsApp.
@@ -665,49 +660,87 @@
             "5": ["Comunicación", "Matemática", "Personal Social"]
         };
 
+        const primariaSubjects = [
+            "Matemática", "Comunicación", "Desarrollo Personal y Cívica", 
+            "Ciencia y Tecnología", "Arte y Cultura", "Inglés", 
+            "Educación Religiosa", "Cuentos / Moralejas"
+        ];
+
+        const secundariaSubjects = [
+            "Álgebra", "Aritmética", "Geometría", "Trigonometría", 
+            "Física", "Química", "Biología / Anatomía", 
+            "Ciencias Sociales", "Comunicación", "Literatura"
+        ];
+
         const activeFilters = {
             jardin: { age: 'all', subject: 'all' },
             primaria: { grade: 'all', subject: 'all' },
             secundaria: { grade: 'all', subject: 'all' }
         };
 
-        const books = [
-            // JARDÍN 3 AÑOS
-            { id: 1, level: 'jardin', age: '3', gradeLabel: '3 años', subject: 'Personal Social', title: 'Conociendo mi Entorno', description: 'Desarrollo de la convivencia e identidad inicial.', cover: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80' },
-            { id: 2, level: 'jardin', age: '3', gradeLabel: '3 años', subject: 'Autonomía', title: 'Mis Primeros Logros', description: 'Hábitos diarios, estimulación y coordinación personal.', cover: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80' },
-            { id: 3, level: 'jardin', age: '3', gradeLabel: '3 años', subject: 'Comunicación', title: 'Expresión y Sonidos', description: 'Garabateo, vocabulario inicial y comprensión oral.', cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80' },
-            { id: 4, level: 'jardin', age: '3', gradeLabel: '3 años', subject: 'Matemática', title: 'Formas y Colores', description: 'Reconocimiento visual de formas geométricas y colores.', cover: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80' },
+        // Generación dinámica de la base de datos de libros
+        const books = [];
+        let idCounter = 1;
 
-            // JARDÍN 4 AÑOS
-            { id: 5, level: 'jardin', age: '4', gradeLabel: '4 años', subject: 'Ciencia y Ambiente', title: 'Pequeños Exploradores', description: 'Descubrimiento de la naturaleza, plantas y seres vivos.', cover: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80' },
-            { id: 6, level: 'jardin', age: '4', gradeLabel: '4 años', subject: 'Psicomotriz', title: 'Muevo mi Cuerpo', description: 'Coordinación visomotora, trazos y motricidad fina.', cover: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80' },
-            { id: 7, level: 'jardin', age: '4', gradeLabel: '4 años', subject: 'Comunicación', title: 'Trazos y Letras', description: 'Pre-escritura, trazado de líneas y asociación de imágenes.', cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80' },
-            { id: 8, level: 'jardin', age: '4', gradeLabel: '4 años', subject: 'Matemática', title: 'Números del 1 al 10', description: 'Conteo, clasificación y agrupación de elementos.', cover: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80' },
-
-            // JARDÍN 5 AÑOS
-            { id: 9, level: 'jardin', age: '5', gradeLabel: '5 años', subject: 'Comunicación', title: 'Aprestando la Lectura', description: 'Aprestamiento fonético e iniciación al alfabeto.', cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80' },
-            { id: 10, level: 'jardin', age: '5', gradeLabel: '5 años', subject: 'Matemática', title: 'Lógica Pre-Escolar', description: 'Sumas ilustradas, secuencias y conceptos de cantidad.', cover: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80' },
-            { id: 11, level: 'jardin', age: '5', gradeLabel: '5 años', subject: 'Personal Social', title: 'Mi Comunidad y Yo', description: 'Normas de convivencia, valores y trabajo en equipo.', cover: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80' },
-
-            // PRIMARIA
-            { id: 12, level: 'primaria', grade: '1', gradeLabel: '1er Grado', subject: 'Matemática', title: 'Matemática Inicial', description: 'Aritmética básica, adición y sustracción elemental.', cover: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80' },
-            { id: 13, level: 'primaria', grade: '1', gradeLabel: '1er Grado', subject: 'Comunicación', title: 'Mi Primer Libro de Lectura', description: 'Caligrafía, ortografía inicial y método fonético.', cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80' },
-            { id: 14, level: 'primaria', grade: '2', gradeLabel: '2do Grado', subject: 'Cuentos / Moralejas', title: 'Fábulas y Moralejas Ilustradas', description: 'Lecturas cortas con enseñanza en valores.', cover: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80' },
-            { id: 15, level: 'primaria', grade: '3', gradeLabel: '3er Grado', subject: 'Ciencia y Tecnología', title: 'Mundo Natural e Inventos', description: 'El cuerpo humano, los ecosistemas y experimentos sencillos.', cover: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80' },
-            { id: 16, level: 'primaria', grade: '4', gradeLabel: '4to Grado', subject: 'Desarrollo Personal y Cívica', title: 'Educación Cívica y Derechos', description: 'Normas sociales, identidad y valores cívicos.', cover: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80' },
-            { id: 17, level: 'primaria', grade: '5', gradeLabel: '5to Grado', subject: 'Arte y Cultura', title: 'Expresión Plástica y Música', description: 'Técnicas de dibujo, apreciación artística y folclore.', cover: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80' },
-            { id: 18, level: 'primaria', grade: '6', gradeLabel: '6to Grado', subject: 'Inglés', title: 'English Primary Level 6', description: 'Vocabulario, estructuras gramaticales y diálogos básicos.', cover: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80' },
-
-            // SECUNDARIA
-            { id: 19, level: 'secundaria', grade: '1', gradeLabel: '1er Grado', subject: 'Álgebra', title: 'Álgebra Fundamental I', description: 'Expresiones algebraicas, ecuaciones y polinomios.', cover: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80' },
-            { id: 20, level: 'secundaria', grade: '2', gradeLabel: '2do Grado', subject: 'Aritmética', title: 'Aritmética Teórica y Práctica', description: 'Sistemas numéricos, razones, proporciones y porcentajes.', cover: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80' },
-            { id: 21, level: 'secundaria', grade: '3', gradeLabel: '3er Grado', subject: 'Geometría', title: 'Geometría Plana y del Espacio', description: 'Teoremas, triángulos, polígonos y cálculo de áreas.', cover: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80' },
-            { id: 22, level: 'secundaria', grade: '3', gradeLabel: '3er Grado', subject: 'Física', title: 'Física Elementaria', description: 'Cinemática, dinámica, vectores y leyes de Newton.', cover: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80' },
-            { id: 23, level: 'secundaria', grade: '4', gradeLabel: '4to Grado', subject: 'Química', title: 'Química General e Inorgánica', description: 'Tabla periódica, enlaces químicos y estequiometría.', cover: 'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80' },
-            { id: 24, level: 'secundaria', grade: '4', gradeLabel: '4to Grado', subject: 'Biología / Anatomía', title: 'Biología y Anatomía Humana', description: 'Célula, genética, sistemas digestivo, circulatorio y óseo.', cover: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80' },
-            { id: 25, level: 'secundaria', grade: '5', gradeLabel: '5to Grado', subject: 'Trigonometría', title: 'Trigonometría Preuniversitaria', description: 'Funciones trigonométricas, identidades y resolución de triángulos.', cover: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80' },
-            { id: 26, level: 'secundaria', grade: '5', gradeLabel: '5to Grado', subject: 'Literatura', title: 'Literatura Peruana y Universal', description: 'Análisis de obras cumbres, corrientes literarias y ensayos.', cover: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80' }
+        // imágenes de referencia
+        const sampleCovers = [
+            "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80",
+            "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80"
         ];
+
+        // 1. JARDÍN
+        Object.keys(jardinSubjectsByAge).forEach(age => {
+            jardinSubjectsByAge[age].forEach((subj, idx) => {
+                books.push({
+                    id: idCounter++,
+                    level: 'jardin',
+                    age: age,
+                    gradeLabel: `${age} años`,
+                    subject: subj,
+                    title: `${subj} - ${age} Años`,
+                    description: `Texto escolar especializado en ${subj.toLowerCase()} para niños de ${age} años.`,
+                    cover: sampleCovers[idx % sampleCovers.length]
+                });
+            });
+        });
+
+        // 2. PRIMARIA (Generar 8 materias por cada uno de los 6 grados)
+        for (let g = 1; g <= 6; g++) {
+            primariaSubjects.forEach((subj, idx) => {
+                books.push({
+                    id: idCounter++,
+                    level: 'primaria',
+                    grade: g.toString(),
+                    gradeLabel: `${g}.° Grado`,
+                    subject: subj,
+                    title: `${subj} ${g}.° Primaria`,
+                    description: `Libro de texto y cuaderno de actividades de ${subj} para ${g}.° grado.`,
+                    cover: sampleCovers[(g + idx) % sampleCovers.length]
+                });
+            });
+        }
+
+        // 3. SECUNDARIA (Generar 10 materias por cada uno de los 5 grados)
+        for (let g = 1; g <= 5; g++) {
+            secundariaSubjects.forEach((subj, idx) => {
+                books.push({
+                    id: idCounter++,
+                    level: 'secundaria',
+                    grade: g.toString(),
+                    gradeLabel: `${g}.° Grado`,
+                    subject: subj,
+                    title: `${subj} ${g}.° Secundaria`,
+                    description: `Texto completo con desarrollo teórico y práctico de ${subj} para ${g}.° de secundaria.`,
+                    cover: sampleCovers[(g + idx * 2) % sampleCovers.length]
+                });
+            });
+        }
 
         // Renderizado de UI de materias para Jardín
         function updateJardinSubjectsUI() {
@@ -768,7 +801,6 @@
             }
 
             filteredBooks.forEach((book, index) => {
-                // Generación de URL de WhatsApp con el ENLACE DIRECTO DE LA PORTADA
                 const message = encodeURIComponent(
                     `Hola, deseo realizar el pedido del siguiente libro:\n\n` +
                     `📌 *Título:* ${book.title}\n` +
@@ -781,7 +813,7 @@
                 const whatsappUrl = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
 
                 const cardHTML = `
-                    <div class="book-card" style="animation-delay: ${index * 0.06}s">
+                    <div class="book-card" style="animation-delay: ${index * 0.03}s">
                         <div class="book-cover-wrap">
                             <span class="book-badge-overlay">${book.gradeLabel}</span>
                             <img src="${book.cover}" alt="${book.title}" class="book-cover" loading="lazy">
