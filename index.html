@@ -3,31 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editorial Educativa - Catálogo de Libros</title>
+    <title>Lemley Libros</title>
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         :root {
-            --brand-terracota: #e05638;
-            --brand-cream: #faf7f2;
-            --brand-dark: #1b2028;
-            --brand-sand: #f0ebe1;
-            
+            --bg-page: #f7f5ef;
+            --card-white: #ffffff;
+            --text-main: #18201c;
+            --text-muted: #5e6b64;
+            --border-color: #e3ded2;
+            --brand-dark: #16261f;
             --whatsapp-green: #25d366;
             --whatsapp-hover: #1da851;
             
-            --bg-page: #f6f3ed;
-            --card-bg: #ffffff;
-            --text-main: #1e242b;
-            --text-muted: #64748b;
-            --border-color: #e5e0d8;
-            
-            --shadow-soft: 0 10px 30px -5px rgba(27, 32, 40, 0.08);
-            --shadow-hover: 0 20px 35px -5px rgba(27, 32, 40, 0.15);
+            --pastel-peach: #fae3d9;
+            --pastel-green: #e2eddf;
+            --pastel-yellow: #fcf4d9;
+            --pastel-purple: #eae4f2;
+            --pastel-blue: #e0edf5;
         }
 
         * {
@@ -35,59 +33,75 @@
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
 
-        h1, h2, h3 {
-            font-family: 'Outfit', sans-serif;
+        h1, h2, h3, .serif-font {
+            font-family: 'Playfair Display', serif;
         }
 
         body {
             background-color: var(--bg-page);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* HEADER & NAVBAR */
+        /* HEADER */
         header {
-            background-color: var(--brand-cream);
-            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-page);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 1.5rem;
         }
 
         .nav-container {
-            max-width: 1280px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 1.25rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--brand-dark);
-            text-decoration: none;
+        .brand-box {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.8rem;
+            text-decoration: none;
         }
 
-        .logo i {
-            color: var(--brand-terracota);
-            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        .brand-logo-circle {
+            width: 48px;
+            height: 48px;
+            background-color: #e67e22;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
         }
 
-        .logo:hover i {
-            transform: rotate(-12deg) scale(1.15);
+        .brand-texts h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .brand-texts p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
 
@@ -95,388 +109,516 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: color 0.2s;
-            position: relative;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: var(--brand-terracota);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            color: #e67e22;
         }
 
         /* HERO SECTION */
-        .hero {
-            background: linear-gradient(180deg, var(--brand-cream) 0%, var(--bg-page) 100%);
-            padding: 4.5rem 2rem 3.5rem;
-            border-bottom: 1px solid var(--border-color);
+        .hero-mkt {
+            padding: 2.5rem 1.5rem 3rem;
             text-align: center;
+            background: linear-gradient(180deg, var(--bg-page) 0%, #eee8dc 100%);
+            overflow: hidden;
         }
 
-        .hero-container {
-            max-width: 850px;
+        .hero-content {
+            max-width: 750px;
             margin: 0 auto;
-            animation: heroFadeIn 0.8s ease-out forwards;
         }
 
-        @keyframes heroFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background-color: var(--brand-sand);
-            color: var(--brand-terracota);
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            margin-bottom: 1.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--brand-dark);
-            margin-bottom: 1.25rem;
-            font-weight: 800;
-            line-height: 1.15;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 2.25rem;
-        }
-
-        .phones-container {
+        .hero-actions {
             display: flex;
             justify-content: center;
-            gap: 1.25rem;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
             flex-wrap: wrap;
         }
 
-        .phone-badge {
+        .btn-primary-mkt {
+            background-color: var(--brand-dark);
+            color: #ffffff;
+            padding: 0.85rem 1.75rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
             display: inline-flex;
             align-items: center;
             gap: 0.6rem;
-            background-color: var(--card-bg);
-            padding: 0.8rem 1.6rem;
+            box-shadow: 0 6px 20px rgba(22, 38, 31, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary-mkt:hover {
+            transform: translateY(-3px);
+        }
+
+        .phones-hero-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .phone-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background-color: var(--card-white);
+            padding: 0.7rem 1.4rem;
             border-radius: 50px;
             text-decoration: none;
-            color: var(--brand-dark);
-            font-weight: 700;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .phone-badge i {
-            color: var(--whatsapp-green);
-            font-size: 1.2rem;
-        }
-
-        .phone-badge:hover {
-            transform: translateY(-4px) scale(1.03);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--brand-terracota);
-        }
-
-        /* CATÁLOGO DE NIVELES */
-        .catalog-section {
-            max-width: 1280px;
-            margin: 3.5rem auto;
-            padding: 0 2rem;
-        }
-
-        .level-container {
-            background: var(--card-bg);
-            border-radius: 28px;
-            padding: 2.5rem;
-            margin-bottom: 3.5rem;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-soft);
-        }
-
-        .level-header-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--brand-dark);
-            margin-bottom: 1.75rem;
-        }
-
-        /* FILTROS */
-        .filters-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2rem;
-            background: var(--brand-cream);
-            padding: 1.5rem;
-            border-radius: 20px;
-            border: 1px solid var(--border-color);
-        }
-
-        .filter-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-label {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--brand-dark);
-            min-width: 85px;
-            text-transform: uppercase;
-        }
-
-        .filter-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            flex: 1;
-        }
-
-        .filter-btn {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 1rem;
-            border-radius: 12px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: 700;
             color: var(--text-main);
-            transition: all 0.25s ease;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
-        .filter-btn:hover {
-            border-color: var(--brand-terracota);
-            color: var(--brand-terracota);
-            transform: translateY(-2px);
+        .phone-hero-badge i {
+            color: var(--whatsapp-green);
+            font-size: 1.15rem;
         }
 
-        .filter-btn.active {
-            background-color: var(--brand-dark);
-            color: #ffffff;
-            border-color: var(--brand-dark);
-            box-shadow: 0 4px 12px rgba(27, 32, 40, 0.2);
+        .phone-hero-badge:hover {
+            transform: translateY(-3px);
+            border-color: var(--whatsapp-green);
         }
 
-        /* CARRUSEL Y SCROLL ANIMADO */
-        .carousel-outer {
+        .hero-mini-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(22, 38, 31, 0.06);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            margin-bottom: 2rem;
+        }
+
+        .hero-mini-tag span {
+            color: #e67e22;
+        }
+
+        /* IMAGEN 3D CON ANIMACIÓN */
+        .hero-visual-box {
             position: relative;
+            max-width: 480px;
+            margin: 0 auto 2rem;
+            height: 320px;
             display: flex;
+            justify-content: center;
             align-items: center;
         }
 
-        .carousel-track {
-            display: flex;
-            gap: 1.75rem;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 0.75rem 0.25rem 1.5rem;
-            width: 100%;
-            scrollbar-width: thin;
-            scrollbar-color: var(--brand-sand) transparent;
-            cursor: grab;
-        }
-
-        .carousel-track:active {
-            cursor: grabbing;
-        }
-
-        .carousel-track::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .carousel-track::-webkit-scrollbar-thumb {
-            background: #d5cfc4;
-            border-radius: 10px;
-        }
-
-        .carousel-nav-btn {
+        .hero-circle-bg {
             position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            width: 46px;
-            height: 46px;
+            width: 280px;
+            height: 280px;
+            background-color: #ebdcb9;
             border-radius: 50%;
-            background-color: #ffffff;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-hover);
-            color: var(--brand-dark);
-            font-size: 1.1rem;
-            cursor: pointer;
-            z-index: 10;
+            z-index: 1;
+            animation: pulseCircle 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseCircle {
+            0% { transform: scale(0.95); }
+            100% { transform: scale(1.05); }
+        }
+
+        .hero-book-1, .hero-book-2 {
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+
+        .hero-book-1 {
+            width: 190px;
+            height: 260px;
+            object-fit: cover;
+            left: 20px;
+            transform: rotate(-6deg);
+            animation: floatSlow 3s ease-in-out infinite alternate;
+        }
+
+        .hero-book-2 {
+            width: 155px;
+            height: 220px;
+            object-fit: cover;
+            right: 25px;
+            top: 20px;
+            transform: rotate(8deg);
+            animation: floatSlowReverse 3.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatSlow {
+            0% { transform: rotate(-6deg) translateY(0); }
+            100% { transform: rotate(-6deg) translateY(-10px); }
+        }
+
+        @keyframes floatSlowReverse {
+            0% { transform: rotate(8deg) translateY(0); }
+            100% { transform: rotate(8deg) translateY(10px); }
+        }
+
+        .hero-badge-floating {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            background-color: #e67e22;
+            color: #ffffff;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-align: center;
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 0.5rem;
+            box-shadow: 0 8px 20px rgba(230,126,34,0.4);
+            z-index: 3;
+            animation: bounceBadge 2s ease-in-out infinite;
         }
 
-        .carousel-nav-btn:hover {
-            background-color: var(--brand-terracota);
-            color: #ffffff;
-            border-color: var(--brand-terracota);
-            transform: translateY(-50%) scale(1.12);
+        @keyframes bounceBadge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
         }
 
-        .carousel-nav-btn.prev { left: -22px; }
-        .carousel-nav-btn.next { right: -22px; }
+        .hero-tags-footer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--brand-dark);
+            opacity: 0.8;
+            flex-wrap: wrap;
+        }
 
-        /* TARJETAS DE LIBROS */
-        .book-card {
-            min-width: 270px;
-            max-width: 270px;
-            background-color: var(--card-bg);
+        /* SECCIÓN QUIÉNES SOMOS CORTA */
+        .about-section {
+            max-width: 850px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .about-card {
+            background-color: var(--card-white);
+            border: 1px solid var(--border-color);
             border-radius: 20px;
-            overflow: hidden;
+            padding: 2rem 2.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+
+        .about-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+        }
+
+        .about-text {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* BOTÓN FLOTANTE WHATSAPP */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: var(--whatsapp-green);
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--whatsapp-hover);
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* SECCIÓN CATÁLOGO */
+        .catalog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+        }
+
+        .catalog-header {
+            margin-bottom: 2rem;
+        }
+
+        .catalog-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--text-main);
+        }
+
+        /* PESTAÑAS DE NIVEL */
+        .filter-tabs {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: var(--card-white);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.3rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            background-color: var(--brand-dark);
+            color: #ffffff;
+            border-color: var(--brand-dark);
+        }
+
+        /* SUBFILTROS */
+        .subfilters-box {
+            background: var(--card-white);
+            padding: 1.25rem 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2.5rem;
             display: flex;
             flex-direction: column;
+            gap: 1rem;
+        }
+
+        .subfilter-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .subfilter-label {
+            font-size: 0.78rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            min-width: 80px;
+        }
+
+        .subfilter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .sub-btn {
+            background: var(--bg-page);
             border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
-            flex-shrink: 0;
-            animation: cardAppear 0.4s ease forwards;
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+        }
+
+        .sub-btn:hover {
+            background: #e2ded2;
+        }
+
+        .sub-btn.active {
+            background: var(--brand-dark);
+            color: #fff;
+            border-color: var(--brand-dark);
+        }
+
+        /* GRID DE TARJETAS */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background-color: var(--card-white);
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            animation: cardAppear 0.5s ease forwards;
         }
 
         @keyframes cardAppear {
-            from {
-                opacity: 0;
-                transform: scale(0.94) translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
+            from { opacity: 0; transform: scale(0.94) translateY(15px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .book-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--brand-terracota);
+            box-shadow: 0 14px 35px rgba(0,0,0,0.08);
         }
 
-        .book-cover-wrap {
+        .card-top-pastel {
+            height: 270px;
             position: relative;
-            width: 100%;
-            height: 300px;
-            overflow: hidden;
-            background-color: var(--brand-sand);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
         }
 
-        .book-cover {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .pastel-peach { background-color: var(--pastel-peach); }
+        .pastel-green { background-color: var(--pastel-green); }
+        .pastel-yellow { background-color: var(--pastel-yellow); }
+        .pastel-purple { background-color: var(--pastel-purple); }
+        .pastel-blue { background-color: var(--pastel-blue); }
 
-        .book-card:hover .book-cover {
-            transform: scale(1.08);
-        }
-
-        .book-badge-overlay {
+        .card-badge {
             position: absolute;
-            top: 0.9rem;
-            left: 0.9rem;
-            padding: 0.35rem 0.8rem;
-            border-radius: 50px;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
             font-size: 0.72rem;
             font-weight: 800;
             text-transform: uppercase;
-            backdrop-filter: blur(8px);
-            background-color: rgba(255, 255, 255, 0.92);
-            color: var(--brand-dark);
-            box-shadow: var(--shadow-sm);
+            letter-spacing: 0.5px;
+            color: var(--text-main);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
 
-        .book-info {
-            padding: 1.4rem;
+        .card-book-img {
+            height: 195px;
+            width: auto;
+            max-width: 140px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+            transition: transform 0.4s ease;
+        }
+
+        .book-card:hover .card-book-img {
+            transform: scale(1.07) rotate(-2deg);
+        }
+
+        .card-content {
+            padding: 1.6rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
-        .book-subject {
-            font-size: 0.8rem;
+        .card-author {
+            font-size: 0.75rem;
             font-weight: 800;
-            color: var(--brand-terracota);
-            margin-bottom: 0.4rem;
             text-transform: uppercase;
-        }
-
-        .book-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--brand-dark);
-            margin-bottom: 0.5rem;
-            line-height: 1.35;
-        }
-
-        .book-description {
-            font-size: 0.85rem;
+            letter-spacing: 0.5px;
             color: var(--text-muted);
-            margin-bottom: 1.4rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.25;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
             flex-grow: 1;
         }
 
-        .order-btn {
-            position: relative;
-            overflow: hidden;
-            background-color: var(--whatsapp-green);
-            color: #ffffff;
-            border: none;
-            padding: 0.8rem 1rem;
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
+        .card-footer-info {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.1rem;
+            margin-top: auto;
+        }
+
+        .card-price {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .consult-link {
             text-decoration: none;
-            transition: all 0.25s ease;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--whatsapp-green);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.2s;
         }
 
-        .order-btn:hover {
-            background-color: var(--whatsapp-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.35);
+        .consult-link:hover {
+            color: var(--whatsapp-hover);
+            transform: translateX(2px);
         }
 
-        .no-results {
-            width: 100%;
+        .no-books {
+            grid-column: 1 / -1;
             text-align: center;
-            padding: 3.5rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            background: var(--brand-cream);
+            padding: 4rem;
+            background: var(--card-white);
             border-radius: 16px;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
         }
 
         /* FOOTER */
         footer {
             background-color: var(--brand-dark);
             color: #ffffff;
-            padding: 4rem 2rem;
-            margin-top: 6rem;
+            padding: 3.5rem 2rem;
             text-align: center;
         }
 
@@ -486,23 +628,30 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .nav-container { flex-direction: column; gap: 1rem; }
-            .carousel-nav-btn { display: none; }
-            .filter-row { flex-direction: column; align-items: flex-start; }
-            .filter-label { min-width: auto; }
-            .level-container { padding: 1.5rem; }
+            .catalog-title { font-size: 2.2rem; }
+            .books-grid { grid-template-columns: 1fr; }
+            .hero-visual-box { height: 280px; }
+            .about-card { padding: 1.5rem; }
+            .whatsapp-float { bottom: 20px; left: 20px; width: 52px; height: 52px; font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/51936898852?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Contáctanos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- HEADER -->
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">
-                <i class="fa-solid fa-book-open"></i>
-                Lemley Libros
+            <a href="#" class="brand-box">
+                <div class="brand-logo-circle">L</div>
+                <div class="brand-texts">
+                    <h2>Lemley Libros</h2>
+                    <p>Historias para imaginar</p>
+                </div>
             </a>
             <ul class="nav-links">
                 <li><a href="#nosotros">Quiénes somos</a></li>
@@ -513,136 +662,75 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section id="nosotros" class="hero">
-        <div class="hero-container">
-            <span class="hero-badge">✨ Catálogo Completo por Grados y Materias</span>
-            <h1>Acompañamos el aprendizaje en cada etapa escolar</h1>
-            <p>
-                Diseñamos y distribuimos material educativo de excelencia. Explora el catálogo deslizando horizontalmente y solicita tus libros directamente vía WhatsApp.
-            </p>
-            <div id="contacto" class="phones-container">
-                <a href="https://wa.me/51936898852" target="_blank" class="phone-badge">
+    <section class="hero-mkt">
+        <div class="hero-content">
+            <div class="hero-actions">
+                <a href="#catalogo" class="btn-primary-mkt">
+                    Explorar libros <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+
+            <!-- LOS DOS TELÉFONOS DE CONTACTO -->
+            <div id="contacto" class="phones-hero-container">
+                <a href="https://wa.me/51936898852?text=Hola,%20deseo%20información%20sobre%20los%20libros." target="_blank" class="phone-hero-badge">
                     <i class="fa-brands fa-whatsapp"></i> 936 898 852
                 </a>
-                <a href="https://wa.me/51936898603" target="_blank" class="phone-badge">
+                <a href="https://wa.me/51936898603?text=Hola,%20deseo%20información%20sobre%20los%20libros." target="_blank" class="phone-hero-badge">
                     <i class="fa-brands fa-whatsapp"></i> 936 898 603
                 </a>
             </div>
+
+            <div class="hero-mini-tag">
+                <i class="fa-solid fa-asterisk" style="color: #e67e22;"></i> 
+                <span>Leer, imaginar y crecer</span> • Historias para distintas edades e intereses.
+            </div>
+
+            <!-- CONTENEDOR 3D FLOTANTE -->
+            <div class="hero-visual-box">
+                <div class="hero-circle-bg"></div>
+                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Libro destacado 1" class="hero-book-1">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80" alt="Libro destacado 2" class="hero-book-2">
+                <div class="hero-badge-floating">
+                    ¡Abre un libro, vive una aventura!
+                </div>
+            </div>
+
+            <div class="hero-tags-footer">
+                <span>Cuentos</span> • <span>Aventuras</span> • <span>Imaginación</span> • <span>Lectura</span>
+            </div>
         </div>
     </section>
 
-    <!-- CATÁLOGO -->
-    <section id="catalogo" class="catalog-section">
-
-        <!-- JARDÍN -->
-        <div class="level-container">
-            <h2 class="level-header-title">Jardín</h2>
-            
-            <div class="filters-wrapper">
-                <div class="filter-row">
-                    <span class="filter-label">Edad:</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filterLevel('jardin', 'age', 'all', this)">Todas las edades</button>
-                        <button class="filter-btn" onclick="filterLevel('jardin', 'age', '3', this)">3 años</button>
-                        <button class="filter-btn" onclick="filterLevel('jardin', 'age', '4', this)">4 años</button>
-                        <button class="filter-btn" onclick="filterLevel('jardin', 'age', '5', this)">5 años</button>
-                    </div>
-                </div>
-                <div class="filter-row">
-                    <span class="filter-label">Materia:</span>
-                    <div class="filter-buttons" id="jardin-subjects-container"></div>
-                </div>
-            </div>
-
-            <div class="carousel-outer">
-                <button class="carousel-nav-btn prev" onclick="scrollCarousel('track-jardin', -320)"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="carousel-track" id="track-jardin"></div>
-                <button class="carousel-nav-btn next" onclick="scrollCarousel('track-jardin', 320)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
+    <!-- SECCIÓN QUIÉNES SOMOS (CONCISA) -->
+    <section id="nosotros" class="about-section">
+        <div class="about-card">
+            <h2 class="about-title">Quiénes somos</h2>
+            <p class="about-text">
+                En <strong>Lemley Libros</strong> creamos y distribuimos material educativo de calidad para acompañar el aprendizaje escolar en Inicial, Primaria y Secundaria. Nuestro compromiso es ofrecer textos claros, dinámicos y actualizados para inspirar la lectura y el rendimiento académico.
+            </p>
         </div>
-
-        <!-- PRIMARIA -->
-        <div class="level-container">
-            <h2 class="level-header-title">Primaria</h2>
-            
-            <div class="filters-wrapper">
-                <div class="filter-row">
-                    <span class="filter-label">Grado:</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filterLevel('primaria', 'grade', 'all', this)">Todos los grados</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'grade', '1', this)">1er Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'grade', '2', this)">2do Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'grade', '3', this)">3er Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'grade', '4', this)">4to Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'grade', '5', this)">5to Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'grade', '6', this)">6to Grado</button>
-                    </div>
-                </div>
-                <div class="filter-row">
-                    <span class="filter-label">Materia:</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filterLevel('primaria', 'subject', 'all', this)">Todas las materias</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Matemática', this)">Matemática</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Comunicación', this)">Comunicación</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Desarrollo Personal y Cívica', this)">Desarrollo Personal y Cívica</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Ciencia y Tecnología', this)">Ciencia y Tecnología</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Arte y Cultura', this)">Arte y Cultura</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Inglés', this)">Inglés</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Educación Religiosa', this)">Educación Religiosa</button>
-                        <button class="filter-btn" onclick="filterLevel('primaria', 'subject', 'Cuentos / Moralejas', this)">Cuentos / Moralejas</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-outer">
-                <button class="carousel-nav-btn prev" onclick="scrollCarousel('track-primaria', -320)"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="carousel-track" id="track-primaria"></div>
-                <button class="carousel-nav-btn next" onclick="scrollCarousel('track-primaria', 320)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-
-        <!-- SECUNDARIA -->
-        <div class="level-container">
-            <h2 class="level-header-title">Secundaria</h2>
-            
-            <div class="filters-wrapper">
-                <div class="filter-row">
-                    <span class="filter-label">Grado:</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filterLevel('secundaria', 'grade', 'all', this)">Todos los grados</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'grade', '1', this)">1er Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'grade', '2', this)">2do Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'grade', '3', this)">3er Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'grade', '4', this)">4to Grado</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'grade', '5', this)">5to Grado</button>
-                    </div>
-                </div>
-                <div class="filter-row">
-                    <span class="filter-label">Materia:</span>
-                    <div class="filter-buttons">
-                        <button class="filter-btn active" onclick="filterLevel('secundaria', 'subject', 'all', this)">Todas las materias</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Álgebra', this)">Álgebra</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Aritmética', this)">Aritmética</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Geometría', this)">Geometría</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Trigonometría', this)">Trigonometría</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Física', this)">Física</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Química', this)">Química</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Biología / Anatomía', this)">Biología / Anatomía</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Ciencias Sociales', this)">Ciencias Sociales</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Comunicación', this)">Comunicación</button>
-                        <button class="filter-btn" onclick="filterLevel('secundaria', 'subject', 'Literatura', this)">Literatura</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="carousel-outer">
-                <button class="carousel-nav-btn prev" onclick="scrollCarousel('track-secundaria', -320)"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="carousel-track" id="track-secundaria"></div>
-                <button class="carousel-nav-btn next" onclick="scrollCarousel('track-secundaria', 320)"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-        </div>
-
     </section>
+
+    <!-- SECCIÓN CATÁLOGO -->
+    <main id="catalogo" class="catalog-container">
+        <div class="catalog-header">
+            <h2 class="catalog-title">Nuestros libros</h2>
+        </div>
+
+        <!-- PESTAÑAS DE NIVEL -->
+        <div class="filter-tabs">
+            <button class="tab-btn active" onclick="setMainFilter('all', this)">Todos los libros</button>
+            <button class="tab-btn" onclick="setMainFilter('jardin', this)">Inicial / Jardín</button>
+            <button class="tab-btn" onclick="setMainFilter('primaria', this)">Primaria</button>
+            <button class="tab-btn" onclick="setMainFilter('secundaria', this)">Secundaria</button>
+        </div>
+
+        <!-- SUBFILTROS DINÁMICOS -->
+        <div class="subfilters-box" id="subfilters-box"></div>
+
+        <!-- GRID DE LIBROS -->
+        <div class="books-grid" id="books-grid-container"></div>
+    </main>
 
     <!-- FOOTER -->
     <footer>
@@ -672,29 +760,24 @@
             "Ciencias Sociales", "Comunicación", "Literatura"
         ];
 
-        const activeFilters = {
-            jardin: { age: 'all', subject: 'all' },
-            primaria: { grade: 'all', subject: 'all' },
-            secundaria: { grade: 'all', subject: 'all' }
-        };
+        let currentMainLevel = 'all';
+        let currentSubFilter = { type: 'all', value: 'all', subjectValue: 'all' };
 
-        // Generación dinámica de la base de datos de libros
-        const books = [];
-        let idCounter = 1;
-
-        // imágenes de referencia
         const sampleCovers = [
             "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
             "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80",
             "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80",
             "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80",
             "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80",
-            "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80",
-            "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=80",
-            "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80"
+            "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80"
         ];
 
-        // 1. JARDÍN
+        const pastelClasses = ['pastel-peach', 'pastel-green', 'pastel-yellow', 'pastel-purple', 'pastel-blue'];
+
+        const books = [];
+        let idCounter = 1;
+
+        // 1. Jardín
         Object.keys(jardinSubjectsByAge).forEach(age => {
             jardinSubjectsByAge[age].forEach((subj, idx) => {
                 books.push({
@@ -703,199 +786,207 @@
                     age: age,
                     gradeLabel: `${age} años`,
                     subject: subj,
-                    title: `${subj} - ${age} Años`,
-                    description: `Texto escolar especializado en ${subj.toLowerCase()} para niños de ${age} años.`,
+                    title: `${subj} (${age} Años)`,
+                    author: "Lemley Libros",
+                    description: `Texto escolar especializado en ${subj.toLowerCase()} diseñado para niños de ${age} años.`,
+                    price: "S/ 20",
                     cover: sampleCovers[idx % sampleCovers.length]
                 });
             });
         });
 
-        // 2. PRIMARIA (Generar 8 materias por cada uno de los 6 grados)
+        // 2. Primaria
         for (let g = 1; g <= 6; g++) {
             primariaSubjects.forEach((subj, idx) => {
                 books.push({
                     id: idCounter++,
                     level: 'primaria',
                     grade: g.toString(),
-                    gradeLabel: `${g}.° Grado`,
+                    gradeLabel: `${g}.° Primaria`,
                     subject: subj,
-                    title: `${subj} ${g}.° Primaria`,
-                    description: `Libro de texto y cuaderno de actividades de ${subj} para ${g}.° grado.`,
+                    title: `${subj} - ${g}.° Grado`,
+                    author: "Lemley Libros",
+                    description: `Libro oficial con teoría y ejercicios prácticos de ${subj} para ${g}.° grado de primaria.`,
+                    price: "S/ 25",
                     cover: sampleCovers[(g + idx) % sampleCovers.length]
                 });
             });
         }
 
-        // 3. SECUNDARIA (Generar 10 materias por cada uno de los 5 grados)
+        // 3. Secundaria
         for (let g = 1; g <= 5; g++) {
             secundariaSubjects.forEach((subj, idx) => {
                 books.push({
                     id: idCounter++,
                     level: 'secundaria',
                     grade: g.toString(),
-                    gradeLabel: `${g}.° Grado`,
+                    gradeLabel: `${g}.° Secundaria`,
                     subject: subj,
-                    title: `${subj} ${g}.° Secundaria`,
-                    description: `Texto completo con desarrollo teórico y práctico de ${subj} para ${g}.° de secundaria.`,
+                    title: `${subj} - ${g}.° Secundaria`,
+                    author: "Lemley Libros",
+                    description: `Texto preuniversitario completo y actualizado de ${subj} para ${g}.° de secundaria.`,
+                    price: "S/ 30",
                     cover: sampleCovers[(g + idx * 2) % sampleCovers.length]
                 });
             });
         }
 
-        // Renderizado de UI de materias para Jardín
-        function updateJardinSubjectsUI() {
-            const container = document.getElementById('jardin-subjects-container');
-            const selectedAge = activeFilters.jardin.age;
-            container.innerHTML = '';
+        function setMainFilter(level, btnElement) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
 
-            let availableSubjects = [];
-            if (selectedAge === 'all') {
-                availableSubjects = Array.from(new Set([
-                    ...jardinSubjectsByAge["3"],
-                    ...jardinSubjectsByAge["4"],
-                    ...jardinSubjectsByAge["5"]
-                ]));
-            } else {
-                availableSubjects = jardinSubjectsByAge[selectedAge] || [];
-            }
+            currentMainLevel = level;
+            currentSubFilter = { type: 'all', value: 'all', subjectValue: 'all' };
 
-            const allBtn = document.createElement('button');
-            allBtn.className = `filter-btn ${activeFilters.jardin.subject === 'all' ? 'active' : ''}`;
-            allBtn.innerText = 'Todas las materias';
-            allBtn.onclick = function() { filterLevel('jardin', 'subject', 'all', this); };
-            container.appendChild(allBtn);
-
-            availableSubjects.forEach(subject => {
-                const btn = document.createElement('button');
-                btn.className = `filter-btn ${activeFilters.jardin.subject === subject ? 'active' : ''}`;
-                btn.innerText = subject;
-                btn.onclick = function() { filterLevel('jardin', 'subject', subject, this); };
-                container.appendChild(btn);
-            });
+            renderSubfilters();
+            renderBooks();
         }
 
-        // Renderizado animado del carrusel por nivel
-        function renderCarousel(level) {
-            const track = document.getElementById(`track-${level}`);
-            track.innerHTML = '';
+        function renderSubfilters() {
+            const box = document.getElementById('subfilters-box');
+            box.innerHTML = '';
 
-            const filters = activeFilters[level];
-
-            const filteredBooks = books.filter(book => {
-                if (book.level !== level) return false;
-
-                if (level === 'jardin') {
-                    const matchAge = (filters.age === 'all' || book.age === filters.age);
-                    const matchSubject = (filters.subject === 'all' || book.subject === filters.subject);
-                    return matchAge && matchSubject;
-                } else {
-                    const matchGrade = (filters.grade === 'all' || book.grade === filters.grade);
-                    const matchSubject = (filters.subject === 'all' || book.subject === filters.subject);
-                    return matchGrade && matchSubject;
-                }
-            });
-
-            if (filteredBooks.length === 0) {
-                track.innerHTML = `<div class="no-results">No hay libros disponibles para los filtros seleccionados.</div>`;
+            if (currentMainLevel === 'all') {
+                box.style.display = 'none';
                 return;
             }
 
-            filteredBooks.forEach((book, index) => {
+            box.style.display = 'flex';
+
+            if (currentMainLevel === 'jardin') {
+                box.innerHTML = `
+                    <div class="subfilter-row">
+                        <span class="subfilter-label">Edad:</span>
+                        <div class="subfilter-options">
+                            <button class="sub-btn active" onclick="setSubFilter('age', 'all', this)">Todas</button>
+                            <button class="sub-btn" onclick="setSubFilter('age', '3', this)">3 años</button>
+                            <button class="sub-btn" onclick="setSubFilter('age', '4', this)">4 años</button>
+                            <button class="sub-btn" onclick="setSubFilter('age', '5', this)">5 años</button>
+                        </div>
+                    </div>
+                `;
+            } else if (currentMainLevel === 'primaria') {
+                box.innerHTML = `
+                    <div class="subfilter-row">
+                        <span class="subfilter-label">Grado:</span>
+                        <div class="subfilter-options">
+                            <button class="sub-btn active" onclick="setSubFilter('grade', 'all', this)">Todos</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '1', this)">1.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '2', this)">2.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '3', this)">3.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '4', this)">4.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '5', this)">5.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '6', this)">6.°</button>
+                        </div>
+                    </div>
+                    <div class="subfilter-row">
+                        <span class="subfilter-label">Materia:</span>
+                        <div class="subfilter-options">
+                            <button class="sub-btn active" onclick="setSubFilter('subject', 'all', this)">Todas</button>
+                            ${primariaSubjects.map(s => `<button class="sub-btn" onclick="setSubFilter('subject', '${s}', this)">${s}</button>`).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (currentMainLevel === 'secundaria') {
+                box.innerHTML = `
+                    <div class="subfilter-row">
+                        <span class="subfilter-label">Grado:</span>
+                        <div class="subfilter-options">
+                            <button class="sub-btn active" onclick="setSubFilter('grade', 'all', this)">Todos</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '1', this)">1.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '2', this)">2.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '3', this)">3.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '4', this)">4.°</button>
+                            <button class="sub-btn" onclick="setSubFilter('grade', '5', this)">5.°</button>
+                        </div>
+                    </div>
+                    <div class="subfilter-row">
+                        <span class="subfilter-label">Materia:</span>
+                        <div class="subfilter-options">
+                            <button class="sub-btn active" onclick="setSubFilter('subject', 'all', this)">Todas</button>
+                            ${secundariaSubjects.map(s => `<button class="sub-btn" onclick="setSubFilter('subject', '${s}', this)">${s}</button>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function setSubFilter(type, value, btnElement) {
+            const row = btnElement.closest('.subfilter-row');
+            row.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            if (type === 'age' || type === 'grade') {
+                currentSubFilter.value = value;
+            } else if (type === 'subject') {
+                currentSubFilter.subjectValue = value;
+            }
+
+            renderBooks();
+        }
+
+        function renderBooks() {
+            const container = document.getElementById('books-grid-container');
+            container.innerHTML = '';
+
+            const filtered = books.filter(book => {
+                if (currentMainLevel !== 'all' && book.level !== currentMainLevel) return false;
+
+                if (currentMainLevel === 'jardin') {
+                    if (currentSubFilter.value && currentSubFilter.value !== 'all' && book.age !== currentSubFilter.value) return false;
+                } else if (currentMainLevel === 'primaria' || currentMainLevel === 'secundaria') {
+                    if (currentSubFilter.value && currentSubFilter.value !== 'all' && book.grade !== currentSubFilter.value) return false;
+                    if (currentSubFilter.subjectValue && currentSubFilter.subjectValue !== 'all' && book.subject !== currentSubFilter.subjectValue) return false;
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="no-books">No se encontraron libros con los filtros seleccionados.</div>`;
+                return;
+            }
+
+            filtered.forEach((book, index) => {
+                const pastelClass = pastelClasses[index % pastelClasses.length];
+
                 const message = encodeURIComponent(
-                    `Hola, deseo realizar el pedido del siguiente libro:\n\n` +
+                    `Hola, deseo consultar y realizar el pedido del siguiente libro:\n\n` +
                     `📌 *Título:* ${book.title}\n` +
                     `📚 *Materia:* ${book.subject}\n` +
-                    `🎓 *Grado / Edad:* ${book.gradeLabel}\n` +
+                    `🎓 *Nivel / Grado:* ${book.gradeLabel}\n` +
+                    `💰 *Precio:* ${book.price}\n` +
                     `🖼️ *Portada:* ${book.cover}\n\n` +
-                    `¿Me brindan más detalles para concretar la compra?`
+                    `¿Podrían brindarme información para concretar la compra?`
                 );
 
                 const whatsappUrl = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
 
                 const cardHTML = `
                     <div class="book-card" style="animation-delay: ${index * 0.03}s">
-                        <div class="book-cover-wrap">
-                            <span class="book-badge-overlay">${book.gradeLabel}</span>
-                            <img src="${book.cover}" alt="${book.title}" class="book-cover" loading="lazy">
+                        <div class="card-top-pastel ${pastelClass}">
+                            <span class="card-badge">${book.subject}</span>
+                            <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
                         </div>
-                        <div class="book-info">
-                            <span class="book-subject">${book.subject}</span>
-                            <h3 class="book-title">${book.title}</h3>
-                            <p class="book-description">${book.description}</p>
-                            <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="order-btn">
-                                <i class="fa-brands fa-whatsapp"></i> Realizar Pedido
-                            </a>
+                        <div class="card-content">
+                            <span class="card-author">${book.author} • ${book.gradeLabel}</span>
+                            <h3 class="card-title">${book.title}</h3>
+                            <p class="card-desc">${book.description}</p>
+                            <div class="card-footer-info">
+                                <span class="card-price">${book.price}</span>
+                                <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="consult-link">
+                                    <i class="fa-brands fa-whatsapp"></i> Consultar libro
+                                </a>
+                            </div>
                         </div>
                     </div>
                 `;
-                track.innerHTML += cardHTML;
-            });
-
-            initDragScroll(track);
-        }
-
-        // Filtros
-        function filterLevel(level, filterType, value, element) {
-            const parent = element.parentElement;
-            parent.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            element.classList.add('active');
-
-            activeFilters[level][filterType] = value;
-
-            if (level === 'jardin' && filterType === 'age') {
-                if (value !== 'all') {
-                    const allowed = jardinSubjectsByAge[value];
-                    if (!allowed.includes(activeFilters.jardin.subject)) {
-                        activeFilters.jardin.subject = 'all';
-                    }
-                }
-                updateJardinSubjectsUI();
-            }
-
-            renderCarousel(level);
-        }
-
-        // Scroll con botones
-        function scrollCarousel(trackId, offset) {
-            const track = document.getElementById(trackId);
-            track.scrollBy({ left: offset, behavior: 'smooth' });
-        }
-
-        // Scroll por arrastre con mouse/touch
-        function initDragScroll(slider) {
-            let isDown = false;
-            let startX;
-            let scrollLeft;
-
-            slider.addEventListener('mousedown', (e) => {
-                isDown = true;
-                slider.style.cursor = 'grabbing';
-                startX = e.pageX - slider.offsetLeft;
-                scrollLeft = slider.scrollLeft;
-            });
-            slider.addEventListener('mouseleave', () => {
-                isDown = false;
-                slider.style.cursor = 'grab';
-            });
-            slider.addEventListener('mouseup', () => {
-                isDown = false;
-                slider.style.cursor = 'grab';
-            });
-            slider.addEventListener('mousemove', (e) => {
-                if(!isDown) return;
-                e.preventDefault();
-                const x = e.pageX - slider.offsetLeft;
-                const walk = (x - startX) * 1.5;
-                slider.scrollLeft = scrollLeft - walk;
+                container.innerHTML += cardHTML;
             });
         }
 
-        // Carga inicial
         document.addEventListener('DOMContentLoaded', () => {
-            updateJardinSubjectsUI();
-            renderCarousel('jardin');
-            renderCarousel('primaria');
-            renderCarousel('secundaria');
+            renderSubfilters();
+            renderBooks();
         });
     </script>
 </body>
