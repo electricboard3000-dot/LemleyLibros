@@ -161,18 +161,6 @@
             gap: 1.2rem;
         }
 
-        .hero-badge-top {
-            background-color: var(--brand-orange);
-            color: #ffffff;
-            padding: 0.4rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: fit-content;
-        }
-
         .hero-title-large {
             font-size: 4.5rem;
             font-weight: 700;
@@ -976,7 +964,6 @@
                 banner.innerHTML += `
                     <div class="hero-slide ${activeClass}" style="background-image: url('${book.cover}');">
                         <div class="hero-content-box">
-                            <span class="hero-badge-top">Nivel: ${book.levelLabel}</span>
                             <h1 class="hero-title-large">${book.title}</h1>
                             <a href="#catalogo" class="hero-btn-action">Ver Libros</a>
                         </div>
