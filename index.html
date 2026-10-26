@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lemley Libros - Editorial Educativa</title>
+    <title>Lemley Libros - Cuentos e Historias Mágicas</title>
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +47,7 @@
             line-height: 1.6;
         }
 
-        /* BARRA SUPERIOR NARANJA OPTIMIZADA */
+        /* BARRA SUPERIOR NARANJA */
         header {
             background-color: var(--brand-orange);
             position: sticky;
@@ -105,130 +105,131 @@
             display: block;
         }
 
-        /* HERO LAYOUT */
-        .hero-section {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 3.5rem 2rem 2.5rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-card-hero {
-            background-color: var(--card-white);
-            border-radius: 20px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid rgba(227, 222, 210, 0.6);
-            text-align: center;
-        }
-
-        .about-card-hero h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            font-style: italic;
-            color: var(--text-main);
-            margin-bottom: 1.2rem;
-        }
-
-        .about-card-hero p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.65;
-        }
-
-        .hero-visual-box {
+        /* BANNER SLIDER PRINCIPAL A PANTALLA COMPLETA */
+        .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: 340px;
+            height: calc(100vh - 58px);
+            min-height: 550px;
+            background-color: var(--brand-dark);
+            overflow: hidden;
             display: flex;
-            justify-content: center;
             align-items: center;
         }
 
-        .hero-circle-bg {
+        .hero-slide {
             position: absolute;
-            width: 270px;
-            height: 270px;
-            background-color: #ebdcb9;
-            border-radius: 50%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hero-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(22, 38, 31, 0.85), rgba(22, 38, 31, 0.3));
             z-index: 1;
-            animation: pulseCircle 4s ease-in-out infinite alternate;
         }
 
-        @keyframes pulseCircle {
-            0% { transform: scale(0.96); }
-            100% { transform: scale(1.04); }
-        }
-
-        .hero-book-1, .hero-book-2 {
-            position: absolute;
-            border-radius: 6px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+        .hero-content-box {
+            position: relative;
             z-index: 2;
+            max-width: 1280px;
+            width: 90%;
+            margin: 0 auto;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
-        .hero-book-1 {
-            width: 180px;
-            height: 250px;
-            object-fit: cover;
-            left: 15%;
-            transform: rotate(-6deg);
-            animation: floatSlow 3.5s ease-in-out infinite alternate;
-        }
-
-        .hero-book-2 {
-            width: 150px;
-            height: 210px;
-            object-fit: cover;
-            right: 18%;
-            top: 25px;
-            transform: rotate(8deg);
-            animation: floatSlowReverse 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatSlow {
-            0% { transform: rotate(-6deg) translateY(0); }
-            100% { transform: rotate(-6deg) translateY(-8px); }
-        }
-
-        @keyframes floatSlowReverse {
-            0% { transform: rotate(8deg) translateY(0); }
-            100% { transform: rotate(8deg) translateY(8px); }
-        }
-
-        .hero-badge-floating {
-            position: absolute;
-            bottom: 20px;
-            right: 15%;
+        .hero-badge-top {
             background-color: var(--brand-orange);
             color: #ffffff;
-            width: 85px;
-            height: 85px;
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+        }
+
+        .hero-title-large {
+            font-size: 4.5rem;
+            font-weight: 700;
+            font-style: italic;
+            line-height: 1.1;
+            max-width: 800px;
+        }
+
+        .hero-btn-action {
+            background-color: var(--brand-orange);
+            color: #ffffff;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            width: fit-content;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 6px 20px rgba(243, 112, 33, 0.4);
+            margin-top: 0.5rem;
+        }
+
+        .hero-btn-action:hover {
+            transform: translateY(-3px);
+            background-color: #d95e12;
+        }
+
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #ffffff;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 0.5rem;
-            box-shadow: 0 6px 18px rgba(243, 112, 33, 0.4);
-            z-index: 3;
-            animation: bounceBadge 2.5s ease-in-out infinite;
+            transition: background 0.3s;
         }
 
-        @keyframes bounceBadge {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
+        .hero-arrow:hover {
+            background: rgba(255, 255, 255, 0.4);
         }
 
-        /* SLIDER ANIMADO DE LIBROS */
+        .hero-arrow.prev { left: 25px; }
+        .hero-arrow.next { right: 25px; }
+
+        /* SLIDER COMPACTO DE NUESTROS LIBROS EN EL HOME */
         .slider-section {
             background-color: #174448;
-            padding: 4rem 2rem;
+            padding: 3.5rem 1.5rem;
             position: relative;
             overflow: hidden;
             margin-bottom: 3rem;
@@ -237,15 +238,15 @@
         .slider-heading {
             text-align: center;
             color: #ffffff;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             font-style: italic;
-            margin-bottom: 2.5rem;
-            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
         }
 
         .slider-wrapper {
-            max-width: 1100px;
+            max-width: 1180px;
             margin: 0 auto;
             position: relative;
             display: flex;
@@ -254,11 +255,11 @@
 
         .slider-track {
             display: flex;
-            gap: 2rem;
+            gap: 1.25rem;
             overflow-x: auto;
             scroll-behavior: smooth;
             scrollbar-width: none;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             width: 100%;
         }
 
@@ -267,72 +268,63 @@
         }
 
         .slider-item {
-            min-width: 300px;
-            max-width: 300px;
+            flex: 0 0 calc(25% - 1rem);
+            min-width: 190px;
+            max-width: 250px;
             background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex-shrink: 0;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
 
         .slider-item:hover {
-            transform: translateY(-8px);
+            transform: translateY(-6px);
         }
 
         .slider-book-cover {
-            width: 220px;
-            height: 310px;
+            width: 100%;
+            height: 270px;
             object-fit: cover;
-            border-radius: 6px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            margin-bottom: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+            margin-bottom: 0.9rem;
         }
 
         .slider-book-title {
             color: #ffffff;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 0.3rem;
-        }
-
-        .slider-book-author {
-            color: #b2d8d8;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: center;
+            font-family: 'Playfair Display', serif;
         }
 
         .slider-arrow {
             position: absolute;
-            top: 45%;
+            top: 42%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
             color: #ffffff;
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease;
         }
 
         .slider-arrow:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-50%) scale(1.1);
+            background: rgba(255, 255, 255, 0.4);
         }
 
-        .slider-arrow.prev { left: -25px; }
-        .slider-arrow.next { right: -25px; }
+        .slider-arrow.prev { left: -20px; }
+        .slider-arrow.next { right: -20px; }
 
         /* SECCIÓN CATÁLOGO */
         .catalog-container {
@@ -379,7 +371,7 @@
             border-color: var(--brand-dark);
         }
 
-        /* GRID DE 3 COLUMNAS */
+        /* GRID CATÁLOGO 2 FILAS X 3 COLUMNAS */
         .books-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -396,12 +388,8 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.03);
             cursor: pointer;
             transition: transform 0.35s ease, box-shadow 0.35s ease;
-            animation: cardAppear 0.5s ease forwards;
-        }
-
-        @keyframes cardAppear {
-            from { opacity: 0; transform: scale(0.94) translateY(15px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+            flex: 0 0 320px;
+            min-width: 300px;
         }
 
         .book-card:hover {
@@ -410,7 +398,7 @@
         }
 
         .card-top-pastel {
-            height: 270px;
+            height: 250px;
             position: relative;
             display: flex;
             justify-content: center;
@@ -434,54 +422,36 @@
             font-size: 0.72rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
             color: var(--text-main);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
 
         .card-book-img {
-            height: 195px;
+            height: 180px;
             width: auto;
-            max-width: 140px;
+            max-width: 130px;
             object-fit: cover;
             border-radius: 4px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.18);
-            transition: transform 0.4s ease;
-        }
-
-        .book-card:hover .card-book-img {
-            transform: scale(1.07) rotate(-2deg);
         }
 
         .card-content {
-            padding: 1.6rem;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
-        .card-author {
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--brand-orange);
-            margin-bottom: 0.3rem;
-        }
-
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 0.5rem;
-            line-height: 1.25;
         }
 
         .card-desc {
             font-size: 0.88rem;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
-            line-height: 1.5;
             flex-grow: 1;
         }
 
@@ -490,7 +460,7 @@
             justify-content: space-between;
             align-items: center;
             border-top: 1px solid var(--border-color);
-            padding-top: 1.1rem;
+            padding-top: 1rem;
             margin-top: auto;
         }
 
@@ -508,36 +478,99 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            transition: all 0.2s;
         }
 
-        .consult-link:hover {
-            transform: translateX(3px);
-        }
-
-        /* ========================================================
-           VISTA DETALLADA ESTILO REFERENCIA (2 COLUMNAS + FICHA)
-           ======================================================== */
+        /* VISTA DETALLADA CON FOTO PRINCIPAL VERTICAL Y CUBIERTA */
         #productView {
             display: none;
             max-width: 1200px;
             margin: 2.5rem auto 5rem;
             padding: 0 1.5rem;
-            animation: fadeIn 0.4s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .detail-layout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 3rem;
+            align-items: stretch;
+            margin-bottom: 4rem;
+        }
+
+        .detail-image-container {
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+        }
+
+        .thumbnails-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .thumbnail-item {
+            width: 60px;
+            height: 82px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: #ffffff;
+            flex-shrink: 0;
+        }
+
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-item:hover {
+            border-color: var(--brand-orange);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-item.active {
+            border-color: var(--brand-orange);
+            box-shadow: 0 0 0 2px rgba(243, 112, 33, 0.2);
+        }
+
+        .detail-image-wrapper {
+            background-color: var(--card-white);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .detail-book-img {
+            width: 100%;
+            height: 520px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            transition: opacity 0.25s ease;
+        }
+
+        .detail-content-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .breadcrumb-bar {
             display: flex;
             gap: 0.5rem;
             align-items: center;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
         }
 
@@ -551,61 +584,12 @@
             color: var(--brand-orange);
         }
 
-        .tags-header-row {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .tag-pill {
-            background-color: #cbd5e1;
-            color: #1e293b;
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .detail-layout-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .detail-image-wrapper {
-            background-color: var(--card-white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-        }
-
-        .detail-book-img {
-            max-height: 380px;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 6px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            margin-bottom: 1.5rem;
-        }
-
-        .detail-content-wrapper {
-            display: flex;
-            flex-direction: column;
-        }
-
         .detail-title-main {
-            font-size: 2.3rem;
+            font-size: 2.6rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 1.2rem;
-            line-height: 1.15;
+            line-height: 1.2;
         }
 
         .detail-section-heading {
@@ -618,21 +602,8 @@
         .detail-sinopsis-text {
             font-size: 0.98rem;
             color: var(--text-muted);
-            line-height: 1.7;
+            line-height: 1.65;
             margin-bottom: 1.2rem;
-        }
-
-        .detail-web-link {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 1.8rem;
-            word-break: break-all;
-        }
-
-        .detail-web-link a {
-            color: var(--brand-orange);
-            text-decoration: none;
-            font-weight: 600;
         }
 
         .detail-divider {
@@ -642,16 +613,35 @@
         }
 
         .ficha-box {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
         }
 
         .ficha-item strong {
             color: var(--text-main);
+        }
+
+        .discount-promo-box {
+            background-color: var(--pastel-yellow);
+            border: 1px dashed var(--brand-orange);
+            color: var(--text-main);
+            padding: 0.85rem 1.2rem;
+            border-radius: 12px;
+            font-size: 0.92rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .discount-promo-box i {
+            color: var(--brand-orange);
+            font-size: 1.1rem;
         }
 
         .detail-purchase-box {
@@ -659,16 +649,15 @@
             align-items: center;
             justify-content: space-between;
             background: var(--card-white);
-            padding: 1.2rem 1.8rem;
-            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            border-radius: 14px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
             gap: 1rem;
             flex-wrap: wrap;
         }
 
         .detail-price {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--text-main);
         }
@@ -680,7 +669,7 @@
             padding: 0.85rem 1.6rem;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -690,14 +679,76 @@
 
         .detail-whatsapp-btn:hover {
             background-color: var(--whatsapp-hover);
-            transform: translateY(-2px);
         }
 
-        /* BOTÓN FLOTANTE WHATSAPP */
+        /* SECCIÓN INFERIOR DE RECOMENDADOS EN SLIDER HORIZONTAL */
+        .related-books-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 3rem;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .related-title {
+            font-size: 2rem;
+            font-weight: 700;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 1.8rem;
+        }
+
+        .related-slider-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .related-books-track {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 0.8rem 0;
+            width: 100%;
+        }
+
+        .related-books-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .related-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(22, 38, 31, 0.8);
+            border: none;
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .related-arrow:hover {
+            background: var(--brand-orange);
+        }
+
+        .related-arrow.prev { left: -22px; }
+        .related-arrow.next { right: -22px; }
+
+        /* BOTÓN FLOTANTE DE WHATSAPP AL LADO DERECHO */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
-            left: 20px;
+            right: 20px;
+            left: auto;
             background-color: var(--whatsapp-green);
             color: #ffffff;
             width: 55px;
@@ -709,13 +760,7 @@
             font-size: 1.8rem;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
             z-index: 9999;
-            transition: all 0.3s ease;
             text-decoration: none;
-        }
-
-        .whatsapp-float:hover {
-            background-color: var(--whatsapp-hover);
-            transform: scale(1.1) rotate(10deg);
         }
 
         footer {
@@ -731,17 +776,29 @@
         }
 
         @media (max-width: 992px) {
+            .hero-title-large { font-size: 3rem; }
+            .slider-item { flex: 0 0 calc(33.33% - 1rem); }
             .detail-layout-grid { grid-template-columns: 1fr; gap: 2rem; }
             .books-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-section { grid-template-columns: 1fr; gap: 2rem; }
+            .slider-arrow.prev { left: 0px; }
+            .slider-arrow.next { right: 0px; }
+            .detail-image-container { flex-direction: column-reverse; align-items: center; }
+            .thumbnails-column { flex-direction: row; width: 100%; justify-content: center; }
+            .thumbnail-item { width: 55px; height: 75px; }
+            .detail-image-wrapper { width: 100%; }
+            .detail-book-img { height: 420px; }
+            .related-arrow.prev { left: 0px; }
+            .related-arrow.next { right: 0px; }
         }
 
         @media (max-width: 640px) {
+            .hero-title-large { font-size: 2.2rem; }
+            .slider-item { flex: 0 0 180px; }
             .nav-container { justify-content: center; padding: 0.8rem 1rem; }
             .nav-links { gap: 0.8rem; justify-content: center; }
             .nav-links a { font-size: 0.75rem; font-weight: 700; }
             .books-grid { grid-template-columns: 1fr; }
-            .detail-title-main { font-size: 1.8rem; }
+            .detail-title-main { font-size: 2rem; }
             .detail-purchase-box { flex-direction: column; text-align: center; justify-content: center; }
             .detail-whatsapp-btn { width: 100%; justify-content: center; }
         }
@@ -749,8 +806,8 @@
 </head>
 <body>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
-    <a href="https://wa.me/51936898852?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Contáctanos por WhatsApp">
+    <!-- BOTÓN FLOTANTE DE WHATSAPP (DERECHA) -->
+    <a href="https://wa.me/51925340081?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Contáctanos por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -771,46 +828,31 @@
 
     <!-- VISTA PRINCIPAL (HOME) -->
     <div id="homeView">
-        <!-- HERO SECTION -->
-        <section class="hero-section">
-            <div class="about-card-hero">
-                <h2>Quiénes somos</h2>
-                <p>
-                    En Lemley Libros creamos y distribuimos material educativo de calidad diseñado por rangos de edad para acompañar el crecimiento escolar desde los 3 hasta los 16 años. Nuestro compromiso es ofrecer textos claros, dinámicos y motivadores.
-                </p>
-            </div>
-
-            <div class="hero-visual-box">
-                <div class="hero-circle-bg"></div>
-                <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Libro abierto" class="hero-book-1">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80" alt="Colección de libros" class="hero-book-2">
-                <div class="hero-badge-floating">
-                    ¡Abre un libro, vive una aventura!
-                </div>
-            </div>
+        <!-- BANNER SLIDER PRINCIPAL A PANTALLA COMPLETA -->
+        <section class="hero-banner-slider" id="heroBannerSlider">
+            <button class="hero-arrow prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </section>
 
-        <!-- SLIDER ANIMADO DE LIBROS -->
+        <!-- SLIDER COMPACTO DE NUESTROS LIBROS -->
         <section class="slider-section">
-            <h2 class="slider-heading">LIBROS</h2>
+            <h2 class="slider-heading">Nuestros Libros</h2>
             <div class="slider-wrapper">
-                <button class="slider-arrow prev" onclick="scrollSlider(-320)"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="slider-track" id="slider-track">
-                    <!-- Se llena dinámicamente con JS -->
-                </div>
-                <button class="slider-arrow next" onclick="scrollSlider(320)"><i class="fa-solid fa-chevron-right"></i></button>
+                <button class="slider-arrow prev" onclick="scrollSlider(-240)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="slider-track" id="slider-track"></div>
+                <button class="slider-arrow next" onclick="scrollSlider(240)"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
         </section>
 
         <!-- SECCIÓN CATÁLOGO DE LIBROS -->
         <main id="catalogo" class="catalog-container">
-            <h2 class="catalog-title">Nuestros libros</h2>
+            <h2 class="catalog-title">Nuestros cuentos e historias</h2>
 
             <div class="filter-tabs">
                 <button class="tab-btn active" id="tab-all" onclick="setMainFilter('all', this)">Todos los libros</button>
-                <button class="tab-btn" id="tab-jardin" onclick="setMainFilter('jardin', this)">Jardín (3 a 5 años)</button>
-                <button class="tab-btn" id="tab-primaria" onclick="setMainFilter('primaria', this)">Primaria (6 a 11 años)</button>
-                <button class="tab-btn" id="tab-secundaria" onclick="setMainFilter('secundaria', this)">Secundaria (12 a 16 años)</button>
+                <button class="tab-btn" id="tab-jardin" onclick="setMainFilter('jardin', this)">Inicial</button>
+                <button class="tab-btn" id="tab-primaria" onclick="setMainFilter('primaria', this)">Primaria</button>
+                <button class="tab-btn" id="tab-secundaria" onclick="setMainFilter('secundaria', this)">Secundaria</button>
             </div>
 
             <div class="books-grid" id="books-grid-container"></div>
@@ -819,44 +861,45 @@
 
     <!-- VISTA DE DETALLE DE PRODUCTO -->
     <div id="productView">
-        <div class="breadcrumb-bar">
-            <a href="#" onclick="showHomeView(); return false;">Inicio</a> 
-            <span>></span> 
-            <a href="#" onclick="showHomeView(); return false;">Catálogo Educativo</a> 
-            <span>></span> 
-            <span id="breadcrumbTitle" style="color: var(--text-main); font-weight: 600;"></span>
-        </div>
-
-        <div class="tags-header-row">
-            <span class="tag-pill">Autor / Editorial</span>
-            <span class="tag-pill">Material Educativo</span>
-            <span class="tag-pill" id="tagCategory">Edición Escolar</span>
-        </div>
-
         <div class="detail-layout-grid">
-            <div class="detail-image-wrapper">
-                <img id="detailImg" src="" alt="Portada del libro" class="detail-book-img">
-                <span id="detailAgeBadge" style="font-size: 0.85rem; font-weight: 800; color: var(--brand-orange); text-transform: uppercase;"></span>
+            <!-- COLUMNA IZQUIERDA: GALERÍA DE MINIATURAS + PORTADA PRINCIPAL VERTICAL -->
+            <div class="detail-image-container">
+                <div class="thumbnails-column" id="thumbnailsContainer"></div>
+                <div class="detail-image-wrapper">
+                    <img id="detailImg" src="" alt="Portada del libro" class="detail-book-img">
+                </div>
             </div>
 
+            <!-- COLUMNA DERECHA: BREADCRUMB, TÍTULO, SINOPSIS, FICHA, DESCUENTO Y BOTÓN -->
             <div class="detail-content-wrapper">
-                <h1 id="detailTitle" class="detail-title-main"></h1>
-                
-                <h3 class="detail-section-heading">Sinopsis</h3>
-                <p id="detailDesc" class="detail-sinopsis-text"></p>
-                
-                <div class="detail-web-link">
-                    Web oficial: <a href="https://wa.me/51936898852" target="_blank">www.lemleylibros.edu.pe/catalogo</a>
-                </div>
+                <div>
+                    <div class="breadcrumb-bar">
+                        <a href="#" onclick="showHomeView(); return false;">Inicio</a> 
+                        <span>></span> 
+                        <a href="#" onclick="showHomeView(); return false;">Catálogo Educativo</a> 
+                        <span>></span> 
+                        <span id="breadcrumbTitle" style="color: var(--text-main); font-weight: 600;"></span>
+                    </div>
 
-                <hr class="detail-divider">
+                    <h1 id="detailTitle" class="detail-title-main"></h1>
+                    
+                    <h3 class="detail-section-heading">Sinopsis</h3>
+                    <p id="detailDesc" class="detail-sinopsis-text"></p>
 
-                <h3 class="detail-section-heading">Ficha</h3>
-                <div class="ficha-box">
-                    <div class="ficha-item"><strong>Dirigido por:</strong> Equipo Pedagógico de Lemley Libros, 2026</div>
-                    <div class="ficha-item"><strong>Producido por:</strong> Editorial Lemley Libros S.A.C.</div>
-                    <div class="ficha-item"><strong>Estrenado / Publicado en:</strong> Marzo 2026</div>
-                    <div class="ficha-item" id="fichaPublico"><strong>Público objetivo:</strong> Estudiantes escolares</div>
+                    <hr class="detail-divider">
+
+                    <h3 class="detail-section-heading">Ficha</h3>
+                    <div class="ficha-box">
+                        <div class="ficha-item"><strong>Autor(a):</strong> Maricarmen Lemley</div>
+                        <div class="ficha-item"><strong>Fecha publicación:</strong> 15 Marzo 2025</div>
+                        <div class="ficha-item" id="fichaNivel"><strong>Público objetivo:</strong> Escolar</div>
+                    </div>
+
+                    <!-- BLOQUE LLAMATIVO DE DESCUENTO -->
+                    <div class="discount-promo-box">
+                        <i class="fa-solid fa-tags"></i>
+                        <span>¡A partir de 10 unidades, envío al XX% de descuento!</span>
+                    </div>
                 </div>
 
                 <div class="detail-purchase-box">
@@ -867,17 +910,27 @@
                 </div>
             </div>
         </div>
+
+        <!-- SECCIÓN DE RECOMENDADOS EN SLIDER HORIZONTAL -->
+        <section class="related-books-section">
+            <h2 class="related-title">Más cuentos e historias</h2>
+            <div class="related-slider-wrapper">
+                <button class="related-arrow prev" onclick="scrollRelatedSlider(-320)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="related-books-track" id="related-books-container"></div>
+                <button class="related-arrow next" onclick="scrollRelatedSlider(320)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </section>
     </div>
 
     <!-- FOOTER Y CONTACTO -->
     <footer id="contacto">
         <p>&copy; 2026 Lemley Libros. Todos los derechos reservados.</p>
-        <p style="margin-top: 0.5rem; color: #94a3b8;">Atención directa vía WhatsApp: 936 898 852 / 936 898 603</p>
+        <p style="margin-top: 0.5rem; color: #94a3b8;">Atención directa vía WhatsApp: 925 340 081</p>
     </footer>
 
     <!-- SCRIPT JS -->
     <script>
-        const defaultWhatsAppNumber = "51936898852";
+        const defaultWhatsAppNumber = "51925340081";
         let currentMainLevel = 'all';
 
         const sampleCovers = [
@@ -889,76 +942,57 @@
             "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80"
         ];
 
+        const bookGalleries = {
+            1: [sampleCovers[0], "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80"],
+            2: [sampleCovers[1], "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80"],
+            3: [sampleCovers[2], "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80"],
+            4: [sampleCovers[3], "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80"],
+            5: [sampleCovers[4], "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80"],
+            6: [sampleCovers[5], "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80"]
+        };
+
         const pastelClasses = ['pastel-peach', 'pastel-green', 'pastel-yellow', 'pastel-purple', 'pastel-blue', 'pastel-peach'];
 
         const books = [
-            { 
-                id: 1, 
-                level: 'jardin', 
-                ageRange: 'Para niños de 3 a 4 años', 
-                subject: 'Inicial / Jardín', 
-                title: 'Libro 1', 
-                author: 'Lemley Libros', 
-                description: 'Recomendado para niños de 3 a 4 años. Desarrolla la creatividad, la motricidad fina y la estimulación del lenguaje temprano.', 
-                price: 'S/ 20', 
-                cover: sampleCovers[0] 
-            },
-            { 
-                id: 2, 
-                level: 'jardin', 
-                ageRange: 'Para niños de 4 a 5 años', 
-                subject: 'Inicial / Jardín', 
-                title: 'Libro 2', 
-                author: 'Lemley Libros', 
-                description: 'Recomendado para niños de 4 a 5 años. Actividades lúdicas y relatos breves orientados al razonamiento básico.', 
-                price: 'S/ 20', 
-                cover: sampleCovers[1] 
-            },
-            { 
-                id: 3, 
-                level: 'primaria', 
-                ageRange: 'Para niños de 6 a 8 años', 
-                subject: 'Primaria', 
-                title: 'Libro 3', 
-                author: 'Lemley Libros', 
-                description: 'Diseñado para niños de 6 a 8 años. Fomenta las primeras lecturas, cálculo matemático elemental e interacción social.', 
-                price: 'S/ 25', 
-                cover: sampleCovers[2] 
-            },
-            { 
-                id: 4, 
-                level: 'primaria', 
-                ageRange: 'Para niños de 9 a 11 años', 
-                subject: 'Primaria', 
-                title: 'Libro 4', 
-                author: 'Lemley Libros', 
-                description: 'Diseñado para niños de 9 a 11 años. Afianza la comprensión lectora avanzada, las ciencias integradas y la resolución de problemas.', 
-                price: 'S/ 25', 
-                cover: sampleCovers[3] 
-            },
-            { 
-                id: 5, 
-                level: 'secundaria', 
-                ageRange: 'Para jóvenes de 12 a 14 años', 
-                subject: 'Secundaria', 
-                title: 'Libro 5', 
-                author: 'Lemley Libros', 
-                description: 'Dirigido a jóvenes de 12 a 14 años. Fundamentos de razonamiento abstracto, álgebra, biología y literatura analítica.', 
-                price: 'S/ 30', 
-                cover: sampleCovers[4] 
-            },
-            { 
-                id: 6, 
-                level: 'secundaria', 
-                ageRange: 'Para jóvenes de 15 a 16 años', 
-                subject: 'Secundaria', 
-                title: 'Libro 6', 
-                author: 'Lemley Libros', 
-                description: 'Dirigido a jóvenes de 15 a 16 años. Preparación preuniversitaria completa con ejercicios prácticos de ciencias y física.', 
-                price: 'S/ 30', 
-                cover: sampleCovers[5] 
-            }
+            { id: 1, levelKey: 'jardin', levelLabel: 'Inicial', title: 'Libro 1', description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', price: 'S/. XX', cover: sampleCovers[0] },
+            { id: 2, levelKey: 'jardin', levelLabel: 'Inicial', title: 'Libro 2', description: 'Un mágico recorrido lleno de colores y personajes entrañables para los primeros años escolares.', price: 'S/. XX', cover: sampleCovers[1] },
+            { id: 3, levelKey: 'primaria', levelLabel: 'Primaria', title: 'Libro 3', description: 'Aventuras emocionantes con valores de amistad y descubrimiento para lectores en etapa escolar.', price: 'S/. XX', cover: sampleCovers[2] },
+            { id: 4, levelKey: 'primaria', levelLabel: 'Primaria', title: 'Libro 4', description: 'Una fantástica travesía narrativa que fomenta la comprensión lectora y la creatividad.', price: 'S/. XX', cover: sampleCovers[3] },
+            { id: 5, levelKey: 'secundaria', levelLabel: 'Secundaria', title: 'Libro 5', description: 'Una historia profunda y reflexiva diseñada para atrapar a los jóvenes en un viaje inolvidable.', price: 'S/. XX', cover: sampleCovers[4] },
+            { id: 6, levelKey: 'secundaria', levelLabel: 'Secundaria', title: 'Libro 6', description: 'Relatos cautivadores con tramas dinámicas y reflexiones profundas para estudiantes de secundaria.', price: 'S/. XX', cover: sampleCovers[5] }
         ];
+
+        let slideIndex = 0;
+        function renderHeroBanner() {
+            const banner = document.getElementById('heroBannerSlider');
+            const prevBtn = banner.querySelector('.prev');
+            const nextBtn = banner.querySelector('.next');
+            banner.innerHTML = '';
+            banner.appendChild(prevBtn);
+            banner.appendChild(nextBtn);
+
+            books.forEach((book, index) => {
+                const activeClass = index === 0 ? 'active' : '';
+                banner.innerHTML += `
+                    <div class="hero-slide ${activeClass}" style="background-image: url('${book.cover}');">
+                        <div class="hero-content-box">
+                            <span class="hero-badge-top">Nivel: ${book.levelLabel}</span>
+                            <h1 class="hero-title-large">${book.title}</h1>
+                            <a href="#catalogo" class="hero-btn-action">Ver Libros</a>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function moveSlide(n) {
+            const slides = document.querySelectorAll('.hero-slide');
+            slides[slideIndex].classList.remove('active');
+            slideIndex = (slideIndex + n + slides.length) % slides.length;
+            slides[slideIndex].classList.add('active');
+        }
+
+        setInterval(() => { moveSlide(1); }, 5000);
 
         function renderSlider() {
             const track = document.getElementById('slider-track');
@@ -968,7 +1002,6 @@
                     <div class="slider-item" onclick="navigateToProduct(${book.id})">
                         <img src="${book.cover}" alt="${book.title}" class="slider-book-cover">
                         <h3 class="slider-book-title">${book.title}</h3>
-                        <span class="slider-book-author">${book.ageRange}</span>
                     </div>
                 `;
             });
@@ -979,6 +1012,11 @@
             track.scrollBy({ left: offset, behavior: 'smooth' });
         }
 
+        function scrollRelatedSlider(offset) {
+            const track = document.getElementById('related-books-container');
+            track.scrollBy({ left: offset, behavior: 'smooth' });
+        }
+
         function triggerLevelFilter(level) {
             const btn = document.getElementById(`tab-${level}`);
             if(btn) setMainFilter(level, btn);
@@ -986,8 +1024,7 @@
 
         function setMainFilter(level, btnElement) {
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            btnElement.classList.add('active');
-
+            if(btnElement) btnElement.classList.add('active');
             currentMainLevel = level;
             renderBooks();
         }
@@ -997,32 +1034,30 @@
             container.innerHTML = '';
 
             const filtered = books.filter(book => {
-                if (currentMainLevel !== 'all' && book.level !== currentMainLevel) return false;
+                if (currentMainLevel !== 'all' && book.levelKey !== currentMainLevel) return false;
                 return true;
             });
 
             if (filtered.length === 0) {
-                container.innerHTML = `<div class="no-books">No se encontraron libros para la edad seleccionada.</div>`;
+                container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem; background: #fff; border-radius: 12px;">No se encontraron libros para el nivel seleccionado.</div>`;
                 return;
             }
 
             filtered.forEach((book, index) => {
                 const pastelClass = pastelClasses[index % pastelClasses.length];
-
                 const cardHTML = `
-                    <div class="book-card" style="animation-delay: ${index * 0.05}s" onclick="navigateToProduct(${book.id})">
+                    <div class="book-card" onclick="navigateToProduct(${book.id})" style="flex: unset; min-width: unset;">
                         <div class="card-top-pastel ${pastelClass}">
-                            <span class="card-badge">${book.subject}</span>
+                            <span class="card-badge">Nivel: ${book.levelLabel}</span>
                             <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
                         </div>
                         <div class="card-content">
-                            <span class="card-author">${book.ageRange}</span>
                             <h3 class="card-title">${book.title}</h3>
                             <p class="card-desc">${book.description}</p>
                             <div class="card-footer-info">
                                 <span class="card-price">${book.price}</span>
                                 <span class="consult-link">
-                                    Ver producto <i class="fa-solid fa-arrow-right"></i>
+                                    Ver cuento <i class="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
                         </div>
@@ -1051,25 +1086,74 @@
             }
 
             document.getElementById('breadcrumbTitle').innerText = book.title;
-            document.getElementById('tagCategory').innerText = book.subject;
-            document.getElementById('detailImg').src = book.cover;
-            document.getElementById('detailAgeBadge').innerText = book.ageRange;
             document.getElementById('detailTitle').innerText = book.title;
             document.getElementById('detailDesc').innerText = book.description;
-            document.getElementById('fichaPublico').innerHTML = `<strong>Público objetivo:</strong> ${book.ageRange}`;
+            document.getElementById('fichaNivel').innerHTML = `<strong>Público objetivo:</strong> ${book.levelLabel}`;
             document.getElementById('detailPrice').innerText = book.price;
+
+            const galleryImages = bookGalleries[bookId] || [book.cover];
+            const mainImgElement = document.getElementById('detailImg');
+            mainImgElement.src = galleryImages[0];
+
+            const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+            thumbnailsContainer.innerHTML = '';
+
+            galleryImages.forEach((imgUrl, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = `thumbnail-item ${index === 0 ? 'active' : ''}`;
+                thumb.innerHTML = `<img src="${imgUrl}" alt="Miniatura ${index + 1}">`;
+                
+                thumb.onclick = () => {
+                    mainImgElement.style.opacity = '0.3';
+                    setTimeout(() => {
+                        mainImgElement.src = imgUrl;
+                        mainImgElement.style.opacity = '1';
+                    }, 150);
+
+                    document.querySelectorAll('.thumbnail-item').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                };
+
+                thumbnailsContainer.appendChild(thumb);
+            });
 
             const message = encodeURIComponent(
                 `Hola, deseo consultar y realizar el pedido del siguiente libro:\n\n` +
                 `📌 *Título:* ${book.title}\n` +
-                `👶 *Rango de Edad:* ${book.ageRange}\n` +
-                `🎓 *Nivel:* ${book.subject}\n` +
+                `📚 *Nivel:* ${book.levelLabel}\n` +
                 `💰 *Precio:* ${book.price}\n` +
                 `🖼️ *Portada:* ${book.cover}\n\n` +
                 `¿Podrían brindarme información para concretar la compra?`
             );
 
             document.getElementById('detailWhatsappLink').href = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
+
+            const relatedContainer = document.getElementById('related-books-container');
+            relatedContainer.innerHTML = '';
+            const otherBooks = books.filter(b => b.id != bookId);
+
+            otherBooks.forEach((otherBook, index) => {
+                const pastelClass = pastelClasses[index % pastelClasses.length];
+                const cardHTML = `
+                    <div class="book-card" onclick="navigateToProduct(${otherBook.id})">
+                        <div class="card-top-pastel ${pastelClass}">
+                            <span class="card-badge">Nivel: ${otherBook.levelLabel}</span>
+                            <img src="${otherBook.cover}" alt="${otherBook.title}" class="card-book-img" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">${otherBook.title}</h3>
+                            <p class="card-desc">${otherBook.description}</p>
+                            <div class="card-footer-info">
+                                <span class="card-price">${otherBook.price}</span>
+                                <span class="consult-link">
+                                    Ver cuento <i class="fa-solid fa-arrow-right"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                relatedContainer.innerHTML += cardHTML;
+            });
 
             document.getElementById('homeView').style.display = 'none';
             document.getElementById('productView').style.display = 'block';
@@ -1090,6 +1174,7 @@
         window.addEventListener('hashchange', checkRoute);
 
         document.addEventListener('DOMContentLoaded', () => {
+            renderHeroBanner();
             renderSlider();
             renderBooks();
             checkRoute();
