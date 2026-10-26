@@ -14,13 +14,13 @@
         :root {
             --bg-page: #f6f1e7;
             --brand-orange: #f37021;
+            --orange-hover: #d95e12;
             --card-white: #ffffff;
             --text-main: #18201c;
             --text-muted: #5e6b64;
             --border-color: #e3ded2;
             --brand-dark: #16261f;
             --whatsapp-green: #25d366;
-            --whatsapp-hover: #1da851;
             
             --pastel-peach: #fae3d9;
             --pastel-green: #e2eddf;
@@ -185,7 +185,7 @@
 
         .hero-btn-action:hover {
             transform: translateY(-3px);
-            background-color: #d95e12;
+            background-color: var(--orange-hover);
         }
 
         .hero-arrow {
@@ -650,23 +650,25 @@
             color: var(--text-main);
         }
 
+        /* BOTÓN DE PEDIR LIBRO NARANJA Y SIN ÍCONO DE WHATSAPP */
         .detail-whatsapp-btn {
-            background-color: var(--whatsapp-green);
+            background-color: var(--brand-orange);
             color: #ffffff;
             text-decoration: none;
-            padding: 0.85rem 1.6rem;
+            padding: 0.9rem 2.2rem;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.98rem;
+            font-size: 1.05rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(243, 112, 33, 0.3);
             transition: all 0.2s ease;
         }
 
         .detail-whatsapp-btn:hover {
-            background-color: var(--whatsapp-hover);
+            background-color: var(--orange-hover);
+            transform: translateY(-2px);
         }
 
         /* SECCIÓN INFERIOR DE RECOMENDADOS EN SLIDER HORIZONTAL */
@@ -909,7 +911,7 @@
                 <div class="detail-purchase-box">
                     <div id="detailPrice" class="detail-price"></div>
                     <a id="detailWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="detail-whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Pedir Libro
+                        Pedir Libro
                     </a>
                 </div>
             </div>
@@ -1120,7 +1122,6 @@
                 thumbnailsContainer.appendChild(thumb);
             });
 
-            // MENSAJE DE WHATSAPP CON FORMATO SOLICITADO Y LINK DE LA PÁGINA
             const bookPageUrl = window.location.href;
             const message = encodeURIComponent(
                 `Hola, deseo realizar el pedido del siguiente libro:\n` +
