@@ -7,7 +7,7 @@
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -39,6 +39,7 @@
 
         h1, h2, h3, .serif-font {
             font-family: 'Playfair Display', serif;
+            font-style: normal; /* Sin cursivas */
         }
 
         body {
@@ -71,6 +72,7 @@
             color: #ffffff;
             text-decoration: none;
             font-family: 'Playfair Display', serif;
+            font-style: normal;
             font-size: 1.25rem;
             font-weight: 700;
             display: flex;
@@ -164,7 +166,7 @@
         .hero-title-large {
             font-size: 4.5rem;
             font-weight: 700;
-            font-style: italic;
+            font-style: normal; /* Sin cursiva */
             line-height: 1.1;
             max-width: 800px;
         }
@@ -228,7 +230,7 @@
             color: #ffffff;
             font-size: 2.5rem;
             font-weight: 700;
-            font-style: italic;
+            font-style: normal; /* Sin cursiva */
             margin-bottom: 1.2rem;
             letter-spacing: 1px;
         }
@@ -286,6 +288,7 @@
             font-weight: 700;
             text-align: center;
             font-family: 'Playfair Display', serif;
+            font-style: normal;
         }
 
         .slider-arrow {
@@ -324,7 +327,7 @@
         .catalog-title {
             font-size: 2.5rem;
             font-weight: 700;
-            font-style: italic;
+            font-style: normal; /* Sin cursiva */
             color: var(--text-main);
             margin-bottom: 1.2rem;
         }
@@ -650,7 +653,6 @@
             color: var(--text-main);
         }
 
-        /* BOTÓN DE PEDIR LIBRO NARANJA Y SIN ÍCONO DE WHATSAPP */
         .detail-whatsapp-btn {
             background-color: var(--brand-orange);
             color: #ffffff;
@@ -682,7 +684,7 @@
         .related-title {
             font-size: 2rem;
             font-weight: 700;
-            font-style: italic;
+            font-style: normal; /* Sin cursiva */
             color: var(--text-main);
             margin-bottom: 1.2rem;
         }
@@ -821,7 +823,7 @@
     <header>
         <div class="nav-container">
             <a href="#" onclick="showHomeView(); return false;" class="brand-logo-link">
-                <i class="fa-solid fa-book-open"></i> Lemley Libros
+                Lemley Libros
             </a>
             <ul class="nav-links">
                 <li><a href="#catalogo" onclick="showHomeView(); triggerLevelFilter('jardin');">INICIAL</a></li>
