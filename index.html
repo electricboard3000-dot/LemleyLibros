@@ -217,19 +217,19 @@
         /* SLIDER COMPACTO DE NUESTROS LIBROS EN EL HOME */
         .slider-section {
             background-color: #174448;
-            padding: 3.5rem 1.5rem;
+            padding: 2.5rem 1.5rem;
             position: relative;
             overflow: hidden;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .slider-heading {
             text-align: center;
             color: #ffffff;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 700;
             font-style: italic;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
             letter-spacing: 1px;
         }
 
@@ -318,7 +318,7 @@
         .catalog-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 2rem 2rem 5rem;
+            padding: 1.5rem 2rem 4rem;
         }
 
         .catalog-title {
@@ -326,13 +326,13 @@
             font-weight: 700;
             font-style: italic;
             color: var(--text-main);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.2rem;
         }
 
         .filter-tabs {
             display: flex;
             gap: 0.6rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
             flex-wrap: wrap;
         }
 
@@ -472,7 +472,7 @@
         #productView {
             display: none;
             max-width: 1200px;
-            margin: 2.5rem auto 5rem;
+            margin: 2rem auto 4rem;
             padding: 0 1.5rem;
         }
 
@@ -481,7 +481,7 @@
             grid-template-columns: 1fr 1.3fr;
             gap: 3rem;
             align-items: stretch;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .detail-image-container {
@@ -672,8 +672,8 @@
         /* SECCIÓN INFERIOR DE RECOMENDADOS EN SLIDER HORIZONTAL */
         .related-books-section {
             border-top: 1px solid var(--border-color);
-            padding-top: 3rem;
-            margin-top: 2rem;
+            padding-top: 2rem;
+            margin-top: 1.5rem;
             position: relative;
         }
 
@@ -682,7 +682,7 @@
             font-weight: 700;
             font-style: italic;
             color: var(--text-main);
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.2rem;
         }
 
         .related-slider-wrapper {
@@ -789,6 +789,22 @@
             .detail-title-main { font-size: 2rem; }
             .detail-purchase-box { flex-direction: column; text-align: center; justify-content: center; }
             .detail-whatsapp-btn { width: 100%; justify-content: center; }
+            
+            .slider-heading, .catalog-title, .related-title {
+                font-size: 1.8rem !important;
+                margin-bottom: 0.8rem !important;
+            }
+            .slider-section {
+                padding: 1.5rem 1rem !important;
+                margin-bottom: 1rem !important;
+            }
+            .catalog-container {
+                padding: 1rem 1rem 3rem !important;
+            }
+            .related-books-section {
+                padding-top: 1.5rem !important;
+                margin-top: 1rem !important;
+            }
         }
     </style>
 </head>
@@ -893,7 +909,7 @@
                 <div class="detail-purchase-box">
                     <div id="detailPrice" class="detail-price"></div>
                     <a id="detailWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="detail-whatsapp-btn">
-                        <i class="fa-brands fa-whatsapp"></i> Solicitar por WhatsApp
+                        <i class="fa-brands fa-whatsapp"></i> Pedir Libro
                     </a>
                 </div>
             </div>
@@ -1104,13 +1120,13 @@
                 thumbnailsContainer.appendChild(thumb);
             });
 
+            // MENSAJE DE WHATSAPP CON FORMATO SOLICITADO Y LINK DE LA PÁGINA
+            const bookPageUrl = window.location.href;
             const message = encodeURIComponent(
-                `Hola, deseo consultar y realizar el pedido del siguiente libro:\n\n` +
-                `📌 *Título:* ${book.title}\n` +
-                `📚 *Nivel:* ${book.levelLabel}\n` +
-                `💰 *Precio:* ${book.price}\n` +
-                `🖼️ *Portada:* ${book.cover}\n\n` +
-                `¿Podrían brindarme información para concretar la compra?`
+                `Hola, deseo realizar el pedido del siguiente libro:\n` +
+                `Titulo: ${book.title}\n` +
+                `Precio: ${book.price}\n` +
+                `${bookPageUrl}`
             );
 
             document.getElementById('detailWhatsappLink').href = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
