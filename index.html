@@ -46,6 +46,7 @@
             background-color: var(--bg-page);
             color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* BARRA SUPERIOR NARANJA */
@@ -77,7 +78,6 @@
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 0.4rem;
         }
 
         .nav-links {
@@ -107,12 +107,12 @@
             display: block;
         }
 
-        /* BANNER SLIDER PRINCIPAL A PANTALLA COMPLETA */
+        /* BANNER SLIDER PRINCIPAL */
         .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: calc(100vh - 500px);
-            min-height: 550px;
+            height: calc(100vh - 250px);
+            min-height: 350px;
             background-color: var(--brand-dark);
             overflow: hidden;
             display: flex;
@@ -164,7 +164,7 @@
         }
 
         .hero-title-large {
-            font-size: 4.5rem;
+            font-size: 3.5rem;
             font-weight: 700;
             font-style: normal;
             line-height: 1.1;
@@ -178,10 +178,10 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             color: #ffffff;
-            width: 55px;
-            height: 55px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             cursor: pointer;
             z-index: 10;
             display: flex;
@@ -194,10 +194,10 @@
             background: rgba(255, 255, 255, 0.4);
         }
 
-        .hero-arrow.prev { left: 25px; }
-        .hero-arrow.next { right: 25px; }
+        .hero-arrow.prev { left: 15px; }
+        .hero-arrow.next { right: 15px; }
 
-        /* FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" DEBAJO DEL BANNER */
+        /* FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" */
         .text-slider-bar {
             background-color: #d1d5db;
             color: #1f2937;
@@ -216,11 +216,11 @@
 
         .text-slider-item {
             display: inline-block;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-right: 3rem;
+            margin-right: 2.5rem;
             font-family: 'Playfair Display', serif;
         }
 
@@ -230,11 +230,11 @@
         }
 
         @keyframes marqueeSlider {
-            0% { transform: translateX(0%); }
+            0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* SECCIÓN DE NIVEL EDUCATIVO (3 MARCOS CON FOTOS DE ESTUDIANTES) */
+        /* SECCIÓN DE NIVEL EDUCATIVO */
         .levels-section {
             max-width: 1280px;
             margin: 3rem auto;
@@ -246,7 +246,6 @@
             color: var(--text-main);
             font-size: 2.5rem;
             font-weight: 700;
-            font-style: normal;
             margin-bottom: 2rem;
         }
 
@@ -266,7 +265,6 @@
             align-items: flex-start;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
         }
 
         .level-card:hover {
@@ -325,7 +323,6 @@
         .catalog-title {
             font-size: 2.5rem;
             font-weight: 700;
-            font-style: normal;
             color: var(--text-main);
             margin-bottom: 1.2rem;
         }
@@ -360,7 +357,6 @@
             border-color: var(--brand-dark);
         }
 
-        /* GRID CATÁLOGO 2 FILAS X 3 COLUMNAS */
         .books-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -377,8 +373,6 @@
             box-shadow: 0 6px 20px rgba(0,0,0,0.03);
             cursor: pointer;
             transition: transform 0.35s ease, box-shadow 0.35s ease;
-            flex: 0 0 320px;
-            min-width: 300px;
         }
 
         .book-card:hover {
@@ -469,7 +463,7 @@
             gap: 0.4rem;
         }
 
-        /* VISTA DETALLADA CON FOTO PRINCIPAL VERTICAL Y CUBIERTA */
+        /* VISTA DETALLADA */
         #productView {
             display: none;
             max-width: 1200px;
@@ -513,11 +507,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .thumbnail-item:hover {
-            border-color: var(--brand-orange);
-            transform: translateY(-2px);
         }
 
         .thumbnail-item.active {
@@ -567,10 +556,6 @@
             color: var(--text-muted);
             text-decoration: none;
             transition: color 0.2s;
-        }
-
-        .breadcrumb-bar a:hover {
-            color: var(--brand-orange);
         }
 
         .detail-title-main {
@@ -671,7 +656,7 @@
             transform: translateY(-2px);
         }
 
-        /* SECCIÓN INFERIOR DE RECOMENDADOS EN SLIDER HORIZONTAL */
+        /* SECCIÓN RECOMENDADOS */
         .related-books-section {
             border-top: 1px solid var(--border-color);
             padding-top: 2rem;
@@ -682,7 +667,6 @@
         .related-title {
             font-size: 2rem;
             font-weight: 700;
-            font-style: normal;
             color: var(--text-main);
             margin-bottom: 1.2rem;
         }
@@ -714,10 +698,10 @@
             background: rgba(22, 38, 31, 0.8);
             border: none;
             color: #ffffff;
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             z-index: 10;
             display: flex;
@@ -730,15 +714,14 @@
             background: var(--brand-orange);
         }
 
-        .related-arrow.prev { left: -22px; }
-        .related-arrow.next { right: -22px; }
+        .related-arrow.prev { left: -15px; }
+        .related-arrow.next { right: -15px; }
 
-        /* BOTÓN FLOTANTE DE WHATSAPP AL LADO DERECHO */
+        /* WHATSAPP FLOTANTE */
         .whatsapp-float {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            left: auto;
             background-color: var(--whatsapp-green);
             color: #ffffff;
             width: 55px;
@@ -753,39 +736,114 @@
             text-decoration: none;
         }
 
+        /* PIE DE PÁGINA (FOOTER) */
         footer {
             background-color: var(--brand-dark);
             color: #ffffff;
-            padding: 3rem 1.5rem;
+            padding: 3rem 1.5rem 2.5rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .footer-col-about {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer-col-about h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .footer-col-about p {
+            color: #cbd5e1;
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        .footer-col-middle {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
             text-align: center;
         }
 
-        footer p {
+        .footer-col-middle p {
             color: #94a3b8;
             font-size: 0.9rem;
         }
 
+        .footer-col-social {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-social-link {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-social-link:hover {
+            background-color: var(--brand-orange);
+            color: #ffffff;
+            transform: translateY(-3px);
+            border-color: var(--brand-orange);
+        }
+
+        /* MEDIA QUERIES PARA ADAPTABILIDAD MÓVIL PERFECTA */
         @media (max-width: 992px) {
-            .hero-title-large { font-size: 3rem; }
+            .hero-title-large { font-size: 2.5rem; }
             .levels-grid { grid-template-columns: 1fr; }
             .detail-layout-grid { grid-template-columns: 1fr; gap: 2rem; }
             .books-grid { grid-template-columns: repeat(2, 1fr); }
             .detail-image-container { flex-direction: column-reverse; align-items: center; }
-            .thumbnails-column { flex-direction: row; width: 100%; justify-content: center; }
+            .thumbnails-column { flex-direction: row; width: 100%; justify-content: center; overflow-x: auto; padding-bottom: 5px; }
             .thumbnail-item { width: 55px; height: 75px; }
             .detail-image-wrapper { width: 100%; }
-            .detail-book-img { height: 420px; }
-            .related-arrow.prev { left: 0px; }
-            .related-arrow.next { right: 0px; }
+            .detail-book-img { height: 380px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
+            .footer-col-about { align-items: center; text-align: center; }
+            .footer-col-social { align-items: center; }
         }
 
         @media (max-width: 640px) {
-            .hero-title-large { font-size: 2.2rem; }
+            .hero-title-large { font-size: 1.9rem; }
             .nav-container { justify-content: center; padding: 0.8rem 1rem; }
             .nav-links { gap: 0.8rem; justify-content: center; }
             .nav-links a { font-size: 0.75rem; font-weight: 700; }
             .books-grid { grid-template-columns: 1fr; }
-            .detail-title-main { font-size: 2rem; }
+            .detail-title-main { font-size: 1.8rem; }
             .detail-purchase-box { flex-direction: column; text-align: center; justify-content: center; }
             .detail-whatsapp-btn { width: 100%; justify-content: center; }
             
@@ -799,16 +857,12 @@
             .catalog-container {
                 padding: 1rem 1rem 3rem !important;
             }
-            .related-books-section {
-                padding-top: 1.5rem !important;
-                margin-top: 1rem !important;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- BOTÓN FLOTANTE DE WHATSAPP (DERECHA) -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
     <a href="https://wa.me/51925340081?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Contáctanos por WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
@@ -817,7 +871,7 @@
     <header>
         <div class="nav-container">
             <a href="#" onclick="showHomeView(); return false;" class="brand-logo-link">
-            Lemley Libros
+                Lemley Libros
             </a>
             <ul class="nav-links">
                 <li><a href="#catalogo" onclick="showHomeView(); triggerLevelFilter('jardin');">INICIAL</a></li>
@@ -830,13 +884,13 @@
 
     <!-- VISTA PRINCIPAL (HOME) -->
     <div id="homeView">
-        <!-- BANNER SLIDER PRINCIPAL A PANTALLA COMPLETA -->
+        <!-- BANNER SLIDER PRINCIPAL -->
         <section class="hero-banner-slider" id="heroBannerSlider">
             <button class="hero-arrow prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </section>
 
-        <!-- FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" DEBAJO DEL BANNER -->
+        <!-- FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" -->
         <div class="text-slider-bar">
             <div class="text-slider-track">
                 <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
@@ -854,11 +908,10 @@
             </div>
         </div>
 
-        <!-- SECCIÓN NIVEL EDUCATIVO (3 MARCOS CON FOTOS DE ESTUDIANTES) -->
+        <!-- SECCIÓN NIVEL EDUCATIVO -->
         <section class="levels-section">
             <h2 class="levels-heading">Nivel Educativo</h2>
             <div class="levels-grid">
-                <!-- MARCO 1: INICIAL -->
                 <div class="level-card" onclick="scrollToCatalogAndFilter('jardin')">
                     <h3 class="level-card-title">Inicial</h3>
                     <div class="level-card-body">
@@ -869,7 +922,6 @@
                     </div>
                 </div>
 
-                <!-- MARCO 2: PRIMARIA -->
                 <div class="level-card" onclick="scrollToCatalogAndFilter('primaria')">
                     <h3 class="level-card-title">Primaria</h3>
                     <div class="level-card-body">
@@ -880,7 +932,6 @@
                     </div>
                 </div>
 
-                <!-- MARCO 3: SECUNDARIA -->
                 <div class="level-card" onclick="scrollToCatalogAndFilter('secundaria')">
                     <h3 class="level-card-title">Secundaria</h3>
                     <div class="level-card-body">
@@ -911,7 +962,6 @@
     <!-- VISTA DE DETALLE DE PRODUCTO -->
     <div id="productView">
         <div class="detail-layout-grid">
-            <!-- COLUMNA IZQUIERDA: GALERÍA DE MINIATURAS + PORTADA PRINCIPAL VERTICAL -->
             <div class="detail-image-container">
                 <div class="thumbnails-column" id="thumbnailsContainer"></div>
                 <div class="detail-image-wrapper">
@@ -919,7 +969,6 @@
                 </div>
             </div>
 
-            <!-- COLUMNA DERECHA: BREADCRUMB, TÍTULO, SINOPSIS, FICHA, DESCUENTO Y BOTÓN -->
             <div class="detail-content-wrapper">
                 <div>
                     <div class="breadcrumb-bar">
@@ -944,7 +993,6 @@
                         <div class="ficha-item" id="fichaNivel"><strong>Público objetivo:</strong> Escolar</div>
                     </div>
 
-                    <!-- BLOQUE LLAMATIVO DE DESCUENTO -->
                     <div class="discount-promo-box">
                         <i class="fa-solid fa-tags"></i>
                         <span>¡A partir de 10 unidades, envío al XX% de descuento!</span>
@@ -960,7 +1008,6 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE RECOMENDADOS EN SLIDER HORIZONTAL -->
         <section class="related-books-section">
             <h2 class="related-title">Más cuentos e historias</h2>
             <div class="related-slider-wrapper">
@@ -971,10 +1018,33 @@
         </section>
     </div>
 
-    <!-- FOOTER Y CONTACTO -->
+    <!-- PIE DE PÁGINA (FOOTER) -->
     <footer id="contacto">
-        <p>&copy; 2026 Lemley Libros. Todos los derechos reservados.</p>
-        <p style="margin-top: 0.5rem; color: #94a3b8;">Atención directa vía WhatsApp: 925 340 081</p>
+        <div class="footer-content">
+            <div class="footer-col-about">
+                <h4>¿Quiénes Somos?</h4>
+                <p>Somos un espacio de escritores apasionados por crear títulos y universos mágicos para niños y jóvenes. Escribimos para encender la chispa de la imaginación y sembrar el amor por la lectura.</p>
+            </div>
+
+            <div class="footer-col-middle">
+                <p>&copy; 2026 Lemley Libros. Todos los derechos reservados.</p>
+                <p>Atención directa vía WhatsApp: 925 340 081</p>
+            </div>
+
+            <div class="footer-col-social">
+                <div class="footer-social-icons">
+                    <a href="https://www.facebook.com/share/1VMX528D6N/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@libroslemley?_r=1" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://www.instagram.com/lemleylibros?vrfl=OWR3dnBzamxudWs4" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <!-- SCRIPT JS -->
@@ -1083,7 +1153,7 @@
             filtered.forEach((book, index) => {
                 const pastelClass = pastelClasses[index % pastelClasses.length];
                 const cardHTML = `
-                    <div class="book-card" onclick="navigateToProduct(${book.id})" style="flex: unset; min-width: unset;">
+                    <div class="book-card" onclick="navigateToProduct(${book.id})">
                         <div class="card-top-pastel ${pastelClass}">
                             <span class="card-badge">Nivel: ${book.levelLabel}</span>
                             <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
