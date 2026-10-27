@@ -39,7 +39,7 @@
 
         h1, h2, h3, .serif-font {
             font-family: 'Playfair Display', serif;
-            font-style: normal; /* Sin cursivas */
+            font-style: normal;
         }
 
         body {
@@ -111,7 +111,7 @@
         .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: calc(100vh - 58px);
+            height: calc(100vh - 200px);
             min-height: 550px;
             background-color: var(--brand-dark);
             overflow: hidden;
@@ -166,28 +166,9 @@
         .hero-title-large {
             font-size: 4.5rem;
             font-weight: 700;
-            font-style: normal; /* Sin cursiva */
+            font-style: normal;
             line-height: 1.1;
             max-width: 800px;
-        }
-
-        .hero-btn-action {
-            background-color: var(--brand-orange);
-            color: #ffffff;
-            padding: 1.1rem 2.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            text-decoration: none;
-            width: fit-content;
-            transition: transform 0.2s, background 0.2s;
-            box-shadow: 0 6px 20px rgba(243, 112, 33, 0.4);
-            margin-top: 0.5rem;
-        }
-
-        .hero-btn-action:hover {
-            transform: translateY(-3px);
-            background-color: var(--orange-hover);
         }
 
         .hero-arrow {
@@ -216,106 +197,86 @@
         .hero-arrow.prev { left: 25px; }
         .hero-arrow.next { right: 25px; }
 
-        /* SLIDER COMPACTO DE NUESTROS LIBROS EN EL HOME */
-        .slider-section {
-            background-color: #174448;
-            padding: 2.5rem 1.5rem;
-            position: relative;
-            overflow: hidden;
+        /* SECCIÓN DE NIVEL EDUCATIVO (3 MARCOS CON FOTOS DE ESTUDIANTES) */
+        .levels-section {
+            max-width: 1280px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .levels-heading {
+            text-align: center;
+            color: var(--text-main);
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-style: normal;
             margin-bottom: 2rem;
         }
 
-        .slider-heading {
-            text-align: center;
-            color: #ffffff;
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-style: normal; /* Sin cursiva */
-            margin-bottom: 1.2rem;
-            letter-spacing: 1px;
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
         }
 
-        .slider-wrapper {
-            max-width: 1180px;
-            margin: 0 auto;
+        .level-card {
+            background-color: var(--card-white);
+            border: 2px solid #2bb1b1;
+            border-radius: 24px;
+            padding: 2rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
-            display: flex;
-            align-items: center;
         }
 
-        .slider-track {
+        .level-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(43, 177, 177, 0.15);
+        }
+
+        .level-card-title {
+            color: #2bb1b1;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        .level-card-body {
             display: flex;
-            gap: 1.25rem;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            padding: 0.8rem 0;
+            gap: 1.2rem;
+            align-items: center;
             width: 100%;
         }
 
-        .slider-track::-webkit-scrollbar {
-            display: none;
+        .level-img-box {
+            width: 110px;
+            height: 95px;
+            border-radius: 14px;
+            overflow: hidden;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        .slider-item {
-            flex: 0 0 calc(25% - 1rem);
-            min-width: 190px;
-            max-width: 250px;
-            background: transparent;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            cursor: pointer;
+        .level-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             transition: transform 0.3s ease;
         }
 
-        .slider-item:hover {
-            transform: translateY(-6px);
+        .level-card:hover .level-img-box img {
+            transform: scale(1.05);
         }
 
-        .slider-book-cover {
-            width: 100%;
-            height: 270px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-            margin-bottom: 0.9rem;
+        .level-card-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            flex-grow: 1;
         }
-
-        .slider-book-title {
-            color: #ffffff;
-            font-size: 1.15rem;
-            font-weight: 700;
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-style: normal;
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 42%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            color: #ffffff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s ease;
-        }
-
-        .slider-arrow:hover {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .slider-arrow.prev { left: -20px; }
-        .slider-arrow.next { right: -20px; }
 
         /* SECCIÓN CATÁLOGO */
         .catalog-container {
@@ -327,7 +288,7 @@
         .catalog-title {
             font-size: 2.5rem;
             font-weight: 700;
-            font-style: normal; /* Sin cursiva */
+            font-style: normal;
             color: var(--text-main);
             margin-bottom: 1.2rem;
         }
@@ -684,7 +645,7 @@
         .related-title {
             font-size: 2rem;
             font-weight: 700;
-            font-style: normal; /* Sin cursiva */
+            font-style: normal;
             color: var(--text-main);
             margin-bottom: 1.2rem;
         }
@@ -769,11 +730,9 @@
 
         @media (max-width: 992px) {
             .hero-title-large { font-size: 3rem; }
-            .slider-item { flex: 0 0 calc(33.33% - 1rem); }
+            .levels-grid { grid-template-columns: 1fr; }
             .detail-layout-grid { grid-template-columns: 1fr; gap: 2rem; }
             .books-grid { grid-template-columns: repeat(2, 1fr); }
-            .slider-arrow.prev { left: 0px; }
-            .slider-arrow.next { right: 0px; }
             .detail-image-container { flex-direction: column-reverse; align-items: center; }
             .thumbnails-column { flex-direction: row; width: 100%; justify-content: center; }
             .thumbnail-item { width: 55px; height: 75px; }
@@ -785,7 +744,6 @@
 
         @media (max-width: 640px) {
             .hero-title-large { font-size: 2.2rem; }
-            .slider-item { flex: 0 0 180px; }
             .nav-container { justify-content: center; padding: 0.8rem 1rem; }
             .nav-links { gap: 0.8rem; justify-content: center; }
             .nav-links a { font-size: 0.75rem; font-weight: 700; }
@@ -794,13 +752,12 @@
             .detail-purchase-box { flex-direction: column; text-align: center; justify-content: center; }
             .detail-whatsapp-btn { width: 100%; justify-content: center; }
             
-            .slider-heading, .catalog-title, .related-title {
+            .levels-heading, .catalog-title, .related-title {
                 font-size: 1.8rem !important;
                 margin-bottom: 0.8rem !important;
             }
-            .slider-section {
-                padding: 1.5rem 1rem !important;
-                margin-bottom: 1rem !important;
+            .levels-section {
+                margin: 1.5rem auto !important;
             }
             .catalog-container {
                 padding: 1rem 1rem 3rem !important;
@@ -823,7 +780,7 @@
     <header>
         <div class="nav-container">
             <a href="#" onclick="showHomeView(); return false;" class="brand-logo-link">
-                Lemley Libros
+            Lemley Libros
             </a>
             <ul class="nav-links">
                 <li><a href="#catalogo" onclick="showHomeView(); triggerLevelFilter('jardin');">INICIAL</a></li>
@@ -842,13 +799,42 @@
             <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </section>
 
-        <!-- SLIDER COMPACTO DE NUESTROS LIBROS -->
-        <section class="slider-section">
-            <h2 class="slider-heading">Nuestros Libros</h2>
-            <div class="slider-wrapper">
-                <button class="slider-arrow prev" onclick="scrollSlider(-240)"><i class="fa-solid fa-chevron-left"></i></button>
-                <div class="slider-track" id="slider-track"></div>
-                <button class="slider-arrow next" onclick="scrollSlider(240)"><i class="fa-solid fa-chevron-right"></i></button>
+        <!-- SECCIÓN NIVEL EDUCATIVO (3 MARCOS CON FOTOS DE ESTUDIANTES) -->
+        <section class="levels-section">
+            <h2 class="levels-heading">Nivel Educativo</h2>
+            <div class="levels-grid">
+                <!-- MARCO 1: INICIAL (Niños pequeños aprendiendo/leyendo) -->
+                <div class="level-card" onclick="scrollToCatalogAndFilter('jardin')">
+                    <h3 class="level-card-title">Inicial</h3>
+                    <div class="level-card-body">
+                        <div class="level-img-box">
+                            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Inicial">
+                        </div>
+                        <p class="level-card-desc">Cuentos ilustrados, rimas y relatos dulces para despertar la imaginación y el amor temprano por la lectura.</p>
+                    </div>
+                </div>
+
+                <!-- MARCO 2: PRIMARIA (Niños en edad escolar con libros) -->
+                <div class="level-card" onclick="scrollToCatalogAndFilter('primaria')">
+                    <h3 class="level-card-title">Primaria</h3>
+                    <div class="level-card-body">
+                        <div class="level-img-box">
+                            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Primaria">
+                        </div>
+                        <p class="level-card-desc">Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de amistad.</p>
+                    </div>
+                </div>
+
+                <!-- MARCO 3: SECUNDARIA (Adolescentes / Jóvenes estudiantes) -->
+                <div class="level-card" onclick="scrollToCatalogAndFilter('secundaria')">
+                    <h3 class="level-card-title">Secundaria</h3>
+                    <div class="level-card-body">
+                        <div class="level-img-box">
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Secundaria">
+                        </div>
+                        <p class="level-card-desc">Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -985,7 +971,6 @@
                     <div class="hero-slide ${activeClass}" style="background-image: url('${book.cover}');">
                         <div class="hero-content-box">
                             <h1 class="hero-title-large">${book.title}</h1>
-                            <a href="#catalogo" class="hero-btn-action">Ver Libros</a>
                         </div>
                     </div>
                 `;
@@ -1001,22 +986,12 @@
 
         setInterval(() => { moveSlide(1); }, 5000);
 
-        function renderSlider() {
-            const track = document.getElementById('slider-track');
-            track.innerHTML = '';
-            books.forEach(book => {
-                track.innerHTML += `
-                    <div class="slider-item" onclick="navigateToProduct(${book.id})">
-                        <img src="${book.cover}" alt="${book.title}" class="slider-book-cover">
-                        <h3 class="slider-book-title">${book.title}</h3>
-                    </div>
-                `;
-            });
-        }
-
-        function scrollSlider(offset) {
-            const track = document.getElementById('slider-track');
-            track.scrollBy({ left: offset, behavior: 'smooth' });
+        function scrollToCatalogAndFilter(levelKey) {
+            triggerLevelFilter(levelKey);
+            const catalogElem = document.getElementById('catalogo');
+            if(catalogElem) {
+                catalogElem.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         function scrollRelatedSlider(offset) {
@@ -1181,7 +1156,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderHeroBanner();
-            renderSlider();
             renderBooks();
             checkRoute();
         });
