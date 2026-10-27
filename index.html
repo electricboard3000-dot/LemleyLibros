@@ -111,7 +111,7 @@
         .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: calc(100vh - 200px);
+            height: calc(100vh - 500px);
             min-height: 550px;
             background-color: var(--brand-dark);
             overflow: hidden;
@@ -196,6 +196,43 @@
 
         .hero-arrow.prev { left: 25px; }
         .hero-arrow.next { right: 25px; }
+
+        /* FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" DEBAJO DEL BANNER */
+        .text-slider-bar {
+            background-color: #d1d5db;
+            color: #1f2937;
+            padding: 0.8rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+        }
+
+        .text-slider-track {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marqueeSlider 22s linear infinite;
+        }
+
+        .text-slider-item {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-right: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-slider-item span {
+            color: var(--brand-orange);
+            margin-left: 0.5rem;
+        }
+
+        @keyframes marqueeSlider {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
 
         /* SECCIÓN DE NIVEL EDUCATIVO (3 MARCOS CON FOTOS DE ESTUDIANTES) */
         .levels-section {
@@ -799,40 +836,54 @@
             <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </section>
 
+        <!-- FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" DEBAJO DEL BANNER -->
+        <div class="text-slider-bar">
+            <div class="text-slider-track">
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+            </div>
+        </div>
+
         <!-- SECCIÓN NIVEL EDUCATIVO (3 MARCOS CON FOTOS DE ESTUDIANTES) -->
         <section class="levels-section">
             <h2 class="levels-heading">Nivel Educativo</h2>
             <div class="levels-grid">
-                <!-- MARCO 1: INICIAL (Niños pequeños aprendiendo/leyendo) -->
+                <!-- MARCO 1: INICIAL -->
                 <div class="level-card" onclick="scrollToCatalogAndFilter('jardin')">
                     <h3 class="level-card-title">Inicial</h3>
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Inicial">
                         </div>
-                        <p class="level-card-desc">Cuentos ilustrados y relatos dulces para despertar la imaginación y el amor temprano por la lectura.</p>
+                        <p class="level-card-desc">Cuentos ilustrados, rimas y relatos dulces para despertar la imaginación y el amor temprano por la lectura.</p>
                     </div>
                 </div>
 
-                <!-- MARCO 2: PRIMARIA (Niños en edad escolar con libros) -->
+                <!-- MARCO 2: PRIMARIA -->
                 <div class="level-card" onclick="scrollToCatalogAndFilter('primaria')">
                     <h3 class="level-card-title">Primaria</h3>
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Primaria">
                         </div>
-                        <p class="level-card-desc">Historias cautivadoras que desarrollan la comprensión lectora.</p>
+                        <p class="level-card-desc">Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de amistad.</p>
                     </div>
                 </div>
 
-                <!-- MARCO 3: SECUNDARIA (Adolescentes / Jóvenes estudiantes) -->
+                <!-- MARCO 3: SECUNDARIA -->
                 <div class="level-card" onclick="scrollToCatalogAndFilter('secundaria')">
                     <h3 class="level-card-title">Secundaria</h3>
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Secundaria">
                         </div>
-                        <p class="level-card-desc">Tramas, aventuras y reflexiones pensadas para acompañarte y apasionarte.</p>
+                        <p class="level-card-desc">Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.</p>
                     </div>
                 </div>
             </div>
@@ -840,7 +891,7 @@
 
         <!-- SECCIÓN CATÁLOGO DE LIBROS -->
         <main id="catalogo" class="catalog-container">
-            <h2 class="catalog-title">Nuestros libros</h2>
+            <h2 class="catalog-title">Nuestros cuentos e historias</h2>
 
             <div class="filter-tabs">
                 <button class="tab-btn active" id="tab-all" onclick="setMainFilter('all', this)">Todos los libros</button>
