@@ -89,6 +89,7 @@
             flex-wrap: wrap;
         }
 
+        /* TIPOGRAFÍA SERIF UNIFICADA EN EL MENÚ SUPERIOR (SIN MAYÚSCULAS FORZADAS) */
         .nav-links a {
             text-decoration: none;
             color: #ffffff;
@@ -1138,6 +1139,8 @@
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
             </div>
         </div>
 
@@ -1223,12 +1226,9 @@
             <p>Seguimos escribiendo y expandiendo este hermoso sueño literario, llevando magia a cada rincón y acompañando a las nuevas generaciones de lectores en su camino.</p>
         </div>
 
-        <!-- MULTIMEDIA CON CONTENEDOR DINÁMICO PARA TIKTOK -->
         <div class="bio-multimedia-container">
             <h3 class="bio-multimedia-title">Multimedia</h3>
-            <div class="tiktok-grid" id="tiktokContainer">
-                <!-- Se inyectará dinámicamente mediante JS para recargar el audio y video -->
-            </div>
+            <div class="tiktok-grid" id="tiktokContainer"></div>
         </div>
     </div>
 
@@ -1430,7 +1430,6 @@
             document.getElementById('productView').style.display = 'none';
             document.getElementById('contactView').style.display = 'block';
             
-            // REINICIALIZAR Y RENDERIZAR LOS VIDEOS DE TIKTOK PARA QUE FUNCIONEN Y SUENEN CORRECTAMENTE
             const tiktokContainer = document.getElementById('tiktokContainer');
             tiktokContainer.innerHTML = `
                 <div class="tiktok-embed-wrapper">
@@ -1450,7 +1449,6 @@
                 </div>
             `;
             
-            // Cargar de nuevo el script de TikTok para que procese los embeds
             const oldScript = document.getElementById('tiktok-embed-script');
             if (oldScript) oldScript.remove();
             
@@ -1491,7 +1489,7 @@
                             <div class="card-footer-info">
                                 <span class="card-price">${book.price}</span>
                                 <span class="consult-link">
-                                    Ver Libro <i class="fa-solid fa-arrow-right"></i>
+                                    Ver libro <i class="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
                         </div>
@@ -1580,7 +1578,7 @@
                             <div class="card-footer-info">
                                 <span class="card-price">${otherBook.price}</span>
                                 <span class="consult-link">
-                                    Ver Libro <i class="fa-solid fa-arrow-right"></i>
+                                    Ver libro <i class="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
                         </div>
