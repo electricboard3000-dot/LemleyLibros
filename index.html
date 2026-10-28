@@ -1412,8 +1412,17 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderHeroBanner();
-            setFilterLevel('all');
-            checkRoute();
+            
+            // Si el usuario ingresa con un enlace directo a un libro específico (#libro=...), cargamos el detalle
+            if (window.location.hash.startsWith('#libro=')) {
+                checkRoute();
+            } else {
+                // Si entra a la página principal, limpiamos la URL y aseguramos que el scroll empiece arriba en el banner
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+                showHomeView();
+                setFilterLevel('all');
+                window.scrollTo({ top: 0, behavior: 'instant' });
+            }
         });
     </script>
 </body>
