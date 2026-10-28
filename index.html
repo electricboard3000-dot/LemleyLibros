@@ -88,13 +88,14 @@
             flex-wrap: wrap;
         }
 
+        /* TIPOGRAFÍA SERIF UNIFICADA EN EL MENÚ SUPERIOR (SIN MAYÚSCULAS FORZADAS) */
         .nav-links a {
             text-decoration: none;
             color: #ffffff;
-            font-weight: 800;
-            font-size: 0.9rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
             letter-spacing: 0.5px;
-            text-transform: uppercase;
             transition: opacity 0.2s ease;
             display: inline-block;
             cursor: pointer;
@@ -109,12 +110,12 @@
             display: block;
         }
 
-        /* BANNER SLIDER PRINCIPAL A LA MEDIDA */
+        /* BANNER SLIDER PRINCIPAL A LA MEDIDA (REGLA FIJA) */
         .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: calc(100vh - 230px);
-            min-height: 550px;
+            height: calc(100vh - 150px);
+            min-height: 450px;
             background-color: var(--brand-dark);
             overflow: hidden;
             display: flex;
@@ -199,7 +200,7 @@
         .hero-arrow.prev { left: 15px; }
         .hero-arrow.next { right: 15px; }
 
-        /* FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" ANIMADO */
+        /* FRANJA SLIDER DE TEXTO ANIMADO (SOLO TEXTO) */
         .text-slider-bar {
             background-color: #d1d5db;
             color: #1f2937;
@@ -219,27 +220,12 @@
         .text-slider-item {
             display: inline-flex;
             align-items: center;
-            gap: 0.7rem;
             font-size: 1.1rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-right: 2.5rem;
+            margin-right: 3rem;
             font-family: 'Playfair Display', serif;
-        }
-
-        .text-slider-img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid var(--brand-orange);
-            vertical-align: middle;
-        }
-
-        .text-slider-item span {
-            color: var(--brand-orange);
-            margin-left: 0.5rem;
         }
 
         @keyframes marqueeSlider {
@@ -323,10 +309,10 @@
             font-size: 1.35rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
-            border: 1px solid var(--border-color);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            background: #ffffff;
+            background: transparent !important;
+            border: none !important;
+            padding: 0 !important;
+            box-shadow: none !important;
         }
 
         .level-card-desc {
@@ -879,11 +865,14 @@
         }
 
         @media (max-width: 640px) {
-            .hero-banner-slider { height: 350px; }
+            .hero-banner-slider { 
+                height: calc(100vh - 120px) !important;
+                min-height: 420px !important;
+            }
             .hero-title-large { font-size: 1.6rem; }
             .nav-container { justify-content: center; padding: 0.8rem 1rem; }
             .nav-links { gap: 0.8rem; justify-content: center; }
-            .nav-links a { font-size: 0.75rem; font-weight: 700; }
+            .nav-links a { font-size: 0.95rem; font-weight: 700; }
             .books-grid { grid-template-columns: 1fr; }
             .detail-title-main { font-size: 1.8rem; }
             .detail-purchase-box { flex-direction: column; text-align: center; justify-content: center; }
@@ -922,11 +911,11 @@
             .level-card-title {
                 font-size: 1.25rem !important;
                 margin-bottom: 0.4rem !important;
-                display: inline-block !important;
-                border: 1px solid var(--border-color) !important;
-                padding: 0.2rem 0.6rem !important;
-                border-radius: 6px !important;
-                background: #ffffff !important;
+                background: transparent !important;
+                border: none !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                display: block !important;
             }
             .level-card-desc {
                 font-size: 0.82rem !important;
@@ -951,16 +940,16 @@
     </a>
 
     <!-- BARRA SUPERIOR NARANJA -->
-   <header>
+    <header>
         <div class="nav-container">
             <a onclick="showHomeView(); return false;" class="brand-logo-link">
                 Lemley Libros
             </a>
             <ul class="nav-links">
-                <li><a onclick="handleNavFilter('jardin')">INICIAL</a></li>
-                <li><a onclick="handleNavFilter('primaria')">PRIMARIA</a></li>
-                <li><a onclick="handleNavFilter('secundaria')">SECUNDARIA</a></li>
-                <li><a onclick="scrollToContact()">CONTACTO</a></li>
+                <li><a onclick="handleNavFilter('jardin')">Inicial</a></li>
+                <li><a onclick="handleNavFilter('primaria')">Primaria</a></li>
+                <li><a onclick="handleNavFilter('secundaria')">Secundaria</a></li>
+                <li><a onclick="scrollToContact()">Contacto</a></li>
             </ul>
         </div>
     </header>
@@ -973,21 +962,9 @@
             <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </section>
 
-        <!-- FRANJA SLIDER DE TEXTO ANIMADO CON FOTO DE INSTAGRAM -->
+        <!-- FRANJA SLIDER DE TEXTO ANIMADO (SOLO TEXTO) -->
         <div class="text-slider-bar">
             <div class="text-slider-track">
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
-                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
@@ -1210,17 +1187,13 @@
             track.scrollBy({ left: offset, behavior: 'smooth' });
         }
 
-        /* FUNCIÓN INTELIGENTE PARA EL MENÚ SUPERIOR */
         function handleNavFilter(levelKey) {
-            // Si estamos en la vista de detalle de un libro, primero volvemos a la vista principal
             const productView = document.getElementById('productView');
             if (productView.style.display === 'block') {
                 history.pushState("", document.title, window.location.pathname + window.location.search);
                 productView.style.display = 'none';
                 document.getElementById('homeView').style.display = 'block';
             }
-            
-            // Aplicamos el filtro y hacemos scroll directo al catálogo (sin pasar por el banner)
             setFilterLevel(levelKey);
         }
 
@@ -1245,7 +1218,6 @@
 
             renderBooks();
 
-            // Desplazamiento suave directo al catálogo
             const catalogElem = document.getElementById('catalogo');
             if (catalogElem) {
                 catalogElem.scrollIntoView({ behavior: 'smooth' });
@@ -1253,7 +1225,6 @@
         }
 
         function scrollToContact() {
-            // Si estamos en la vista de detalle, volvemos al home primero
             const productView = document.getElementById('productView');
             if (productView.style.display === 'block') {
                 history.pushState("", document.title, window.location.pathname + window.location.search);
@@ -1412,12 +1383,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderHeroBanner();
-            
-            // Si el usuario ingresa con un enlace directo a un libro específico (#libro=...), cargamos el detalle
             if (window.location.hash.startsWith('#libro=')) {
                 checkRoute();
             } else {
-                // Si entra a la página principal, limpiamos la URL y aseguramos que el scroll empiece arriba en el banner
                 history.pushState("", document.title, window.location.pathname + window.location.search);
                 showHomeView();
                 setFilterLevel('all');
