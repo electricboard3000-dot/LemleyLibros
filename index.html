@@ -78,6 +78,7 @@
             font-weight: 700;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         .nav-links {
@@ -96,6 +97,7 @@
             text-transform: uppercase;
             transition: opacity 0.2s ease;
             display: inline-block;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -163,7 +165,7 @@
         }
 
         .hero-title-large {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 700;
             font-style: normal;
             line-height: 1.1;
@@ -196,7 +198,7 @@
         .hero-arrow.prev { left: 15px; }
         .hero-arrow.next { right: 15px; }
 
-        /* FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" */
+        /* FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" ANIMADO */
         .text-slider-bar {
             background-color: #d1d5db;
             color: #1f2937;
@@ -210,17 +212,28 @@
         .text-slider-track {
             display: inline-block;
             white-space: nowrap;
-            animation: marqueeSlider 15s linear infinite;
+            animation: marqueeSlider 20s linear infinite;
         }
 
         .text-slider-item {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
             font-size: 1.1rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-right: 2.5rem;
             font-family: 'Playfair Display', serif;
+        }
+
+        .text-slider-img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--brand-orange);
+            vertical-align: middle;
         }
 
         .text-slider-item span {
@@ -849,7 +862,7 @@
 
         /* MEDIA QUERIES PARA ADAPTABILIDAD MÓVIL PERFECTA */
         @media (max-width: 992px) {
-            .hero-banner-slider { height: 380px; }
+            .hero-banner-slider { height: 450px; }
             .hero-title-large { font-size: 2.2rem; }
             .levels-grid { grid-template-columns: 1fr; gap: 1rem; }
             .detail-layout-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -865,7 +878,7 @@
         }
 
         @media (max-width: 640px) {
-            .hero-banner-slider { height: 300px; }
+            .hero-banner-slider { height: 350px; }
             .hero-title-large { font-size: 1.6rem; }
             .nav-container { justify-content: center; padding: 0.8rem 1rem; }
             .nav-links { gap: 0.8rem; justify-content: center; }
@@ -939,14 +952,14 @@
     <!-- BARRA SUPERIOR NARANJA -->
     <header>
         <div class="nav-container">
-            <a href="#" onclick="showHomeView(); return false;" class="brand-logo-link">
+            <a onclick="showHomeView(); return false;" class="brand-logo-link">
                 Lemley Libros
             </a>
             <ul class="nav-links">
-                <li><a href="#catalogo" onclick="showHomeView(); setFilterLevel('jardin');">INICIAL</a></li>
-                <li><a href="#catalogo" onclick="showHomeView(); setFilterLevel('primaria');">PRIMARIA</a></li>
-                <li><a href="#catalogo" onclick="showHomeView(); setFilterLevel('secundaria');">SECUNDARIA</a></li>
-                <li><a href="#contacto" onclick="showHomeView();">CONTACTO</a></li>
+                <li><a onclick="handleNavFilter('jardin')">INICIAL</a></li>
+                <li><a onclick="handleNavFilter('primaria')">PRIMARIA</a></li>
+                <li><a onclick="handleNavFilter('secundaria')">SECUNDARIA</a></li>
+                <li><a onclick="scrollToContact()">CONTACTO</a></li>
             </ul>
         </div>
     </header>
@@ -959,21 +972,27 @@
             <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </section>
 
-        <!-- FRANJA SLIDER DE TEXTO "Yo leo ¿Y tú?" -->
+        <!-- FRANJA SLIDER DE TEXTO ANIMADO CON FOTO DE INSTAGRAM -->
         <div class="text-slider-bar">
             <div class="text-slider-track">
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
-                <div class="text-slider-item">Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
+                <div class="text-slider-item"><img src="https://scontent.cdninstagram.com/v/t51.82787-19/846394234_17964203172079132_2971096885215003381_n.jpg?stp=dst-jpg_s150x150_tt6&amp;_nc_cat=103&amp;ccb=7-5&amp;_nc_sid=f7ccc5&amp;efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43MjAuQzMifQ%3D%3D&amp;_nc_ohc=V7IfaoUM96MQ7kNvwGW2Trt&amp;_nc_oc=AdoHYN7O3GoHkWIf8xPyopkh-Mg2ycXBJyx18q1E6mgo_IRTjpPTif7aB06gIJuh_iDc-pNaDFOZS0YzIg2EDIz3&amp;_nc_zt=24&amp;_nc_ht=scontent.cdninstagram.com&amp;_nc_gid=_TftsQdtPqZvAL0juTJVHQ&amp;_nc_ss=7b6a8&amp;oh=00_AQRLrFHT2yUrEY_W7smCPiuQ29idafaDtm3VTTwX1sINRg&amp;oe=6AE7430F" alt="Lemley" class="text-slider-img"> Yo leo ¿Y tú? <span>✦</span></div>
             </div>
         </div>
 
@@ -1045,9 +1064,9 @@
             <div class="detail-content-wrapper">
                 <div>
                     <div class="breadcrumb-bar">
-                        <a href="#" onclick="showHomeView(); return false;">Inicio</a> 
+                        <a onclick="showHomeView(); return false;">Inicio</a> 
                         <span>></span> 
-                        <a href="#" onclick="showHomeView(); return false;">Catálogo Educativo</a> 
+                        <a onclick="showHomeView(); return false;">Catálogo Educativo</a> 
                         <span>></span> 
                         <span id="breadcrumbTitle" style="color: var(--text-main); font-weight: 600;"></span>
                     </div>
@@ -1190,6 +1209,20 @@
             track.scrollBy({ left: offset, behavior: 'smooth' });
         }
 
+        /* FUNCIÓN INTELIGENTE PARA EL MENÚ SUPERIOR */
+        function handleNavFilter(levelKey) {
+            // Si estamos en la vista de detalle de un libro, primero volvemos a la vista principal
+            const productView = document.getElementById('productView');
+            if (productView.style.display === 'block') {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+                productView.style.display = 'none';
+                document.getElementById('homeView').style.display = 'block';
+            }
+            
+            // Aplicamos el filtro y hacemos scroll directo al catálogo (sin pasar por el banner)
+            setFilterLevel(levelKey);
+        }
+
         function setFilterLevel(levelKey) {
             activeLevelFilter = levelKey;
             
@@ -1211,9 +1244,25 @@
 
             renderBooks();
 
+            // Desplazamiento suave directo al catálogo
             const catalogElem = document.getElementById('catalogo');
             if (catalogElem) {
                 catalogElem.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function scrollToContact() {
+            // Si estamos en la vista de detalle, volvemos al home primero
+            const productView = document.getElementById('productView');
+            if (productView.style.display === 'block') {
+                history.pushState("", document.title, window.location.pathname + window.location.search);
+                productView.style.display = 'none';
+                document.getElementById('homeView').style.display = 'block';
+            }
+
+            const footerElem = document.getElementById('contacto');
+            if (footerElem) {
+                footerElem.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
