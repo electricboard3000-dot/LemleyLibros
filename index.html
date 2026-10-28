@@ -543,7 +543,6 @@
             text-decoration: underline;
         }
 
-        /* CONTENEDOR DEL BOTÓN WHATSAPP EN CONTACTO */
         .contact-whatsapp-box {
             display: flex;
             justify-content: center;
@@ -1135,6 +1134,10 @@
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
             </div>
         </div>
 
@@ -1193,9 +1196,8 @@
         </main>
     </div>
 
-    <!-- VISTA DE CONTACTO / BIOGRAFÍA CON BOTÓN DE WHATSAPP -->
+    <!-- VISTA DE CONTACTO / BIOGRAFÍA -->
     <div id="contactView">
-        <!-- 1. REDES SOCIALES ARRIBA -->
         <div class="contact-social-bar">
             <a href="https://www.facebook.com/share/1JUY2H8ZLn/" target="_blank" rel="noopener noreferrer" class="contact-social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="https://www.tiktok.com/@libroslemley?_r=1" target="_blank" rel="noopener noreferrer" class="contact-social-icon" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
@@ -1203,8 +1205,8 @@
         </div>
 
         <h1 class="contact-heading-main">¿Quieres contactarme?</h1>
+        <p class="contact-subtext">Siempre te escucho, escríeme a: <a href="mailto:lemleylibros@gmail.com">lemleylibros@gmail.com</a></p>
 
-        <!-- BOTÓN DE WHATSAPP AÑADIDO AQUÍ -->
         <div class="contact-whatsapp-box">
             <a href="https://wa.me/51925340081?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="contact-whatsapp-btn">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Escríbenos por WhatsApp
@@ -1213,41 +1215,20 @@
 
         <h2 class="bio-section-title">Biografía</h2>
         
-        <!-- 2. FOTO PRINCIPAL -->
         <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Biografía Lemley Libros" class="bio-image-provisional">
 
-        <!-- 3. TEXTO -->
         <div class="bio-text-content">
             <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
             <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
             <p>Seguimos escribiendo y expandiendo este hermoso sueño literario, llevando magia a cada rincón y acompañando a las nuevas generaciones de lectores en su camino.</p>
         </div>
 
-        <!-- 4. MULTIMEDIA (3 VIDEOS DE TIKTOK EN COLUMNAS) -->
+        <!-- MULTIMEDIA CON CONTENEDOR DINÁMICO PARA TIKTOK -->
         <div class="bio-multimedia-container">
             <h3 class="bio-multimedia-title">Multimedia</h3>
-            <div class="tiktok-grid">
-                <!-- Video 1 -->
-                <div class="tiktok-embed-wrapper">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@libroslemley/video/7635822883951938824" data-video-id="7635822883951938824" style="max-width: 325px; min-width: 285px; margin: 0; border: none;"> 
-                        <section></section> 
-                    </blockquote>
-                </div>
-                <!-- Video 2 -->
-                <div class="tiktok-embed-wrapper">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@libroslemley/video/7635820793930321160" data-video-id="7635820793930321160" style="max-width: 325px; min-width: 285px; margin: 0; border: none;"> 
-                        <section></section> 
-                    </blockquote>
-                </div>
-                <!-- Video 3 -->
-                <div class="tiktok-embed-wrapper">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@libroslemley/video/7635819852988435719" data-video-id="7635819852988435719" style="max-width: 325px; min-width: 285px; margin: 0; border: none;"> 
-                        <section></section> 
-                    </blockquote>
-                </div>
+            <div class="tiktok-grid" id="tiktokContainer">
+                <!-- Se inyectará dinámicamente mediante JS para recargar el audio y video -->
             </div>
-            <!-- Script oficial de integración de TikTok -->
-            <script async src="https://www.tiktok.com/embed.js"></script>
         </div>
     </div>
 
@@ -1360,7 +1341,7 @@
             4: [sampleCovers[3], "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80"],
             5: [sampleCovers[4], "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80"],
             6: [sampleCovers[5], "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80", "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80"]
-        };
+        ];
 
         const pastelClasses = ['pastel-peach', 'pastel-green', 'pastel-yellow', 'pastel-purple', 'pastel-blue', 'pastel-peach'];
 
@@ -1448,6 +1429,37 @@
             document.getElementById('homeView').style.display = 'none';
             document.getElementById('productView').style.display = 'none';
             document.getElementById('contactView').style.display = 'block';
+            
+            // REINICIALIZAR Y RENDERIZAR LOS VIDEOS DE TIKTOK PARA QUE FUNCIONEN Y SUENEN CORRECTAMENTE
+            const tiktokContainer = document.getElementById('tiktokContainer');
+            tiktokContainer.innerHTML = `
+                <div class="tiktok-embed-wrapper">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@libroslemley/video/7635822883951938824" data-video-id="7635822883951938824" style="max-width: 325px; min-width: 285px; margin: 0; border: none;"> 
+                        <section></section> 
+                    </blockquote>
+                </div>
+                <div class="tiktok-embed-wrapper">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@libroslemley/video/7635820793930321160" data-video-id="7635820793930321160" style="max-width: 325px; min-width: 285px; margin: 0; border: none;"> 
+                        <section></section> 
+                    </blockquote>
+                </div>
+                <div class="tiktok-embed-wrapper">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@libroslemley/video/7635819852988435719" data-video-id="7635819852988435719" style="max-width: 325px; min-width: 285px; margin: 0; border: none;"> 
+                        <section></section> 
+                    </blockquote>
+                </div>
+            `;
+            
+            // Cargar de nuevo el script de TikTok para que procese los embeds
+            const oldScript = document.getElementById('tiktok-embed-script');
+            if (oldScript) oldScript.remove();
+            
+            const script = document.createElement('script');
+            script.id = 'tiktok-embed-script';
+            script.src = 'https://www.tiktok.com/embed.js';
+            script.async = true;
+            document.body.appendChild(script);
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1479,7 +1491,7 @@
                             <div class="card-footer-info">
                                 <span class="card-price">${book.price}</span>
                                 <span class="consult-link">
-                                    Ver libro <i class="fa-solid fa-arrow-right"></i>
+                                    Ver Libro <i class="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
                         </div>
@@ -1568,7 +1580,7 @@
                             <div class="card-footer-info">
                                 <span class="card-price">${otherBook.price}</span>
                                 <span class="consult-link">
-                                    Ver libro <i class="fa-solid fa-arrow-right"></i>
+                                    Ver Libro <i class="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
                         </div>
