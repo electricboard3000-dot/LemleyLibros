@@ -88,7 +88,6 @@
             flex-wrap: wrap;
         }
 
-        /* TIPOGRAFÍA SERIF UNIFICADA EN EL MENÚ SUPERIOR (SIN MAYÚSCULAS FORZADAS) */
         .nav-links a {
             text-decoration: none;
             color: #ffffff;
@@ -105,7 +104,11 @@
             opacity: 0.85;
         }
 
-        /* VISTA PRINCIPAL (HOME) */
+        /* VISTAS PRINCIPALES */
+        #homeView, #productView, #contactView {
+            display: none;
+        }
+
         #homeView {
             display: block;
         }
@@ -479,9 +482,98 @@
             gap: 0.4rem;
         }
 
-        /* VISTA DETALLADA */
+        /* --- NUEVA VISTA DE CONTACTO / BIOGRAFÍA ESTILO ALBERT ESPINOSA --- */
+        #contactView {
+            max-width: 900px;
+            margin: 3rem auto 5rem;
+            padding: 0 1.5rem;
+        }
+
+        .contact-social-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-social-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: var(--brand-dark);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-social-icon:hover {
+            background-color: var(--brand-orange);
+            transform: translateY(-3px);
+        }
+
+        .contact-heading-main {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+        }
+
+        .contact-subtext {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+
+        .contact-subtext a {
+            color: var(--brand-orange);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-subtext a:hover {
+            text-decoration: underline;
+        }
+
+        .bio-section-title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        .bio-image-provisional {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .bio-text-content {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .bio-text-content p strong {
+            color: var(--text-main);
+        }
+
+        /* VISTA DETALLADA DE PRODUCTO */
         #productView {
-            display: none;
             max-width: 1200px;
             margin: 2rem auto 4rem;
             padding: 0 1.5rem;
@@ -949,14 +1041,14 @@
                 <li><a onclick="handleNavFilter('jardin')">Inicial</a></li>
                 <li><a onclick="handleNavFilter('primaria')">Primaria</a></li>
                 <li><a onclick="handleNavFilter('secundaria')">Secundaria</a></li>
-                <li><a onclick="scrollToContact()">Contacto</a></li>
+                <li><a onclick="showContactView(); return false;">Contacto</a></li>
             </ul>
         </div>
     </header>
 
     <!-- VISTA PRINCIPAL (HOME) -->
     <div id="homeView">
-        <!-- BANNER SLIDER PRINCIPAL A LA MEDIDA -->
+        <!-- BANNER SLIDER PRINCIPAL A LA MEDIDA (REGLA FIJA) -->
         <section class="hero-banner-slider" id="heroBannerSlider">
             <button class="hero-arrow prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
@@ -1039,6 +1131,29 @@
 
             <div class="books-grid" id="books-grid-container"></div>
         </main>
+    </div>
+
+    <!-- NUEVA VISTA DE CONTACTO / BIOGRAFÍA -->
+    <div id="contactView">
+        <div class="contact-social-bar">
+            <a href="https://www.facebook.com/share/1JUY2H8ZLn/" target="_blank" rel="noopener noreferrer" class="contact-social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@libroslemley?_r=1" target="_blank" rel="noopener noreferrer" class="contact-social-icon" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/lemleylibros?vrfl=OWR3dnBzamxudWs4" target="_blank" rel="noopener noreferrer" class="contact-social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+        <h1 class="contact-heading-main">¿Quieres contactarme?</h1>
+        <p class="contact-subtext">Siempre te escucho, escríeme a: <a href="mailto:lemleylibros@gmail.com">lemleylibros@gmail.com</a></p>
+
+        <h2 class="bio-section-title">Biografía</h2>
+        
+        <!-- FOTO PROVISIONAL (EN LUGAR DE VIDEO) -->
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Biografía Lemley Libros" class="bio-image-provisional">
+
+        <div class="bio-text-content">
+            <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
+            <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
+            <p>Seguimos escribiendo y expandiendo este hermoso sueño literario, llevando magia a cada rincón y acompañando a las nuevas generaciones de lectores en su camino.</p>
+        </div>
     </div>
 
     <!-- VISTA DE DETALLE DE PRODUCTO -->
@@ -1200,12 +1315,9 @@
         }
 
         function handleNavFilter(levelKey) {
-            const productView = document.getElementById('productView');
-            if (productView.style.display === 'block') {
-                history.pushState("", document.title, window.location.pathname + window.location.search);
-                productView.style.display = 'none';
-                document.getElementById('homeView').style.display = 'block';
-            }
+            document.getElementById('productView').style.display = 'none';
+            document.getElementById('contactView').style.display = 'none';
+            document.getElementById('homeView').style.display = 'block';
             setFilterLevel(levelKey);
         }
 
@@ -1236,18 +1348,12 @@
             }
         }
 
-        function scrollToContact() {
-            const productView = document.getElementById('productView');
-            if (productView.style.display === 'block') {
-                history.pushState("", document.title, window.location.pathname + window.location.search);
-                productView.style.display = 'none';
-                document.getElementById('homeView').style.display = 'block';
-            }
-
-            const footerElem = document.getElementById('contacto');
-            if (footerElem) {
-                footerElem.scrollIntoView({ behavior: 'smooth' });
-            }
+        function showContactView() {
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+            document.getElementById('homeView').style.display = 'none';
+            document.getElementById('productView').style.display = 'none';
+            document.getElementById('contactView').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderBooks() {
@@ -1278,7 +1384,7 @@
                             <div class="card-footer-info">
                                 <span class="card-price">${book.price}</span>
                                 <span class="consult-link">
-                                    Ver libro <i class="fa-solid fa-arrow-right"></i>
+                                    Ver cuento <i class="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
                         </div>
@@ -1295,6 +1401,7 @@
         function showHomeView() {
             history.pushState("", document.title, window.location.pathname + window.location.search);
             document.getElementById('productView').style.display = 'none';
+            document.getElementById('contactView').style.display = 'none';
             document.getElementById('homeView').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1366,7 +1473,7 @@
                             <div class="card-footer-info">
                                 <span class="card-price">${otherBook.price}</span>
                                 <span class="consult-link">
-                                    Ver libro <i class="fa-solid fa-arrow-right"></i>
+                                    Ver cuento <i class="fa-solid fa-arrow-right"></i>
                                 </span>
                             </div>
                         </div>
@@ -1376,6 +1483,7 @@
             });
 
             document.getElementById('homeView').style.display = 'none';
+            document.getElementById('contactView').style.display = 'none';
             document.getElementById('productView').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1387,6 +1495,7 @@
                 renderProductDetail(bookId);
             } else {
                 document.getElementById('productView').style.display = 'none';
+                document.getElementById('contactView').style.display = 'none';
                 document.getElementById('homeView').style.display = 'block';
             }
         }
