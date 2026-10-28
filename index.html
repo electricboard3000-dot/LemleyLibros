@@ -107,12 +107,11 @@
             display: block;
         }
 
-        /* BANNER SLIDER PRINCIPAL */
+        /* BANNER SLIDER PRINCIPAL A LA MEDIDA */
         .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: calc(100vh - 250px);
-            min-height: 350px;
+            height: 800px;
             background-color: var(--brand-dark);
             overflow: hidden;
             display: flex;
@@ -164,7 +163,7 @@
         }
 
         .hero-title-large {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 700;
             font-style: normal;
             line-height: 1.1;
@@ -237,16 +236,16 @@
         /* SECCIÓN DE NIVEL EDUCATIVO */
         .levels-section {
             max-width: 1280px;
-            margin: 3rem auto;
+            margin: 2.5rem auto;
             padding: 0 1.5rem;
         }
 
         .levels-heading {
             text-align: center;
             color: var(--text-main);
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1.8rem;
         }
 
         .levels-grid {
@@ -258,11 +257,10 @@
         .level-card {
             background-color: var(--card-white);
             border: 2px solid #2bb1b1;
-            border-radius: 24px;
-            padding: 2rem 1.8rem;
+            border-radius: 20px;
+            padding: 1.5rem;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -272,24 +270,17 @@
             box-shadow: 0 12px 30px rgba(43, 177, 177, 0.15);
         }
 
-        .level-card-title {
-            color: #2bb1b1;
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-        }
-
         .level-card-body {
             display: flex;
-            gap: 1.2rem;
+            gap: 1rem;
             align-items: center;
             width: 100%;
         }
 
         .level-img-box {
-            width: 110px;
-            height: 95px;
-            border-radius: 14px;
+            width: 95px;
+            height: 110px;
+            border-radius: 12px;
             overflow: hidden;
             flex-shrink: 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -306,11 +297,28 @@
             transform: scale(1.05);
         }
 
-        .level-card-desc {
-            font-size: 0.92rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+        .level-card-text-side {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
             flex-grow: 1;
+        }
+
+        .level-card-title {
+            color: #2bb1b1;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            border: 1px solid var(--border-color);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            background: #ffffff;
+        }
+
+        .level-card-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.45;
         }
 
         /* SECCIÓN CATÁLOGO */
@@ -344,11 +352,6 @@
             color: var(--text-main);
             cursor: pointer;
             transition: all 0.25s ease;
-        }
-
-        .tab-btn:hover {
-            transform: translateY(-2px);
-            border-color: var(--text-main);
         }
 
         .tab-btn.active {
@@ -834,8 +837,9 @@
 
         /* MEDIA QUERIES PARA ADAPTABILIDAD MÓVIL PERFECTA */
         @media (max-width: 992px) {
-            .hero-title-large { font-size: 2.5rem; }
-            .levels-grid { grid-template-columns: 1fr; }
+            .hero-banner-slider { height: 350px; }
+            .hero-title-large { font-size: 2.2rem; }
+            .levels-grid { grid-template-columns: 1fr; gap: 1rem; }
             .detail-layout-grid { grid-template-columns: 1fr; gap: 2rem; }
             .books-grid { grid-template-columns: repeat(2, 1fr); }
             .detail-image-container { flex-direction: column-reverse; align-items: center; }
@@ -849,7 +853,8 @@
         }
 
         @media (max-width: 640px) {
-            .hero-title-large { font-size: 1.9rem; }
+            .hero-banner-slider { height: 280px; }
+            .hero-title-large { font-size: 1.6rem; }
             .nav-container { justify-content: center; padding: 0.8rem 1rem; }
             .nav-links { gap: 0.8rem; justify-content: center; }
             .nav-links a { font-size: 0.75rem; font-weight: 700; }
@@ -858,13 +863,51 @@
             .detail-purchase-box { flex-direction: column; text-align: center; justify-content: center; }
             .detail-whatsapp-btn { width: 100%; justify-content: center; }
             
-            .levels-heading, .catalog-title, .related-title {
-                font-size: 1.8rem !important;
-                margin-bottom: 0.8rem !important;
-            }
+            /* Ajustes exactos basados en el modelo proporcionado: Foto izquierda, Texto derecha */
             .levels-section {
                 margin: 1.5rem auto !important;
+                padding: 0 1rem !important;
             }
+            .levels-heading {
+                font-size: 1.6rem !important;
+                margin-bottom: 1rem !important;
+            }
+            .level-card {
+                padding: 1.2rem 1rem !important;
+                border-radius: 16px !important;
+            }
+            .level-card-body {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: flex-start !important;
+                gap: 1rem !important;
+            }
+            .level-img-box {
+                width: 95px !important;
+                height: 110px !important;
+                border-radius: 12px !important;
+                flex-shrink: 0 !important;
+            }
+            .level-card-text-side {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                flex-grow: 1 !important;
+            }
+            .level-card-title {
+                font-size: 1.25rem !important;
+                margin-bottom: 0.4rem !important;
+                display: inline-block !important;
+                border: 1px solid var(--border-color) !important;
+                padding: 0.2rem 0.6rem !important;
+                border-radius: 6px !important;
+                background: #ffffff !important;
+            }
+            .level-card-desc {
+                font-size: 0.82rem !important;
+                line-height: 1.45 !important;
+            }
+
             .catalog-container {
                 padding: 1rem 1rem 3rem !important;
             }
@@ -899,7 +942,7 @@
 
     <!-- VISTA PRINCIPAL (HOME) -->
     <div id="homeView">
-        <!-- BANNER SLIDER PRINCIPAL -->
+        <!-- BANNER SLIDER PRINCIPAL A LA MEDIDA -->
         <section class="hero-banner-slider" id="heroBannerSlider">
             <button class="hero-arrow prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
@@ -928,32 +971,38 @@
             <h2 class="levels-heading">Nivel Educativo</h2>
             <div class="levels-grid">
                 <div class="level-card" onclick="scrollToCatalogAndFilter('jardin')">
-                    <h3 class="level-card-title">Inicial</h3>
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Inicial">
                         </div>
-                        <p class="level-card-desc">Cuentos ilustrados, rimas y relatos dulces para despertar la imaginación y el amor temprano por la lectura.</p>
+                        <div class="level-card-text-side">
+                            <h3 class="level-card-title">Inicial</h3>
+                            <p class="level-card-desc">Cuentos ilustrados, rimas y relatos dulces para despertar la imaginación y el amor temprano por la lectura.</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="level-card" onclick="scrollToCatalogAndFilter('primaria')">
-                    <h3 class="level-card-title">Primaria</h3>
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Primaria">
                         </div>
-                        <p class="level-card-desc">Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de amistad.</p>
+                        <div class="level-card-text-side">
+                            <h3 class="level-card-title">Primaria</h3>
+                            <p class="level-card-desc">Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de amistad.</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="level-card" onclick="scrollToCatalogAndFilter('secundaria')">
-                    <h3 class="level-card-title">Secundaria</h3>
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Secundaria">
                         </div>
-                        <p class="level-card-desc">Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.</p>
+                        <div class="level-card-text-side">
+                            <h3 class="level-card-title">Secundaria</h3>
+                            <p class="level-card-desc">Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -961,14 +1010,10 @@
 
         <!-- SECCIÓN CATÁLOGO DE LIBROS -->
         <main id="catalogo" class="catalog-container">
-            <h2 class="catalog-title">Nuestros cuentos e historias</h2>
+            <h2 class="catalog-title">Nuestros libros</h2>
 
             <div class="filter-tabs">
                 <button class="tab-btn active" id="tab-all" onclick="setMainFilter('all', this)">Todos los libros</button>
-                <button class="tab-btn" id="tab-jardin" onclick="setMainFilter('jardin', this)">Inicial</button>
-                <button class="tab-btn" id="tab-primaria" onclick="setMainFilter('primaria', this)">Primaria</button>
-                <button class="tab-btn" id="tab-secundaria" onclick="setMainFilter('secundaria', this)">Secundaria</button>
-            </div>
 
             <div class="books-grid" id="books-grid-container"></div>
         </main>
