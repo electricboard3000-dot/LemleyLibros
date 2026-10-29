@@ -480,7 +480,7 @@
             gap: 0.4rem;
         }
 
-        /* VISTA DE NOSOTROS (BOCETO 2) */
+        /* VISTA DE NOSOTROS (TEXTO FUERA DE CAJA Y FLUIDO) */
         #aboutView {
             max-width: 1000px;
             margin: 3rem auto 5rem;
@@ -498,22 +498,21 @@
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.8rem;
         }
 
-        .nosotros-textbox {
-            background-color: var(--card-white);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
-            margin-bottom: 2.5rem;
+        .nosotros-text-content {
             font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.8;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .nosotros-text-content p strong {
+            color: var(--text-main);
         }
 
         .nosotros-photo {
@@ -524,7 +523,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
-        /* VISTA DE NUESTROS LIBROS - DISEÑO ZIGZAG */
+        /* VISTA DE NUESTROS LIBROS - ZIGZAG ADAPTADO CON DESCRIPCIONES */
         #booksView {
             max-width: 1000px;
             margin: 3rem auto 5rem;
@@ -545,7 +544,7 @@
             border-radius: 12px;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 2.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
         }
 
@@ -553,21 +552,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             cursor: pointer;
             transition: transform 0.25s ease;
+            background: #ffffff;
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .zigzag-row:hover {
-            transform: scale(1.02);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
         .zigzag-img-box {
-            width: 240px;
-            height: 240px;
-            border-radius: 6px;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
             flex-shrink: 0;
             background: #fff;
         }
@@ -576,27 +580,33 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .zigzag-row:hover .zigzag-img-box img {
+            transform: scale(1.05);
         }
 
         .zigzag-text-box {
-            background-color: #ffffff;
-            width: 260px;
-            height: 120px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            flex-shrink: 0;
+            flex-grow: 1;
+            gap: 0.5rem;
         }
 
         .zigzag-label {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: #a82ba1;
             text-transform: lowercase;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .zigzag-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
 
         /* VISTA DE CONTACTO (INTACTA) */
@@ -1147,17 +1157,11 @@
             .zigzag-row {
                 flex-direction: column !important;
                 gap: 1rem !important;
+                text-align: center;
             }
             .zigzag-img-box {
-                width: 200px !important;
-                height: 200px !important;
-            }
-            .zigzag-text-box {
-                width: 200px !important;
-                height: 80px !important;
-            }
-            .zigzag-label {
-                font-size: 2rem !important;
+                width: 180px !important;
+                height: 180px !important;
             }
 
             .catalog-container {
@@ -1200,6 +1204,24 @@
 
         <div class="text-slider-bar">
             <div class="text-slider-track">
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
+                <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
                 <div class="text-slider-item">YO LEO ¿Y TÚ?</div>
@@ -1275,12 +1297,12 @@
         </main>
     </div>
 
-    <!-- 2. VISTA NOSOTROS (BOCETO 2) -->
+    <!-- 2. VISTA NOSOTROS (TEXTO FUERA DE CAJA) -->
     <div id="aboutView">
         <h1 class="nosotros-main-title">NOSOTROS</h1>
         <div class="nosotros-subtitle">Quiénes somos</div>
         
-        <div class="nosotros-textbox">
+        <div class="nosotros-text-content">
             <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
             <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
         </div>
@@ -1288,7 +1310,7 @@
         <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Foto Biografía Lemley Libros" class="nosotros-photo">
     </div>
 
-    <!-- 3. VISTA NUESTROS LIBROS (DISPOSICIÓN ZIGZAG IDÉNTICA AL BOCETO) -->
+    <!-- 3. VISTA NUESTROS LIBROS (ZIGZAG CON DESCRIPCIONES) -->
     <div id="booksView">
         <h1 class="libros-main-title">nuestros libros</h1>
 
@@ -1299,14 +1321,16 @@
                     <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Libro Inicial">
                 </div>
                 <div class="zigzag-text-box">
-                    <div class="zigzag-label">inicial</div>
+                    <div class="zigzag-label">Inicial</div>
+                    <p class="zigzag-desc">Cuentos ilustrados, rimas y relatos dulces para despertar la imaginación y el amor temprano por la lectura.</p>
                 </div>
             </div>
 
             <!-- FILA 2: TEXTO PRIMARIA A LA IZQUIERDA | FOTO A LA DERECHA -->
             <div class="zigzag-row" onclick="scrollToCatalogSection('primaria')">
-                <div class="zigzag-text-box">
-                    <div class="zigzag-label">primaria</div>
+                <div class="zigzag-text-box" style="text-align: right;">
+                    <div class="zigzag-label">Primaria</div>
+                    <p class="zigzag-desc">Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de amistad.</p>
                 </div>
                 <div class="zigzag-img-box">
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80" alt="Libro Primaria">
@@ -1319,7 +1343,8 @@
                     <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80" alt="Libro Secundaria">
                 </div>
                 <div class="zigzag-text-box">
-                    <div class="zigzag-label">secundaria</div>
+                    <div class="zigzag-label">Secundaria</div>
+                    <p class="zigzag-desc">Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.</p>
                 </div>
             </div>
         </div>
@@ -1334,7 +1359,6 @@
         </div>
 
         <h1 class="contact-heading-main">¿Quieres contactarme?</h1>
-        <p class="contact-subtext">Siempre te escucho, escríeme a: <a href="mailto:lemleylibros@gmail.com">lemleylibros@gmail.com</a></p>
 
         <div class="contact-whatsapp-box">
             <a href="https://wa.me/51925340081?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="contact-whatsapp-btn">
