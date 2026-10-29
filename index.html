@@ -7,7 +7,7 @@
     <!-- Google Fonts & Font Awesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -50,7 +50,7 @@
             overflow-x: hidden;
         }
 
-        /* BARRA SUPERIOR NARANJA */
+        /* BARRA SUPERIOR NARANJA (TIPOGRAFÍA TIMES NEW ROMAN) */
         header {
             background-color: var(--brand-orange);
             position: sticky;
@@ -73,9 +73,8 @@
         .brand-logo-link {
             color: #ffffff;
             text-decoration: none;
-            font-family: 'Playfair Display', serif;
-            font-style: normal;
-            font-size: 1.25rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.35rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -93,9 +92,9 @@
         .nav-links a {
             text-decoration: none;
             color: #ffffff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-weight: 800;
-            font-size: 1.05rem;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 700;
+            font-size: 1.15rem;
             letter-spacing: 0.5px;
             transition: opacity 0.2s ease;
             display: inline-block;
@@ -107,7 +106,7 @@
         }
 
         /* VISTAS PRINCIPALES */
-        #homeView, #aboutView, #booksView, #levelView, #contactView, #productView {
+        #homeView, #aboutView, #booksView, #contactView, #productView {
             display: none;
         }
 
@@ -119,8 +118,8 @@
         .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: 580px;
-            max-height: 70vh;
+            height: 570px;
+            max-height: 82vh;
             background-color: var(--brand-dark);
             overflow: hidden;
             display: flex;
@@ -238,7 +237,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* SECCIÓN DE NIVEL EDUCATIVO (FUNCIONAN COMO FILTRO PRINCIPAL) */
+        /* SECCIÓN DE NIVEL EDUCATIVO (FILTROS) */
         .levels-section {
             max-width: 1280px;
             margin: 2.5rem auto;
@@ -267,17 +266,13 @@
             display: flex;
             flex-direction: column;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
 
-        .level-card:hover {
+        .level-card:hover, .level-card.active-filter {
             transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(43, 177, 177, 0.15);
-        }
-
-        .level-card.active-filter {
-            border-color: var(--brand-orange);
-            box-shadow: 0 12px 30px rgba(243, 112, 33, 0.2);
+            box-shadow: 0 12px 30px rgba(43, 177, 177, 0.25);
+            background-color: #f0fafa;
         }
 
         .level-card-body {
@@ -327,10 +322,10 @@
             line-height: 1.45;
         }
 
-        /* SECCIÓN CATÁLOGO GLOBAL CON BOTÓN "TODOS LOS LIBROS" */
+        /* SECCIÓN CATÁLOGO GLOBAL */
         .catalog-container {
             max-width: 1280px;
-            margin: 0 auto;
+            margin: 2.5rem auto;
             padding: 1.5rem 2rem 4rem;
         }
 
@@ -420,7 +415,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* IMAGEN CUADRADA / PROPORCIONADA EN LAS TARJETAS */
+        /* IMAGEN EN LAS TARJETAS */
         .card-book-img {
             width: 180px;
             height: 180px;
@@ -636,113 +631,6 @@
             border-color: var(--brand-dark);
         }
 
-        /* VISTA DE PÁGINA POR NIVEL (#levelView) */
-        #levelView {
-            max-width: 1100px;
-            margin: 3rem auto 5rem;
-            padding: 0 1.5rem;
-        }
-
-        .level-page-title {
-            font-size: clamp(2.2rem, 3.8vw, 3.2rem);
-            font-weight: 800;
-            color: #a82ba1;
-            margin-bottom: 3rem;
-            font-family: 'Playfair Display', serif;
-            text-transform: lowercase;
-        }
-
-        .level-zigzag-list {
-            display: flex;
-            flex-direction: column;
-            gap: 3.5rem;
-        }
-
-        .level-book-row {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            background-color: transparent;
-        }
-
-        .level-book-row.reverse {
-            flex-direction: row-reverse;
-        }
-
-        .level-book-img-col {
-            width: 45%;
-            height: 380px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .level-book-img-col img {
-            width: 240px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-        }
-
-        .level-book-info-col {
-            width: 55%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 1.2rem;
-        }
-
-        .level-book-row.reverse .level-book-info-col {
-            text-align: right;
-        }
-
-        .level-book-row.reverse .btn-ver-mas {
-            margin-left: auto;
-            margin-right: 0;
-        }
-
-        .level-book-name {
-            font-size: 2.3rem;
-            font-weight: 700;
-            color: var(--text-main);
-            font-family: 'Playfair Display', serif;
-            text-transform: uppercase;
-            line-height: 1.15;
-        }
-
-        .level-book-summary {
-            font-size: 1.02rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .btn-ver-mas {
-            display: inline-block;
-            background-color: #ffffff;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 0.75rem 2.2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.92rem;
-            text-decoration: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: all 0.25s ease;
-            width: fit-content;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-        }
-
-        .btn-ver-mas:hover {
-            background-color: var(--brand-dark);
-            color: #ffffff;
-            border-color: var(--brand-dark);
-            transform: translateY(-2px);
-        }
-
         /* VISTA DE CONTACTO */
         #contactView {
             max-width: 1080px;
@@ -881,16 +769,16 @@
             padding: 1rem 0;
         }
 
-        /* 6. VISTA DETALLE DE PRODUCTO (IMAGEN CUADRADA PROPORCIONADA) */
+        /* 6. VISTA DETALLE DE PRODUCTO CON IMAGEN MÁS GRANDE */
         #productView {
-            max-width: 1200px;
+            max-width: 1240px;
             margin: 3rem auto 5rem;
             padding: 0 1.5rem;
         }
 
         .detail-layout-grid {
             display: grid;
-            grid-template-columns: 80px 420px 1fr;
+            grid-template-columns: 100px 520px 1fr;
             gap: 2.5rem;
             align-items: start;
             margin-bottom: 4rem;
@@ -899,14 +787,14 @@
         .detail-gallery-thumbs {
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 1rem;
         }
 
         .thumb-img {
-            width: 75px;
-            height: 95px;
+            width: 90px;
+            height: 110px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             border: 2px solid transparent;
             box-shadow: 0 3px 8px rgba(0,0,0,0.08);
@@ -921,21 +809,21 @@
         .detail-main-img-card {
             background-color: #ffffff;
             border-radius: 20px;
-            padding: 1.5rem;
+            padding: 1.8rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.06);
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
             aspect-ratio: 1 / 1;
-            max-height: 450px;
+            max-height: 540px;
         }
 
         .detail-book-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 12px;
+            border-radius: 14px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
@@ -952,12 +840,18 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
+            flex-wrap: wrap;
         }
 
         .detail-breadcrumb a {
             color: var(--text-muted);
             text-decoration: none;
             cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .detail-breadcrumb a:hover {
+            color: var(--brand-orange);
         }
 
         .detail-title-main {
@@ -1223,7 +1117,6 @@
         @media (max-width: 992px) {
             .hero-banner-slider { height: 460px; }
             .levels-grid { grid-template-columns: 1fr; gap: 1rem; }
-            
             .detail-layout-grid { 
                 grid-template-columns: 1fr; 
                 gap: 1.5rem; 
@@ -1241,22 +1134,6 @@
             .footer-content { grid-template-columns: 1fr; text-align: center; gap: 2rem; }
             .footer-col-about { align-items: center; text-align: center; }
             .footer-col-social { align-items: center; }
-            
-            .zigzag-row, .zigzag-row:nth-child(even) {
-                flex-direction: column !important;
-                text-align: center !important;
-            }
-            .zigzag-img-box {
-                width: 100% !important;
-                height: 260px !important;
-            }
-            .zigzag-text-box {
-                width: 100% !important;
-                text-align: center !important;
-            }
-            .btn-ver-mas-z {
-                margin: 0 auto !important;
-            }
         }
 
         @media (max-width: 640px) {
@@ -1321,11 +1198,11 @@
             </div>
         </div>
 
-        <!-- BLOQUES DE NIVEL EDUCATIVO QUE FUNCIONAN COMO FILTROS -->
+        <!-- SECCIÓN DE NIVEL EDUCATIVO (FILTROS) -->
         <section class="levels-section">
             <h2 class="levels-heading">Nivel Educativo</h2>
             <div class="levels-grid">
-                <div class="level-card" id="cardFilterInitial" onclick="filterCatalog('jardin')">
+                <div class="level-card" id="card-jardin" onclick="filterCatalog('jardin')">
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Inicial">
@@ -1337,7 +1214,7 @@
                     </div>
                 </div>
 
-                <div class="level-card" id="cardFilterPrimary" onclick="filterCatalog('primaria')">
+                <div class="level-card" id="card-primaria" onclick="filterCatalog('primaria')">
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Primaria">
@@ -1349,7 +1226,7 @@
                     </div>
                 </div>
 
-                <div class="level-card" id="cardFilterSecondary" onclick="filterCatalog('secundaria')">
+                <div class="level-card" id="card-secundaria" onclick="filterCatalog('secundaria')">
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Secundaria">
@@ -1363,10 +1240,10 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DE NUESTROS LIBROS CON EL BOTÓN "TODOS LOS LIBROS" -->
+        <!-- SECCIÓN CATÁLOGO GLOBAL -->
         <main id="catalogo" class="catalog-container">
             <div class="catalog-header-bar">
-                <h2 class="catalog-title">Nuestros libros</h2>
+                <h2 class="catalog-title" id="catalogTitleHeading">Nuestros libros</h2>
                 <button class="btn-todos-libros" onclick="filterCatalog('all')">Todos los libros</button>
             </div>
 
@@ -1387,21 +1264,13 @@
         <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Foto Biografía Lemley Libros" class="nosotros-photo">
     </div>
 
-    <!-- 3. VISTA NUESTROS LIBROS -->
+    <!-- 3. VISTA NUESTROS LIBROS (ZIGZAG) -->
     <div id="booksView">
         <h1 class="libros-main-title">nuestros libros</h1>
-
         <div class="books-zigzag-container" id="booksZigzagContainer"></div>
     </div>
 
-    <!-- 4. PÁGINA DEDICADA POR NIVEL (#levelView) -->
-    <div id="levelView">
-        <h1 class="level-page-title" id="levelPageTitle">libros de inicial</h1>
-        
-        <div class="level-zigzag-list" id="levelBooksContainer"></div>
-    </div>
-
-    <!-- 5. VISTA CONTACTANOS -->
+    <!-- 4. VISTA CONTACTANOS -->
     <div id="contactView">
         <div class="contact-social-bar">
             <a href="https://www.facebook.com/share/1JUY2H8ZLn/" target="_blank" rel="noopener noreferrer" class="contact-social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
@@ -1410,13 +1279,22 @@
         </div>
 
         <h1 class="contact-heading-main">¿Quieres contactarme?</h1>
+        <p class="contact-subtext">Siempre te escucho, escríeme a: <a href="mailto:lemleylibros@gmail.com">lemleylibros@gmail.com</a></p>
 
         <div class="contact-whatsapp-box">
             <a href="https://wa.me/51925340081?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="contact-whatsapp-btn">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Escríbenos por WhatsApp
             </a>
         </div>
+
+        <h2 class="bio-section-title">Biografía</h2>
+        
+        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Biografía Lemley Libros" class="bio-image-provisional">
+
         <div class="bio-text-content">
+            <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
+            <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
+            <p>Seguimos escribiendo y expandiendo este hermoso sueño literario, llevando magia a cada rincón y acompañando a las nuevas generaciones de lectores en su camino.</p>
         </div>
 
         <div class="bio-multimedia-container">
@@ -1442,24 +1320,24 @@
         </div>
     </div>
 
-    <!-- 6. VISTA DETALLE DE PRODUCTO -->
+    <!-- 5. VISTA DETALLE DE PRODUCTO -->
     <div id="productView">
         <div class="detail-layout-grid">
             <!-- GALERÍA VERTICAL DE MINIATURAS -->
             <div class="detail-gallery-thumbs" id="galleryThumbsContainer"></div>
 
-            <!-- CONTENEDOR BLANCO CON LA FOTO PRINCIPAL CUADRADA / PROPORCIONADA -->
+            <!-- CONTENEDOR BLANCO CON LA FOTO PRINCIPAL -->
             <div class="detail-main-img-card">
                 <img id="detailImg" src="" alt="Portada del libro" class="detail-book-img">
             </div>
 
             <!-- COLUMNA DERECHA CON INFORMACIÓN -->
             <div class="detail-content-side">
-                <div class="detail-breadcrumb">
+                <!-- RUTA DINÁMICA (BREADCRUMB) SIN EL TEXTO INTERMEDIO CUANDO VIENE DE CATÁLOGO -->
+                <div class="detail-breadcrumb" id="detailBreadcrumb">
                     <a onclick="goBack(); return false;"><i class="fa-solid fa-arrow-left"></i> Volver</a> 
                     <span>></span> 
-                    <a id="breadcrumbLevelLink">Catálogo Educativo</a> 
-                    <span>></span> 
+                    <span id="breadcrumbNavWrapper"></span> 
                     <strong id="breadcrumbTitle"></strong>
                 </div>
 
@@ -1474,7 +1352,7 @@
                     <h3 class="section-subheading">Ficha</h3>
                     <div class="ficha-list">
                         <div><strong>Autor(a):</strong> Maricarmen Lemley</div>
-                        <div><strong>Fecha publicación:</strong> <span id="fichaFecha">15 Marzo 2025</span></div>
+                        <div><strong>Fecha publicación:</strong> <span id="fichaFecha"></span></div>
                         <div><strong>Público objetivo:</strong> <span id="fichaNivel">Inicial</span></div>
                     </div>
                 </div>
@@ -1554,6 +1432,7 @@
                 levelLabel: 'INICIAL', 
                 title: 'Libro 1', 
                 description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
+                fecha: '15 de Enero de 2026',
                 cover: sampleCovers[0],
                 gallery: [sampleCovers[0], sampleCovers[1], sampleCovers[2], sampleCovers[5]]
             },
@@ -1563,6 +1442,7 @@
                 levelLabel: 'INICIAL', 
                 title: 'Libro 2', 
                 description: 'Un mágico recorrido lleno de colores y personajes entrañables para los primeros años escolares.', 
+                fecha: '20 de Enero de 2026',
                 cover: sampleCovers[1],
                 gallery: [sampleCovers[1], sampleCovers[0], sampleCovers[3], sampleCovers[4]]
             },
@@ -1572,6 +1452,7 @@
                 levelLabel: 'PRIMARIA', 
                 title: 'Libro 3', 
                 description: 'Aventuras emocionantes con valores de amistad y descubrimiento para lectores en etapa escolar.', 
+                fecha: '10 de Febrero de 2026',
                 cover: sampleCovers[2],
                 gallery: [sampleCovers[2], sampleCovers[3], sampleCovers[0], sampleCovers[1]]
             },
@@ -1581,6 +1462,7 @@
                 levelLabel: 'PRIMARIA', 
                 title: 'Libro 4', 
                 description: 'Una fantástica travesía narrativa que fomenta la comprensión lectora y la creatividad.', 
+                fecha: '14 de Febrero de 2026',
                 cover: sampleCovers[3],
                 gallery: [sampleCovers[3], sampleCovers[2], sampleCovers[4], sampleCovers[5]]
             },
@@ -1588,8 +1470,9 @@
                 id: 5, 
                 levelKey: 'secundaria', 
                 levelLabel: 'SECUNDARIA', 
-                title: 'Libro 5', 
-                description: 'Una historia profunda y reflexiva diseñada para atrapar a los jóvenes en un viaje inolvidable.', 
+                title: 'Cuentos fantásticos', 
+                description: 'Son 20 cuentos adaptados de diferentes países.Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto.', 
+                fecha: 'Febrero 2026',
                 cover: sampleCovers[4],
                 gallery: [sampleCovers[4], sampleCovers[5], sampleCovers[0], sampleCovers[1]]
             },
@@ -1599,6 +1482,7 @@
                 levelLabel: 'SECUNDARIA', 
                 title: 'Libro 6', 
                 description: 'Relatos cautivadores con tramas dinámicas y reflexiones profundas para estudiantes de secundaria.', 
+                fecha: '5 de Marzo de 2026',
                 cover: sampleCovers[5],
                 gallery: [sampleCovers[5], sampleCovers[4], sampleCovers[2], sampleCovers[3]]
             }
@@ -1640,7 +1524,6 @@
             document.getElementById('homeView').style.display = 'none';
             document.getElementById('aboutView').style.display = 'none';
             document.getElementById('booksView').style.display = 'none';
-            document.getElementById('levelView').style.display = 'none';
             document.getElementById('contactView').style.display = 'none';
             document.getElementById('productView').style.display = 'none';
         }
@@ -1675,23 +1558,17 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* FILTRAR CATÁLOGO DESDE LOS 3 BLOQUES GRANDES DE NIVEL O EL BOTÓN "TODOS LOS LIBROS" */
         function filterCatalog(levelKey) {
             document.querySelectorAll('.level-card').forEach(card => card.classList.remove('active-filter'));
 
-            let listToRender = books;
-            if (levelKey === 'jardin') {
-                listToRender = books.filter(b => b.levelKey === 'jardin');
-                document.getElementById('cardFilterInitial').classList.add('active-filter');
-            } else if (levelKey === 'primaria') {
-                listToRender = books.filter(b => b.levelKey === 'primaria');
-                document.getElementById('cardFilterPrimary').classList.add('active-filter');
-            } else if (levelKey === 'secundaria') {
-                listToRender = books.filter(b => b.levelKey === 'secundaria');
-                document.getElementById('cardFilterSecondary').classList.add('active-filter');
+            let filteredList = books;
+            if (levelKey !== 'all') {
+                filteredList = books.filter(b => b.levelKey === levelKey);
+                const activeCard = document.getElementById(`card-${levelKey}`);
+                if (activeCard) activeCard.classList.add('active-filter');
             }
 
-            renderCatalogBooks(listToRender);
+            renderCatalogBooks(filteredList);
 
             const catalogoEl = document.getElementById('catalogo');
             if(catalogoEl && levelKey !== 'all') {
@@ -1705,17 +1582,18 @@
             container.innerHTML = '';
 
             const featuredBooks = [
-                { level: 'inicial', title: 'Libros de inicial', desc: 'Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de verdadera amistad.', bookObj: books.find(b => b.levelKey === 'jardin') },
-                { level: 'primaria', title: 'Libros de primaria', desc: 'Un mágico recorrido lleno de colores y personajes entrañables para los primeros años escolares.', bookObj: books.find(b => b.levelKey === 'primaria') },
-                { level: 'secundaria', title: 'Libros de secundaria', desc: 'Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.', bookObj: books.find(b => b.levelKey === 'secundaria') }
+                { levelKey: 'jardin', title: 'libros de inicial', desc: 'Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de verdadera amistad.' },
+                { levelKey: 'primaria', title: 'libros de primaria', desc: 'Un mágico recorrido lleno de colores y personajes entrañables para los primeros años escolares.' },
+                { levelKey: 'secundaria', title: 'libros de secundaria', desc: 'Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.' }
             ];
 
             featuredBooks.forEach((item) => {
-                if(!item.bookObj) return;
+                const bookObj = books.find(b => b.levelKey === item.levelKey);
+                if(!bookObj) return;
                 container.innerHTML += `
-                    <div class="zigzag-row" onclick="navigateToProduct(${item.bookObj.id})">
+                    <div class="zigzag-row" onclick="navigateToProduct(${bookObj.id}, 'nuestros-libros')">
                         <div class="zigzag-img-box">
-                            <img src="${item.bookObj.cover}" alt="${item.title}">
+                            <img src="${bookObj.cover}" alt="${item.title}">
                         </div>
                         <div class="zigzag-text-box">
                             <div class="zigzag-label">${item.title}</div>
@@ -1727,42 +1605,6 @@
             });
         }
 
-        function renderLevelPage(levelKey) {
-            const levelNames = {
-                'jardin': 'inicial',
-                'primaria': 'primaria',
-                'secundaria': 'secundaria'
-            };
-
-            const displayTitle = levelNames[levelKey] || 'libros';
-            document.getElementById('levelPageTitle').innerText = `libros de ${displayTitle}`;
-
-            const container = document.getElementById('levelBooksContainer');
-            container.innerHTML = '';
-
-            const levelBooks = books.filter(b => b.levelKey === levelKey);
-
-            levelBooks.forEach((book, index) => {
-                const isReverse = index % 2 !== 0 ? 'reverse' : '';
-                container.innerHTML += `
-                    <div class="level-book-row ${isReverse}">
-                        <div class="level-book-img-col">
-                            <img src="${book.cover}" alt="${book.title}">
-                        </div>
-                        <div class="level-book-info-col">
-                            <h2 class="level-book-name">${book.title}</h2>
-                            <p class="level-book-summary">${book.description}</p>
-                            <button class="btn-ver-mas" onclick="navigateToProduct(${book.id})">VER MÁS</button>
-                        </div>
-                    </div>
-                `;
-            });
-
-            hideAllViews();
-            document.getElementById('levelView').style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
         function renderCatalogBooks(listToRender) {
             const container = document.getElementById('books-grid-container');
             if(!container) return;
@@ -1771,7 +1613,7 @@
             listToRender.forEach((book, index) => {
                 const pastelClass = pastelClasses[index % pastelClasses.length];
                 container.innerHTML += `
-                    <div class="book-card" onclick="navigateToProduct(${book.id})">
+                    <div class="book-card" onclick="navigateToProduct(${book.id}, 'catalogo')">
                         <div class="card-top-pastel ${pastelClass}">
                             <span class="card-badge">NIVEL: ${book.levelLabel}</span>
                             <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
@@ -1789,8 +1631,9 @@
             });
         }
 
-        function navigateToProduct(bookId) {
-            window.location.hash = `libro=${bookId}`;
+        function navigateToProduct(bookId, origin) {
+            const from = origin || 'catalogo';
+            window.location.hash = `libro=${bookId}&from=${from}`;
         }
 
         function goBack() {
@@ -1810,7 +1653,7 @@
             }
         }
 
-        function renderProductDetail(bookId) {
+        function renderProductDetail(bookId, fromOrigin) {
             const book = books.find(b => b.id == bookId);
             if (!book) {
                 showHomeView();
@@ -1818,13 +1661,19 @@
             }
 
             document.getElementById('breadcrumbTitle').innerText = book.title;
-            const levelLink = document.getElementById('breadcrumbLevelLink');
-            levelLink.innerText = `Catálogo Educativo`;
-            levelLink.onclick = () => filterCatalog(book.levelKey);
+
+            const navWrapper = document.getElementById('breadcrumbNavWrapper');
+            if (fromOrigin === 'nuestros-libros') {
+                navWrapper.innerHTML = `<span>Nuestros libros</span> <span>></span> <span>${book.levelLabel}</span> <span>></span> `;
+            } else {
+                // Si viene del catálogo general, se deja vacío para que solo se vea "Volver > (Nombre del libro)"
+                navWrapper.innerHTML = `<span></span> `;
+            }
 
             document.getElementById('detailTitle').innerText = book.title;
             document.getElementById('detailDesc').innerText = book.description;
             document.getElementById('fichaNivel').innerText = book.levelLabel;
+            document.getElementById('fichaFecha').innerText = book.fecha;
             document.getElementById('detailImg').src = book.cover;
 
             const galleryContainer = document.getElementById('galleryThumbsContainer');
@@ -1854,7 +1703,7 @@
             otherBooks.forEach((otherBook, index) => {
                 const pastelClass = pastelClasses[index % pastelClasses.length];
                 relatedContainer.innerHTML += `
-                    <div class="book-card" onclick="navigateToProduct(${otherBook.id})">
+                    <div class="book-card" onclick="navigateToProduct(${otherBook.id}, '${fromOrigin || 'catalogo'}')">
                         <div class="card-top-pastel ${pastelClass}">
                             <span class="card-badge">NIVEL: ${otherBook.levelLabel}</span>
                             <img src="${otherBook.cover}" alt="${otherBook.title}" class="card-book-img" loading="lazy">
@@ -1878,12 +1727,11 @@
 
         function checkRoute() {
             const hash = window.location.hash;
-            if (hash.startsWith('#nivel=')) {
-                const levelKey = hash.replace('#nivel=', '');
-                renderLevelPage(levelKey);
-            } else if (hash.startsWith('#libro=')) {
-                const bookId = hash.replace('#libro=', '');
-                renderProductDetail(bookId);
+            if (hash.startsWith('#libro=')) {
+                const params = new URLSearchParams(hash.replace('#libro=', '?id='));
+                const bookId = params.get('id');
+                const fromOrigin = params.get('from') || 'catalogo';
+                renderProductDetail(bookId, fromOrigin);
             } else if (hash === '#nosotros') {
                 showAboutView();
             } else if (hash === '#nuestros-libros') {
