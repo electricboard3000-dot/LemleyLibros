@@ -238,7 +238,7 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* SECCIÓN DE NIVEL EDUCATIVO (HOME) */
+        /* SECCIÓN DE NIVEL EDUCATIVO (FUNCIONAN COMO FILTRO PRINCIPAL) */
         .levels-section {
             max-width: 1280px;
             margin: 2.5rem auto;
@@ -273,6 +273,11 @@
         .level-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 30px rgba(43, 177, 177, 0.15);
+        }
+
+        .level-card.active-filter {
+            border-color: var(--brand-orange);
+            box-shadow: 0 12px 30px rgba(243, 112, 33, 0.2);
         }
 
         .level-card-body {
@@ -322,7 +327,7 @@
             line-height: 1.45;
         }
 
-        /* SECCIÓN CATÁLOGO GLOBAL */
+        /* SECCIÓN CATÁLOGO GLOBAL CON BOTÓN "TODOS LOS LIBROS" */
         .catalog-container {
             max-width: 1280px;
             margin: 0 auto;
@@ -331,6 +336,11 @@
 
         .catalog-header-bar {
             margin-bottom: 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .catalog-title {
@@ -338,6 +348,24 @@
             font-weight: 700;
             color: var(--text-main);
             font-family: 'Playfair Display', serif;
+        }
+
+        .btn-todos-libros {
+            background-color: var(--brand-dark);
+            color: #ffffff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .btn-todos-libros:hover {
+            background-color: var(--brand-orange);
+            transform: translateY(-2px);
         }
 
         .books-grid {
@@ -392,12 +420,12 @@
             letter-spacing: 0.5px;
         }
 
+        /* IMAGEN CUADRADA / PROPORCIONADA EN LAS TARJETAS */
         .card-book-img {
-            height: 190px;
-            width: auto;
-            max-width: 140px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
-            border-radius: 6px;
+            border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.18);
         }
 
@@ -488,7 +516,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
-        /* VISTA NUESTROS LIBROS (ZIGZAG CON TÍTULO DE NIVEL Y BOTÓN VER MÁS) */
+        /* VISTA NUESTROS LIBROS */
         #booksView {
             max-width: 1100px;
             margin: 3rem auto 5rem;
@@ -535,12 +563,17 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             flex-shrink: 0;
             background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .zigzag-img-box img {
-            width: 100%;
-            height: 100%;
+            width: 220px;
+            height: 220px;
             object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             transition: transform 0.3s ease;
         }
 
@@ -646,9 +679,9 @@
         }
 
         .level-book-img-col img {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 12px 30px rgba(0,0,0,0.12);
         }
@@ -848,7 +881,7 @@
             padding: 1rem 0;
         }
 
-        /* 6. VISTA DETALLE DE PRODUCTO */
+        /* 6. VISTA DETALLE DE PRODUCTO (IMAGEN CUADRADA PROPORCIONADA) */
         #productView {
             max-width: 1200px;
             margin: 3rem auto 5rem;
@@ -893,12 +926,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 520px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            max-height: 450px;
         }
 
         .detail-book-img {
             width: 100%;
-            height: 480px;
+            height: 100%;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
@@ -1286,10 +1321,11 @@
             </div>
         </div>
 
+        <!-- BLOQUES DE NIVEL EDUCATIVO QUE FUNCIONAN COMO FILTROS -->
         <section class="levels-section">
             <h2 class="levels-heading">Nivel Educativo</h2>
             <div class="levels-grid">
-                <div class="level-card" onclick="openLevelPage('jardin')">
+                <div class="level-card" id="cardFilterInitial" onclick="filterCatalog('jardin')">
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Inicial">
@@ -1301,7 +1337,7 @@
                     </div>
                 </div>
 
-                <div class="level-card" onclick="openLevelPage('primaria')">
+                <div class="level-card" id="cardFilterPrimary" onclick="filterCatalog('primaria')">
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Primaria">
@@ -1313,7 +1349,7 @@
                     </div>
                 </div>
 
-                <div class="level-card" onclick="openLevelPage('secundaria')">
+                <div class="level-card" id="cardFilterSecondary" onclick="filterCatalog('secundaria')">
                     <div class="level-card-body">
                         <div class="level-img-box">
                             <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Secundaria">
@@ -1327,9 +1363,11 @@
             </div>
         </section>
 
+        <!-- SECCIÓN DE NUESTROS LIBROS CON EL BOTÓN "TODOS LOS LIBROS" -->
         <main id="catalogo" class="catalog-container">
             <div class="catalog-header-bar">
-                <h2 class="catalog-title" id="catalogTitleText">Nuestros libros</h2>
+                <h2 class="catalog-title">Nuestros libros</h2>
+                <button class="btn-todos-libros" onclick="filterCatalog('all')">Todos los libros</button>
             </div>
 
             <div class="books-grid" id="books-grid-container"></div>
@@ -1378,15 +1416,7 @@
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Escríbenos por WhatsApp
             </a>
         </div>
-
-        <h2 class="bio-section-title">Biografía</h2>
-        
-        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Biografía Lemley Libros" class="bio-image-provisional">
-
         <div class="bio-text-content">
-            <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
-            <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
-            <p>Seguimos escribiendo y expandiendo este hermoso sueño literario, llevando magia a cada rincón y acompañando a las nuevas generaciones de lectores en su camino.</p>
         </div>
 
         <div class="bio-multimedia-container">
@@ -1418,7 +1448,7 @@
             <!-- GALERÍA VERTICAL DE MINIATURAS -->
             <div class="detail-gallery-thumbs" id="galleryThumbsContainer"></div>
 
-            <!-- CONTENEDOR BLANCO CON LA FOTO PRINCIPAL -->
+            <!-- CONTENEDOR BLANCO CON LA FOTO PRINCIPAL CUADRADA / PROPORCIONADA -->
             <div class="detail-main-img-card">
                 <img id="detailImg" src="" alt="Portada del libro" class="detail-book-img">
             </div>
@@ -1426,7 +1456,7 @@
             <!-- COLUMNA DERECHA CON INFORMACIÓN -->
             <div class="detail-content-side">
                 <div class="detail-breadcrumb">
-                    <a onclick="showHomeView(); return false;">Inicio</a> 
+                    <a onclick="goBack(); return false;"><i class="fa-solid fa-arrow-left"></i> Volver</a> 
                     <span>></span> 
                     <a id="breadcrumbLevelLink">Catálogo Educativo</a> 
                     <span>></span> 
@@ -1517,7 +1547,6 @@
 
         const pastelClasses = ['pastel-peach', 'pastel-green', 'pastel-yellow', 'pastel-purple', 'pastel-blue'];
 
-        /* LISTA COMPLETA RESTAURADA DE TODOS LOS LIBROS DEL CATÁLOGO */
         const books = [
             { 
                 id: 1, 
@@ -1617,22 +1646,22 @@
         }
 
         function showHomeView() {
-            history.pushState("", document.title, window.location.pathname + window.location.search);
+            window.location.hash = "";
             hideAllViews();
             document.getElementById('homeView').style.display = 'block';
-            renderAllHomeBooks();
+            filterCatalog('all');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showAboutView() {
-            history.pushState("", document.title, window.location.pathname + window.location.search);
+            window.location.hash = "nosotros";
             hideAllViews();
             document.getElementById('aboutView').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function showBooksView() {
-            history.pushState("", document.title, window.location.pathname + window.location.search);
+            window.location.hash = "nuestros-libros";
             hideAllViews();
             document.getElementById('booksView').style.display = 'block';
             renderBooksSectionZigzag();
@@ -1640,17 +1669,36 @@
         }
 
         function showContactView() {
-            history.pushState("", document.title, window.location.pathname + window.location.search);
+            window.location.hash = "contacto";
             hideAllViews();
             document.getElementById('contactView').style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openLevelPage(levelKey) {
-            window.location.hash = `nivel=${levelKey}`;
+        /* FILTRAR CATÁLOGO DESDE LOS 3 BLOQUES GRANDES DE NIVEL O EL BOTÓN "TODOS LOS LIBROS" */
+        function filterCatalog(levelKey) {
+            document.querySelectorAll('.level-card').forEach(card => card.classList.remove('active-filter'));
+
+            let listToRender = books;
+            if (levelKey === 'jardin') {
+                listToRender = books.filter(b => b.levelKey === 'jardin');
+                document.getElementById('cardFilterInitial').classList.add('active-filter');
+            } else if (levelKey === 'primaria') {
+                listToRender = books.filter(b => b.levelKey === 'primaria');
+                document.getElementById('cardFilterPrimary').classList.add('active-filter');
+            } else if (levelKey === 'secundaria') {
+                listToRender = books.filter(b => b.levelKey === 'secundaria');
+                document.getElementById('cardFilterSecondary').classList.add('active-filter');
+            }
+
+            renderCatalogBooks(listToRender);
+
+            const catalogoEl = document.getElementById('catalogo');
+            if(catalogoEl && levelKey !== 'all') {
+                catalogoEl.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        /* VISTA DE NUESTROS LIBROS: TRES FILAS DESTACADAS EN ZIGZAG QUE LLEVAN AL LIBRO */
         function renderBooksSectionZigzag() {
             const container = document.getElementById('booksZigzagContainer');
             if (!container) return;
@@ -1715,12 +1763,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function renderAllHomeBooks() {
+        function renderCatalogBooks(listToRender) {
             const container = document.getElementById('books-grid-container');
             if(!container) return;
             container.innerHTML = '';
 
-            books.forEach((book, index) => {
+            listToRender.forEach((book, index) => {
                 const pastelClass = pastelClasses[index % pastelClasses.length];
                 container.innerHTML += `
                     <div class="book-card" onclick="navigateToProduct(${book.id})">
@@ -1743,6 +1791,10 @@
 
         function navigateToProduct(bookId) {
             window.location.hash = `libro=${bookId}`;
+        }
+
+        function goBack() {
+            window.history.back();
         }
 
         function changeMainImage(imgUrl, element) {
@@ -1768,7 +1820,7 @@
             document.getElementById('breadcrumbTitle').innerText = book.title;
             const levelLink = document.getElementById('breadcrumbLevelLink');
             levelLink.innerText = `Catálogo Educativo`;
-            levelLink.onclick = () => openLevelPage(book.levelKey);
+            levelLink.onclick = () => filterCatalog(book.levelKey);
 
             document.getElementById('detailTitle').innerText = book.title;
             document.getElementById('detailDesc').innerText = book.description;
@@ -1795,7 +1847,6 @@
 
             document.getElementById('detailWhatsappLink').href = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
 
-            /* Carga todos los demás libros disponibles en el slider inferior */
             const relatedContainer = document.getElementById('related-books-container');
             relatedContainer.innerHTML = '';
             const otherBooks = books.filter(b => b.id != bookId);
@@ -1833,8 +1884,16 @@
             } else if (hash.startsWith('#libro=')) {
                 const bookId = hash.replace('#libro=', '');
                 renderProductDetail(bookId);
+            } else if (hash === '#nosotros') {
+                showAboutView();
+            } else if (hash === '#nuestros-libros') {
+                showBooksView();
+            } else if (hash === '#contacto') {
+                showContactView();
             } else {
-                showHomeView();
+                hideAllViews();
+                document.getElementById('homeView').style.display = 'block';
+                filterCatalog('all');
             }
         }
 
@@ -1842,13 +1901,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             renderHeroBanner();
-            if (window.location.hash) {
-                checkRoute();
-            } else {
-                history.pushState("", document.title, window.location.pathname + window.location.search);
-                showHomeView();
-                window.scrollTo({ top: 0, behavior: 'instant' });
-            }
+            checkRoute();
         });
     </script>
 </body>
