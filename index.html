@@ -115,12 +115,12 @@
             display: block;
         }
 
-        /* BANNER SLIDER CON LA MEDIDA EXACTA SOLICITADA */
+        /* BANNER SLIDER MÁS GRANDE Y DESTACADO */
         .hero-banner-slider {
             position: relative;
             width: 100%;
-            height: calc(100vh - 230px);
-            min-height: 450px;
+            height: 580px;
+            max-height: 70vh;
             background-color: var(--brand-dark);
             overflow: hidden;
             display: flex;
@@ -172,7 +172,7 @@
         }
 
         .hero-title-large {
-            font-size: 3.5rem;
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
             font-weight: 700;
             font-style: normal;
             line-height: 1.1;
@@ -248,7 +248,7 @@
         .levels-heading {
             text-align: center;
             color: var(--text-main);
-            font-size: 2.2rem;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
             font-weight: 700;
             margin-bottom: 1.8rem;
         }
@@ -339,7 +339,7 @@
         }
 
         .catalog-title {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 3.5vw, 2.5rem);
             font-weight: 700;
             color: var(--text-main);
         }
@@ -480,15 +480,15 @@
             gap: 0.4rem;
         }
 
-        /* VISTA DE NOSOTROS (TEXTO FUERA DE CAJA Y FLUIDO) */
+        /* VISTA DE NOSOTROS */
         #aboutView {
-            max-width: 1000px;
+            max-width: 1080px;
             margin: 3rem auto 5rem;
             padding: 0 1.5rem;
         }
 
         .nosotros-main-title {
-            font-size: 3.2rem;
+            font-size: clamp(2.5rem, 4vw, 3.2rem);
             font-weight: 800;
             color: var(--text-main);
             margin-bottom: 0.2rem;
@@ -523,15 +523,15 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
-        /* VISTA DE NUESTROS LIBROS - ZIGZAG ADAPTADO CON DESCRIPCIONES */
+        /* VISTA DE NUESTROS LIBROS */
         #booksView {
-            max-width: 1000px;
+            max-width: 1080px;
             margin: 3rem auto 5rem;
             padding: 0 1.5rem;
         }
 
         .libros-main-title {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
             font-weight: 800;
             color: #a82ba1;
             margin-bottom: 2.5rem;
@@ -609,9 +609,9 @@
             line-height: 1.6;
         }
 
-        /* VISTA DE CONTACTO (INTACTA) */
+        /* VISTA DE CONTACTO */
         #contactView {
-            max-width: 1000px;
+            max-width: 1080px;
             margin: 3rem auto 5rem;
             padding: 0 1.5rem;
         }
@@ -646,7 +646,7 @@
 
         .contact-heading-main {
             text-align: center;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 3.5vw, 2.8rem);
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 0.5rem;
@@ -1123,9 +1123,15 @@
             border-color: var(--brand-orange);
         }
 
+        /* MEDIA QUERIES PARA ADAPTABILIDAD */
+        @media (min-width: 1800px) {
+            .hero-banner-slider { height: 640px; }
+            .books-grid { grid-template-columns: repeat(4, 1fr); }
+            .catalog-container, .levels-section, .nav-container, .footer-content { max-width: 1440px; }
+        }
+
         @media (max-width: 992px) {
-            .hero-banner-slider { height: 450px; }
-            .hero-title-large { font-size: 2.2rem; }
+            .hero-banner-slider { height: 460px; }
             .levels-grid { grid-template-columns: 1fr; gap: 1rem; }
             .detail-layout-grid { grid-template-columns: 1fr; gap: 2rem; }
             .books-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1141,11 +1147,7 @@
         }
 
         @media (max-width: 640px) {
-            .hero-banner-slider { 
-                height: calc(100vh - 120px) !important;
-                min-height: 420px !important;
-            }
-            .hero-title-large { font-size: 1.6rem; }
+            .hero-banner-slider { height: 360px; }
             .nav-container { justify-content: center; padding: 0.8rem 1rem; }
             .nav-links { gap: 0.8rem; justify-content: center; }
             .nav-links a { font-size: 0.95rem; font-weight: 700; }
@@ -1288,7 +1290,6 @@
             <div class="catalog-header-bar">
                 <h2 class="catalog-title" id="catalogTitleText">Nuestros libros</h2>
                 <div class="filter-tabs">
-                    <!-- BOTÓN "TODOS LOS LIBROS" RESTABLECIDO -->
                     <button class="tab-btn" id="btnShowAll" onclick="setFilterLevel('all')">Todos los libros</button>
                 </div>
             </div>
@@ -1297,7 +1298,7 @@
         </main>
     </div>
 
-    <!-- 2. VISTA NOSOTROS (TEXTO FUERA DE CAJA) -->
+    <!-- 2. VISTA NOSOTROS -->
     <div id="aboutView">
         <h1 class="nosotros-main-title">NOSOTROS</h1>
         <div class="nosotros-subtitle">Quiénes somos</div>
@@ -1310,12 +1311,11 @@
         <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Foto Biografía Lemley Libros" class="nosotros-photo">
     </div>
 
-    <!-- 3. VISTA NUESTROS LIBROS (ZIGZAG CON DESCRIPCIONES) -->
+    <!-- 3. VISTA NUESTROS LIBROS -->
     <div id="booksView">
         <h1 class="libros-main-title">nuestros libros</h1>
 
         <div class="books-zigzag-container">
-            <!-- FILA 1: FOTO A LA IZQUIERDA | TEXTO INICIAL A LA DERECHA -->
             <div class="zigzag-row" onclick="scrollToCatalogSection('jardin')">
                 <div class="zigzag-img-box">
                     <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Libro Inicial">
@@ -1326,7 +1326,6 @@
                 </div>
             </div>
 
-            <!-- FILA 2: TEXTO PRIMARIA A LA IZQUIERDA | FOTO A LA DERECHA -->
             <div class="zigzag-row" onclick="scrollToCatalogSection('primaria')">
                 <div class="zigzag-text-box" style="text-align: right;">
                     <div class="zigzag-label">Primaria</div>
@@ -1337,7 +1336,6 @@
                 </div>
             </div>
 
-            <!-- FILA 3: FOTO A LA IZQUIERDA | TEXTO SECUNDARIA A LA DERECHA -->
             <div class="zigzag-row" onclick="scrollToCatalogSection('secundaria')">
                 <div class="zigzag-img-box">
                     <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=80" alt="Libro Secundaria">
@@ -1350,7 +1348,7 @@
         </div>
     </div>
 
-    <!-- 4. VISTA CONTACTANOS (INTACTA) -->
+    <!-- 4. VISTA CONTACTANOS -->
     <div id="contactView">
         <div class="contact-social-bar">
             <a href="https://www.facebook.com/share/1JUY2H8ZLn/" target="_blank" rel="noopener noreferrer" class="contact-social-icon" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
