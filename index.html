@@ -1595,7 +1595,7 @@
         }
 
         function showBooksView() {
-            window.location.hash = "nuestros-libros";
+            window.location.hash = "Nuestros-libros";
             hideAllViews();
             document.getElementById('booksView').style.display = 'block';
             renderBooksSectionZigzag();
@@ -1644,7 +1644,7 @@
                 if(!bookObj) bookObj = books[0]; 
 
                 container.innerHTML += `
-                    <div class="zigzag-row" onclick="navigateToProduct(${bookObj.id}, 'nuestros-libros')">
+                    <div class="zigzag-row" onclick="navigateToProduct(${bookObj.id}, 'Nuestros-libros')">
                         <div class="zigzag-img-box">
                             <img src="${bookObj.cover}" alt="${item.title}">
                         </div>
