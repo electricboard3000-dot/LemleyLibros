@@ -237,42 +237,44 @@
             100% { transform: translateX(-50%); }
         }
 
-        /* SECCIÓN DE NIVEL EDUCATIVO (FILTROS) */
+        /* SECCIÓN DE NIVEL EDUCATIVO */
         .levels-section {
             max-width: 1280px;
-            margin: 2.5rem auto;
+            margin: 3rem auto 2rem;
             padding: 0 1.5rem;
         }
 
         .levels-heading {
             text-align: center;
             color: var(--text-main);
-            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-size: clamp(2.2rem, 3.8vw, 2.8rem);
             font-weight: 700;
-            margin-bottom: 1.8rem;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
         }
 
+        /* En Desktop: Grid de 3 columnas */
         .levels-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.8rem;
+            gap: 1.5rem;
         }
 
         .level-card {
             background-color: var(--card-white);
             border: 2px solid #2bb1b1;
-            border-radius: 20px;
-            padding: 1.5rem;
+            border-radius: 18px;
+            padding: 1.1rem 1.2rem;
             display: flex;
             flex-direction: column;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
         }
 
         .level-card:hover, .level-card.active-filter {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(43, 177, 177, 0.25);
-            background-color: #f0fafa;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px rgba(43, 177, 177, 0.22);
+            background-color: #f4fbfb;
         }
 
         .level-card-body {
@@ -283,12 +285,12 @@
         }
 
         .level-img-box {
-            width: 95px;
-            height: 110px;
+            width: 70px;
+            height: 70px;
             border-radius: 12px;
             overflow: hidden;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .level-img-box img {
@@ -311,21 +313,22 @@
 
         .level-card-title {
             color: #2bb1b1;
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.15rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .level-card-desc {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
-            line-height: 1.45;
+            line-height: 1.4;
         }
 
         /* SECCIÓN CATÁLOGO GLOBAL */
         .catalog-container {
             max-width: 1280px;
-            margin: 2.5rem auto;
+            margin: 2rem auto;
             padding: 1.5rem 2rem 4rem;
         }
 
@@ -1110,10 +1113,29 @@
             border-color: var(--brand-orange);
         }
 
-        /* MEDIA QUERIES CORREGIDOS PARA MÓVIL */
+        /* MEDIA QUERIES PARA MÓVIL (CONVIERTE LOS NIVELES EN SLIDER HORIZONTAL) */
         @media (max-width: 992px) {
             .hero-banner-slider { height: 460px; }
-            .levels-grid { grid-template-columns: 1fr; gap: 1rem; }
+            
+            /* Transformación a Slider en Móvil */
+            .levels-grid {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-behavior: smooth;
+                gap: 1rem;
+                padding: 0.5rem 0.2rem 1.2rem;
+                scrollbar-width: none; /* Oculta scrollbar en Firefox */
+                -webkit-overflow-scrolling: touch;
+            }
+            .levels-grid::-webkit-scrollbar {
+                display: none; /* Oculta scrollbar en Chrome/Safari */
+            }
+            .level-card {
+                flex: 0 0 280px; /* Ancho fijo para cada tarjeta en el slider móvil */
+                min-width: 280px;
+            }
+
             .detail-layout-grid { 
                 grid-template-columns: 1fr; 
                 gap: 1.5rem; 
@@ -1153,7 +1175,6 @@
                 white-space: nowrap;
             }
 
-            /* FIX PARA LA VISTA ZIGZAG EN MÓVIL (SÓLO SE APILA EN PANTALLAS PEQUEÑAS) */
             .zigzag-row, .zigzag-row:nth-child(even) {
                 flex-direction: column !important;
                 gap: 1.5rem !important;
@@ -1232,10 +1253,11 @@
             </div>
         </div>
 
-        <!-- SECCIÓN DE NIVEL EDUCATIVO (FILTROS) -->
+        <!-- SECCIÓN DE NIVEL EDUCATIVO (GRID EN PC / SLIDER EN MÓVIL) -->
         <section class="levels-section">
             <h2 class="levels-heading">Nivel Educativo</h2>
             <div class="levels-grid">
+                <!-- INICIAL -->
                 <div class="level-card" id="card-jardin" onclick="filterCatalog('jardin')">
                     <div class="level-card-body">
                         <div class="level-img-box">
@@ -1248,6 +1270,7 @@
                     </div>
                 </div>
 
+                <!-- PRIMARIA -->
                 <div class="level-card" id="card-primaria" onclick="filterCatalog('primaria')">
                     <div class="level-card-body">
                         <div class="level-img-box">
@@ -1260,6 +1283,7 @@
                     </div>
                 </div>
 
+                <!-- SECUNDARIA -->
                 <div class="level-card" id="card-secundaria" onclick="filterCatalog('secundaria')">
                     <div class="level-card-body">
                         <div class="level-img-box">
@@ -1502,7 +1526,7 @@
                 levelKey: 'secundaria', 
                 levelLabel: 'SECUNDARIA', 
                 title: 'Cuentos fantásticos', 
-                description: 'Son 20 cuentos adaptados de diferentes países.Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto.', 
+                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto.', 
                 fecha: 'Febrero 2026',
                 cover: sampleCovers[4],
                 gallery: [sampleCovers[4], sampleCovers[5], sampleCovers[0], sampleCovers[1]]
@@ -1529,10 +1553,10 @@
             },
             { 
                 id: 8, 
-                levelKey: 'secundaria', 
-                levelLabel: 'SECUNDARIA', 
+                levelKey: 'ingles', 
+                levelLabel: 'INGLÉS', 
                 title: 'Libro 8', 
-                description: 'Una fascinante narrativa juvenil repleta de misterio, lecciones personales y reflexiones sobre el futuro.', 
+                description: 'Una fascinante narrativa interactiva con lecciones de vocabulario para dominar el inglés de manera sencilla.', 
                 fecha: '20 de Marzo de 2026',
                 cover: sampleCovers[1],
                 gallery: [sampleCovers[1], sampleCovers[3], sampleCovers[5]]
@@ -1640,8 +1664,12 @@
             ];
 
             featuredBooks.forEach((item) => {
-                let bookObj = books.find(b => b.levelKey === item.levelKey);
-                if(!bookObj) bookObj = books[0]; 
+                let bookObj;
+                if (item.levelKey === 'ingles') {
+                    bookObj = books.find(b => b.id === 7) || books[0];
+                } else {
+                    bookObj = books.find(b => b.levelKey === item.levelKey) || books[0];
+                }
 
                 container.innerHTML += `
                     <div class="zigzag-row" onclick="navigateToProduct(${bookObj.id}, 'nuestros-libros')">
@@ -1719,7 +1747,7 @@
             if (fromOrigin === 'nuestros-libros') {
                 navWrapper.innerHTML = ` <span>></span> <span>Nuestros libros</span> <span>></span> <span>${book.levelLabel}</span> <span>></span> `;
             } else {
-                navWrapper.innerHTML = ` <span>></span> `;
+                navWrapper.innerHTML = ` <span>></span> <span>Catálogo</span> <span>></span> `;
             }
 
             document.getElementById('detailTitle').innerText = book.title;
