@@ -1137,20 +1137,22 @@
 
         @media (max-width: 768px) {
             .nav-container {
-                flex-direction: column;
+                flex-direction: row; /* Forzamos que se mantenga en una sola fila */
+                justify-content: space-between;
                 align-items: center;
-                padding: 1.2rem 1rem;
-                gap: 0.8rem;
+                padding: 0.6rem 0.8rem;
+                gap: 0.5rem;
+            }
+            .brand-logo-link {
+                font-size: 1.1rem; /* Logo ligeramente más compacto */
             }
             .nav-links {
-                gap: 1.5rem;
-                justify-content: center;
-                width: 100%;
-                flex-wrap: wrap; /* Permite que si no entra, baje con orden sin solaparse */
-                padding-bottom: 0.2rem;
+                gap: 0.8rem; /* Menor espacio entre enlaces para que entren */
+                justify-content: flex-end;
+                flex-wrap: nowrap;
             }
             .nav-links a {
-                font-size: 0.95rem; /* Letra un poco más compacta para móvil */
+                font-size: 0.78rem; /* Letra un poco más pequeña para que quepan holgados en la línea */
                 white-space: nowrap;
             }
 
