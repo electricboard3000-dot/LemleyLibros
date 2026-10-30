@@ -62,7 +62,7 @@
         .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0.8rem 1.5rem;
+            padding: 0.9rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -510,7 +510,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
 
-        /* VISTA NUESTROS LIBROS */
+        /* VISTA NUESTROS LIBROS (ZIGZAG LIMPIO) */
         #booksView {
             max-width: 1100px;
             margin: 3rem auto 5rem;
@@ -529,16 +529,18 @@
         .books-zigzag-container {
             display: flex;
             flex-direction: column;
-            gap: 3.5rem;
+            gap: 4rem;
         }
 
         .zigzag-row {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            justify-content: space-between;
+            gap: 3.5rem;
             cursor: pointer;
             background-color: transparent;
             transition: transform 0.25s ease;
+            width: 100%;
         }
 
         .zigzag-row:hover {
@@ -551,45 +553,41 @@
 
         .zigzag-img-box {
             width: 45%;
-            height: 320px;
-            border-radius: 18px;
+            height: 420px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             flex-shrink: 0;
-            background: #fff;
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         .zigzag-img-box img {
-            width: 220px;
-            height: 220px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-radius: 16px;
             transition: transform 0.3s ease;
         }
 
         .zigzag-row:hover .zigzag-img-box img {
-            transform: scale(1.04);
+            transform: scale(1.03);
         }
 
         .zigzag-text-box {
-            width: 55%;
+            width: 50%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 1rem;
+            align-items: flex-start;
         }
 
         .zigzag-row:nth-child(even) .zigzag-text-box {
+            align-items: flex-end;
             text-align: right;
-        }
-
-        .zigzag-row:nth-child(even) .btn-ver-mas-z {
-            margin-left: auto;
-            margin-right: 0;
         }
 
         .zigzag-label {
@@ -602,7 +600,7 @@
         }
 
         .zigzag-desc {
-            font-size: 1.02rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             line-height: 1.7;
         }
@@ -1139,8 +1137,8 @@
             .nav-container {
                 flex-direction: column;
                 align-items: center;
-                padding: 1.2rem 1rem; /* Margen interior generoso arriba y abajo para que la franja naranja crezca bien */
-                gap: 0.8rem; /* Espacio limpio entre el logo y los enlaces */
+                padding: 1.2rem 1rem;
+                gap: 0.8rem;
             }
             .nav-links {
                 flex-direction: row;
@@ -1151,11 +1149,11 @@
                 padding: 0;
             }
             .nav-links a {
-                font-size: 0.85rem; /* Tamaño optimizado para que los tres entren holgados en su propia línea */
+                font-size: 0.85rem;
                 white-space: nowrap;
             }
 
-            /* FIX PARA LA VISTA ZIGZAG EN MÓVIL */
+            /* FIX PARA LA VISTA ZIGZAG EN MÓVIL (SÓLO SE APILA EN PANTALLAS PEQUEÑAS) */
             .zigzag-row, .zigzag-row:nth-child(even) {
                 flex-direction: column !important;
                 gap: 1.5rem !important;
@@ -1163,7 +1161,7 @@
             }
             .zigzag-img-box {
                 width: 100% !important;
-                height: 260px !important;
+                height: 320px !important;
             }
             .zigzag-text-box, .zigzag-row:nth-child(even) .zigzag-text-box {
                 width: 100% !important;
@@ -1174,32 +1172,6 @@
                 margin: 0 auto !important;
             }
         }
-
-        @media (max-width: 640px) {
-            .hero-banner-slider { height: 360px; }
-            .books-grid { grid-template-columns: 1fr; }
-            .detail-title-main { font-size: 2.2rem; }
-            .price-action-box { flex-direction: column; gap: 1rem; text-align: center; }
-        }
-
-            /* FIX PARA LA VISTA ZIGZAG EN MÓVIL */
-            .zigzag-row, .zigzag-row:nth-child(even) {
-                flex-direction: column !important;
-                gap: 1.5rem !important;
-                text-align: center !important;
-            }
-            .zigzag-img-box {
-                width: 100% !important;
-                height: 260px !important;
-            }
-            .zigzag-text-box, .zigzag-row:nth-child(even) .zigzag-text-box {
-                width: 100% !important;
-                text-align: center !important;
-                align-items: center !important;
-            }
-            .btn-ver-mas-z, .zigzag-row:nth-child(even) .btn-ver-mas-z {
-                margin: 0 auto !important;
-            }
 
         @media (max-width: 640px) {
             .hero-banner-slider { height: 360px; }
@@ -1316,7 +1288,7 @@
     <!-- 2. VISTA NOSOTROS -->
     <div id="aboutView">
         <h1 class="nosotros-main-title">NOSOTROS</h1>
-        <div class="nosotros-subtitle">Quiénes somos</div>
+        <div class="nosotros-subtitle">¿Quiénes somos?</div>
         
         <div class="nosotros-text-content">
             <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
@@ -1328,7 +1300,7 @@
 
     <!-- 3. VISTA NUESTROS LIBROS (ZIGZAG) -->
     <div id="booksView">
-        <h1 class="libros-main-title">nuestros libros</h1>
+        <h1 class="libros-main-title">Nuestros libros</h1>
         <div class="books-zigzag-container" id="booksZigzagContainer"></div>
     </div>
 
@@ -1544,6 +1516,26 @@
                 fecha: '5 de Marzo de 2026',
                 cover: sampleCovers[5],
                 gallery: [sampleCovers[5], sampleCovers[4], sampleCovers[2], sampleCovers[3]]
+            },
+            { 
+                id: 7, 
+                levelKey: 'ingles', 
+                levelLabel: 'INGLÉS', 
+                title: 'Libro 7', 
+                description: 'Un relato emocionante sobre el valor del trabajo en equipo y el aprendizaje del idioma inglés de forma dinámica.', 
+                fecha: '12 de Marzo de 2026',
+                cover: sampleCovers[0],
+                gallery: [sampleCovers[0], sampleCovers[2], sampleCovers[4]]
+            },
+            { 
+                id: 8, 
+                levelKey: 'secundaria', 
+                levelLabel: 'SECUNDARIA', 
+                title: 'Libro 8', 
+                description: 'Una fascinante narrativa juvenil repleta de misterio, lecciones personales y reflexiones sobre el futuro.', 
+                fecha: '20 de Marzo de 2026',
+                cover: sampleCovers[1],
+                gallery: [sampleCovers[1], sampleCovers[3], sampleCovers[5]]
             }
         ];
 
@@ -1643,12 +1635,14 @@
             const featuredBooks = [
                 { levelKey: 'jardin', title: 'libros de inicial', desc: 'Historias cautivadoras que desarrollan la comprensión lectora, la confianza y los valores de verdadera amistad.' },
                 { levelKey: 'primaria', title: 'libros de primaria', desc: 'Un mágico recorrido lleno de colores y personajes entrañables para los primeros años escolares.' },
-                { levelKey: 'secundaria', title: 'libros de secundaria', desc: 'Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.' }
+                { levelKey: 'secundaria', title: 'libros de secundaria', desc: 'Tramas profundas, aventuras y reflexiones pensadas para acompañar y apasionar a los jóvenes lectores.' },
+                { levelKey: 'ingles', title: 'libros de inglés', desc: 'Material didáctico interactivo diseñado específicamente para el aprendizaje del idioma inglés de forma dinámica y divertida.' }
             ];
 
             featuredBooks.forEach((item) => {
-                const bookObj = books.find(b => b.levelKey === item.levelKey);
-                if(!bookObj) return;
+                let bookObj = books.find(b => b.levelKey === item.levelKey);
+                if(!bookObj) bookObj = books[0]; 
+
                 container.innerHTML += `
                     <div class="zigzag-row" onclick="navigateToProduct(${bookObj.id}, 'nuestros-libros')">
                         <div class="zigzag-img-box">
