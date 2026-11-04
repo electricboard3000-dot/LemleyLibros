@@ -450,6 +450,13 @@
             margin-bottom: 1.5rem;
             line-height: 1.5;
             flex-grow: 1;
+
+            /* Propiedades para cortar el texto con tres puntos (...) */
+            display: -webkit-box;
+            -webkit-line-clamp: 5; /* Número máximo de líneas visibles (puedes cambiarlo a 2 o 4 si prefieres) */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .card-footer-info {
