@@ -1176,35 +1176,37 @@
         /* MEDIA QUERIES PARA MÓVIL */
         @media (max-width: 992px) {
             .hero-banner-slider { height: 460px; }
-            
             .levels-grid {
-                display: flex;
-                flex-direction: row;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                gap: 1rem;
-                padding: 0.5rem 0.2rem 1.2rem;
-                scrollbar-width: none;
-                -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 1rem;
+            padding: 0.5rem 0.2rem 1.2rem;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
             }
             .levels-grid::-webkit-scrollbar {
-                display: none;
+            display: none;
             }
             .level-card {
-                flex: 0 0 280px;
-                min-width: 280px;
+            flex: 0 0 280px;
+            min-width: 280px;
             }
 
             .detail-layout-grid { 
-                grid-template-columns: 1fr; 
-                gap: 1.5rem; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+            justify-items: center; /* <--- Centra los elementos horizontalmente */
             }
             .detail-gallery-thumbs {
-                flex-direction: row;
-                justify-content: center;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%; /* <--- Ocupa el ancho completo para que las miniaturas queden al centro */
             }
             .detail-content-side {
-                padding-left: 0;
+            padding-left: 0;
+            width: 100%; /* <--- Asegura que el texto y precios usen el ancho correcto */
             }
 
             .books-grid { grid-template-columns: repeat(2, 1fr); }
