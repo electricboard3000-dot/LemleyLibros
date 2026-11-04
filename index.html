@@ -828,10 +828,11 @@
         /* VISTA DETALLE DE PRODUCTO */
         #productView {
             max-width: 1240px;
-            margin: 3rem auto 5rem;
-            padding: 0 1rem;
-            box-sizing: border-box;
-            overflow-x: hidden;
+    width: 100%;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
         }
 
         .detail-layout-grid {
@@ -868,15 +869,17 @@
 
         .detail-main-img-card {
             background-color: #ffffff;
-            border-radius: 20px;
-            padding: 1.8rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            max-height: 540px;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 380px; /* Limita el ancho máximo en móvil para que no se pegue a los bordes */
+    margin: 0 auto; /* Centra la tarjeta automáticamente */
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
         }
 
         .detail-book-img {
@@ -969,13 +972,15 @@
 
         .price-action-box {
             background-color: #ffffff;
-            border-radius: 16px;
-            padding: 1.2rem 1.8rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100%;
+    box-sizing: border-box;
         }
 
         .price-amount-text {
