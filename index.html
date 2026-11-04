@@ -455,7 +455,7 @@
 
             /* Propiedades para cortar el texto con tres puntos (...) */
             display: -webkit-box;
-            -webkit-line-clamp: 5; /* Número máximo de líneas visibles (puedes cambiarlo a 2 o 4 si prefieres) */
+            -webkit-line-clamp: 3; /* Número máximo de líneas visibles (puedes cambiarlo a 2 o 4 si prefieres) */
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -977,18 +977,31 @@
     padding: 1.2rem 1.5rem;
     box-shadow: 0 6px 20px rgba(0,0,0,0.04);
     display: flex;
+    flex-wrap: wrap; /* Permite que baje de línea ordenadamente si falta espacio */
     justify-content: space-between;
     align-items: center;
+    gap: 1.2rem;
     margin-top: 1rem;
     width: 100%;
     box-sizing: border-box;
         }
 
         .price-amount-text {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--text-main);
+            font-size: 1.8rem; /* Ajustado ligeramente para que luzca proporcional */
+    font-weight: 800;
+    color: var(--text-main);
+    white-space: nowrap; /* Evita que el "S/." y el "15.00" se separen en dos líneas */
         }
+
+        .quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #fdfbf7;
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
 
         .btn-pedir-libro {
             background-color: var(--brand-orange);
@@ -1410,6 +1423,7 @@
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Escríbenos por WhatsApp
             </a>
         </div>
+
         <div class="bio-multimedia-container">
             <h3 class="bio-multimedia-title">Multimedia</h3>
             <div class="tiktok-grid">
@@ -1483,6 +1497,14 @@
 
                 <div class="price-action-box">
                     <div class="price-amount-text" id="priceText">S/. XX</div>
+
+                    <div class="quantity-selector" style="display: flex; align-items: center; gap: 0.6rem;">
+                        <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-muted);">Cantidad:</span>
+                        <button type="button" onclick="changeQuantity(-1)" style="width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color); background: #ffffff; font-weight: bold; font-size: 1.1rem; cursor: pointer;">-</button>
+                        <span id="bookQuantityDisplay" style="font-size: 1.1rem; font-weight: 800; min-width: 24px; text-align: center;">1</span>
+                        <button type="button" onclick="changeQuantity(1)" style="width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border-color); background: #ffffff; font-weight: bold; font-size: 1.1rem; cursor: pointer;">+</button>
+                    </div>
+
                     <a id="detailWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-pedir-libro">
                         Pedir Libro
                     </a>
@@ -1553,7 +1575,7 @@
                 title: '15 Cuentos Geniales', 
                 author: 'Rodnal & Maricarmen Lemley',
                 price: 'S/. 15.00',
-                description: 'Son 15 cuentos más largos, más complicados, también con diálogos y mensajes positivos. También son imaginativos como Carolina y los 3 Cuyes, los Cuyes Profesionales, los Cuyes Fantásticos; cuentos y ciencias como Panchita y las papas mágicas; o sociales como Mamá Mireya y la Eterna Ernestina.', 
+                description: 'Son 15 Cuentos más largos, más complicados, también con diálogos y mensajes positivos. También son imaginativos como Carolina y los 3 Cuyes, los Cuyes Profesionales, los Cuyes Fantásticos; cuentos y ciencias cómo Panchita y las papas mágicas; o sociales como Mamá Mireya y la Eterna Ernestina.', 
                 fecha: 'Febrero  2025',
                 oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/15cuentos/15-cuentos1.png',
@@ -1571,7 +1593,7 @@
                 title: '22 Cuentitos Geniales', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 15.00', 
-                description: 'Son cuentos cortos, simples, con diálogos para entretener y educar a los niños, como: El Zorro y los 7 Cuyes, Paco, Pecos y Pecosvil, o El Pato Granjero.',
+                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, cómo en el Hombre Infeliz, el Padre de las Nieves, la Reina de las serpientes o Sueños de un hombre pobre.',
                 fecha: 'Junio 2025',
                 oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/22cuentos/22-cuentos1.png',
@@ -1589,7 +1611,7 @@
                 title: 'Adivina adivinador', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 10.00',
-                description: 'Las adivinanzas son un recurso muy valioso en la educación infantil: desarrollan el lenguaje oral, ejercitan la mente y ayudan a recordar información. Son juegos mentales divertidos y desafiantes que, además, mejorarán tu lectura y ortografía.', 
+                description: 'Las adivinanzas son un recurso muy valioso en la educación infantil. Desarrollan el lenguaje oral, ejercitan la mente; te hacen recordar información y son juegos mentales divertidos y desafiantes, aparte de que mejorarán tu lectura y ortografía.', 
                 fecha: 'Diciembre 2025',
                 oferta: 'A partir de 20 unidades S/8', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina1.png',
@@ -1607,7 +1629,7 @@
                 title: 'Cuentos Fantásticos', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 15.00',
-                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, como en El Hombre Infeliz, El Padre de las Nieves, La Reina de las Serpientes o Sueños de un hombre pobre.', 
+                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, cómo en el Hombre Infeliz, el Padre de las Nieves, la Reina de las serpientes o Sueños de un hombre pobre.', 
                 fecha: 'Febrero 2026',
                 oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta1.png',
@@ -1622,11 +1644,11 @@
                 id: 7, 
                 levelKey: 'primaria', 
                 levelLabel: 'Primaria', 
-                title: 'Harry Cuy en Cajamarca y Lima', 
+                title: 'Harry cuy', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 15.00',
-                description: 'Harry Cuy vive en San Isidro, Lima y en su semana de vacaciones decide ir a Cajamarca. Allí visita diferentes lugares de la provincia como Baños del Inca, Llacanora y Namora. Cuando regresa a Lima, se da un tiempo libre para explorar Miraflores, San Isidro y el Centro de Lima.', 
-                fecha: 'Agosto 2026',
+                price: 'S/. 25.00',
+                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
+                fecha: '15 de Enero de 2026',
                 oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry1.png',
                 gallery: [
@@ -1645,7 +1667,7 @@
                 title: 'Paulino y los Deportes', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 7.00',
-                description: 'A Paulino le gusta hacer deportes: juega fútbol, baloncesto, gimnasia y tiro al blanco. También le gusta nadar y patinar', 
+                description: 'A Paulino le gusta hacer deportes: juega fútbol, baloncesto, hace gimnasia, tiro al blanco. Le gusta nadar y patinar.', 
                 fecha: 'Julio  2024',
                 oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/PAU-Y-LOS-DEPORTE/PAU-Y-LOS-DEPORTE1.png',
@@ -1717,7 +1739,7 @@
                 title: 'Paulino en su pueblo', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 7.00',
-                description: 'Paulino llega a la casa de su tía, en donde hay un gallo y varias gallinas. Él va a arreglar la casita y a limpiar el pozo. En su tiempo libre, él toca el acordeón y recoge manzanas. A Paulino le gusta cuidar el medio ambiente y quiere que la gente aprenda a reciclar y colocar la basura en su lugar.', 
+                description: 'Paulino llega a la casa de su tía, en dónde hay un gallo y varias gallinas. Él va a arreglar la casita, limpiar el pozo. En su tiempo libre, Él toca el acordeón y recoge manzanas. A Paulino le gusta cuidar el medio ambiente y quiere que la gente aprenda a reciclar y colocar la basura en su lugar.', 
                 fecha: 'Agosto  2025',
                 oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino en su pueblo/PAULINO-EN-SU-PUEBLO1.png',
@@ -1735,7 +1757,7 @@
                 title: 'Paulino en la feria', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 7.00',
-                description: 'En la feria, Paulino compra un molinillo, una paleta y un globo. También se divierte con sus amigos montando en el carrusel, las sillas voladoras, concuce el auto y el caballito.', 
+                description: 'En la feria, Paulino compra un molinillo, una paleta y un globo. También se divierte con sus amigos en el carrusel, en las sillas voladoras, conduciendo un auto y montando el caballito.', 
                 fecha: 'Agosto  2025',
                 oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino feria/PAULINO-feria1.png',
@@ -1772,7 +1794,7 @@
                 title: 'Relatos para pensar',
                 author: 'Maricarmen Lemley',
                 price: 'S/. 20.00',
-                description: 'Son 20 relatos escritos desde el punto de vista de un adolescente. A través de estas lecturas, se promueve el pensamiento crítico y reflexivo, los valores, la empatía, la toma de decisiones responsables y el hábito lector, entre otros. Este libro también está dirigido a adultos, docentes y al público en general.',
+                description: 'Son 20 relatos escritos desde el punto de vista de un adolescente. A través de estas lecturas, se promueve, el pensamiento crítico y reflexivo; los valores, la empatía, la toma de decisiones responsables y el hábito lector entre otros. Este libro también está dirigido a adultos, docentes y otros',
                 fecha: 'Agosto 2025',
                 oferta: 'A partir de 20 unidades S/15',
                 cover: 'fotos/DESCOMPRIMIDOS, SECUNDARIA/relatos/relatos1.png',
@@ -1993,8 +2015,41 @@
             }
         }
 
+        let selectedQuantity = 1;
+let currentActiveBook = null;
+
+function changeQuantity(delta) {
+    selectedQuantity += delta;
+    if (selectedQuantity < 1) selectedQuantity = 1;
+
+    // Actualiza el número visible en pantalla
+    document.getElementById('bookQuantityDisplay').innerText = selectedQuantity;
+    
+    // Refresca el enlace de WhatsApp con la nueva cantidad
+    updateWhatsappMessage();
+}
+
+function updateWhatsappMessage() {
+    if (!currentActiveBook) return;
+
+    const bookPageUrl = window.location.href;
+    const message = encodeURIComponent(
+        `Hola, deseo comprar este libro:\n` +
+        `Título: ${currentActiveBook.title}\n` +
+        `Nivel: ${currentActiveBook.levelLabel}\n` +
+        `Cantidad: ${selectedQuantity}\n` +
+        `Precio: ${currentActiveBook.price}\n` +
+        `${bookPageUrl}`
+    );
+
+    document.getElementById('detailWhatsappLink').href = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
+}
+
         function renderProductDetail(bookId, fromOrigin) {
             const book = books.find(b => b.id == bookId);
+            currentActiveBook = book;
+        selectedQuantity = 1;
+    document.getElementById('bookQuantityDisplay').innerText = selectedQuantity;
             if (!book) {
                 showHomeView();
                 return;
@@ -2039,7 +2094,7 @@
 
             const bookPageUrl = window.location.href;
             const message = encodeURIComponent(
-                `Hola, deseo comprar este libro:\n` +
+                `Hola, deseo solicitar información sobre el libro:\n` +
                 `Título: ${book.title}\n` +
                 `Nivel: ${book.levelLabel}\n` +
                 `Precio: ${book.price}\n` +
