@@ -2028,6 +2028,35 @@
         let selectedQuantity = 1;
 let currentActiveBook = null;
 
+
+            // Extrae el valor numérico del precio (ejemplo: "S/. 15.00" -> 15)
+function parsePriceNumber(priceString) {
+    if (!priceString) return 0;
+    const match = priceString.match(/(\d+(\.\d+)?)/);
+    return match ? parseFloat(match[1]) : 0;
+}
+
+
+// Determina el precio unitario según la cantidad (normal u oferta de 20+)
+function getUnitPrice(book, qty) {
+    if (!book) return 0;
+    
+    // Si elige 20 o más y el libro tiene oferta
+    if (qty >= 20 && book.oferta && book.oferta.trim() !== "") {
+        const matchOferta = book.oferta.match(/S\/?\s*(\d+(\.\d+)?)/i);
+        if (matchOferta && matchOferta[1]) {
+            return parseFloat(matchOferta[1]);
+        }
+    }
+    
+    // Si es menor a 20 unidades, se usa el precio regular
+    return parsePriceNumber(book.price);
+}
+
+
+
+
+
 // Función auxiliar para obtener el precio según la cantidad elegida
 function getEffectivePrice(book, qty) {
     if (!book) return "S/. 0.00";
@@ -2045,22 +2074,47 @@ function getEffectivePrice(book, qty) {
     return book.price || "S/. 0.00";
 }
 
+function updatePriceAndWhatsapp() {
+    if (!currentActiveBook) return;
+
+    const unitPrice = getUnitPrice(currentActiveBook, selectedQuantity);
+    const totalPrice = unitPrice * selectedQuantity;
+    const isOferta = selectedQuantity >= 20 && currentActiveBook.oferta;
+
+    // 1. Actualizar el total en pantalla
+    // Ejemplo: "S/. 160.00 (20 x S/. 8.00 c/u)" o "S/. 40.00 (4 x S/. 10.00 c/u)"
+    const priceDisplay = document.getElementById('priceText');
+    if (priceDisplay) {
+        priceDisplay.innerText = `S/. ${totalPrice.toFixed(2)}`;
+    }
+
+    // 2. Construir el mensaje detallado para WhatsApp
+    const bookPageUrl = window.location.href;
+    const detalleOferta = isOferta ? " *(Descuento por mayor aplicado)*" : "";
+
+    const message = encodeURIComponent(
+        `Hola, deseo comprar este libro:\n` +
+        `Título: ${currentActiveBook.title}\n` +
+        `Nivel: ${currentActiveBook.levelLabel}\n` +
+        `Cantidad: ${selectedQuantity}\n` +
+        `Precio unitario: S/. ${unitPrice.toFixed(2)}${detalleOferta}\n` +
+        `Total a pagar: S/. ${totalPrice.toFixed(2)}\n\n` +
+        `Enlace del libro: ${bookPageUrl}`
+    );
+
+    document.getElementById('detailWhatsappLink').href = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
+}
+
 
 function changeQuantity(delta) {
     selectedQuantity += delta;
     if (selectedQuantity < 1) selectedQuantity = 1;
 
-    // Actualiza el número visible de cantidad
+    // Actualizar el contador en la vista
     document.getElementById('bookQuantityDisplay').innerText = selectedQuantity;
     
-    // Calcula y actualiza el precio (regular o de oferta mayorista)
-    if (currentActiveBook) {
-        const activePrice = getEffectivePrice(currentActiveBook, selectedQuantity);
-        document.getElementById('priceText').innerText = activePrice;
-    }
-    
-    // Refresca el enlace de WhatsApp
-    updateWhatsappMessage();
+    // Recalcular precio total y enlace de WhatsApp
+    updatePriceAndWhatsapp();
 }
 
 function updateWhatsappMessage() {
@@ -2087,22 +2141,23 @@ function updateWhatsappMessage() {
 
         function renderProductDetail(bookId, fromOrigin) {
             const book = books.find(b => b.id == bookId);
-            currentActiveBook = book;
-        selectedQuantity = 1;
+    if (!book) {
+        showHomeView();
+        return;
+    }
+
+    currentActiveBook = book;
+    selectedQuantity = 1;
     document.getElementById('bookQuantityDisplay').innerText = selectedQuantity;
-            if (!book) {
-                showHomeView();
-                return;
-            }
 
-            document.getElementById('breadcrumbTitle').innerText = book.title;
+    document.getElementById('breadcrumbTitle').innerText = book.title;
 
-            const navWrapper = document.getElementById('breadcrumbNavWrapper');
-            if (fromOrigin === 'nuestros-libros') {
-                navWrapper.innerHTML = ` <span>></span> <span>Nuestros libros</span> <span>></span> <span>${book.levelLabel}</span> <span>></span> `;
-            } else {
-                navWrapper.innerHTML = ` <span>></span> <span>Catálogo</span> <span>></span> `;
-            }
+    const navWrapper = document.getElementById('breadcrumbNavWrapper');
+    if (fromOrigin === 'nuestros-libros') {
+        navWrapper.innerHTML = ` <span>></span> <span>Nuestros libros</span> <span>></span> <span>${book.levelLabel}</span> <span>></span> `;
+    } else {
+        navWrapper.innerHTML = ` <span>></span> <span>Catálogo</span> <span>></span> `;
+    }
 
             document.getElementById('detailTitle').innerText = book.title;
             document.getElementById('detailDesc').innerText = book.description;
