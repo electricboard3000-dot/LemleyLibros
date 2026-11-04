@@ -2028,14 +2028,38 @@
         let selectedQuantity = 1;
 let currentActiveBook = null;
 
+// Función auxiliar para obtener el precio según la cantidad elegida
+function getEffectivePrice(book, qty) {
+    if (!book) return "S/. 0.00";
+    
+    // Si la cantidad es 20 o más y el libro tiene una oferta definida
+    if (qty >= 20 && book.oferta && book.oferta.trim() !== "") {
+        // Extrae el número de la oferta (ej: "A partir de 20 unidades S/10" -> "10")
+        const match = book.oferta.match(/S\/?\s*(\d+(\.\d+)?)/i);
+        if (match && match[1]) {
+            return `S/. ${parseFloat(match[1]).toFixed(2)}`;
+        }
+    }
+    
+    // Si es menor a 20 unidades, se mantiene el precio regular
+    return book.price || "S/. 0.00";
+}
+
+
 function changeQuantity(delta) {
     selectedQuantity += delta;
     if (selectedQuantity < 1) selectedQuantity = 1;
 
-    // Actualiza el número visible en pantalla
+    // Actualiza el número visible de cantidad
     document.getElementById('bookQuantityDisplay').innerText = selectedQuantity;
     
-    // Refresca el enlace de WhatsApp con la nueva cantidad
+    // Calcula y actualiza el precio (regular o de oferta mayorista)
+    if (currentActiveBook) {
+        const activePrice = getEffectivePrice(currentActiveBook, selectedQuantity);
+        document.getElementById('priceText').innerText = activePrice;
+    }
+    
+    // Refresca el enlace de WhatsApp
     updateWhatsappMessage();
 }
 
@@ -2043,12 +2067,18 @@ function updateWhatsappMessage() {
     if (!currentActiveBook) return;
 
     const bookPageUrl = window.location.href;
+    const activePrice = getEffectivePrice(currentActiveBook, selectedQuantity);
+    
+    // Indicador especial si se aplicó precio mayorista
+    const isOferta = selectedQuantity >= 20 && currentActiveBook.oferta;
+    const detalleOferta = isOferta ? " (Precio mayorista por oferta de 20+ unidades)" : "";
+
     const message = encodeURIComponent(
         `Hola, deseo comprar este libro:\n` +
         `Título: ${currentActiveBook.title}\n` +
         `Para: ${currentActiveBook.levelLabel}\n` +
         `Cantidad: ${selectedQuantity}\n` +
-        `Precio: ${currentActiveBook.price}\n` +
+        `Precio unitario: ${activePrice}${detalleOferta}\n` +
         `${bookPageUrl}`
     );
 
@@ -2161,6 +2191,8 @@ function updateWhatsappMessage() {
                 filterCatalog('all');
             }
         }
+
+        
 
         window.addEventListener('hashchange', checkRoute);
 
