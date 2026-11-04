@@ -869,28 +869,28 @@
         }
 
         .detail-main-img-card {
-            background-color: #ffffff;
-    border-radius: 20px;
-    padding: 0.8rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    max-width: 440px; /* Ancho cómodo y destacado */
-    aspect-ratio: 3 / 4; /* Formato vertical tipo libro */
-    min-height: 560px; /* Altura generosa para que crezca hacia abajo */
-    margin: 0 auto;
-    box-sizing: border-box;
-    overflow: hidden;
+            background-color: transparent !important;
+    border-radius: 20px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 450px !important;
+    height: 580px !important; /* <--- Forzamos una altura alta y vertical */
+    min-height: 580px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
         }
 
         .detail-book-img {
-            width: 100%;
-    height: 100%;
-    object-fit: cover; /* Llena toda el área disponible con excelente calidad */
-    border-radius: 14px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* <--- Llena todo el alto y ancho verticalmente */
+    border-radius: 16px !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2) !important;
         }
 
         .detail-content-side {
