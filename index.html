@@ -869,27 +869,28 @@
         }
 
         .detail-main-img-card {
-            background-color: transparent; /* Quitamos el fondo blanco de la caja contenedora */
+            background-color: #ffffff;
     border-radius: 20px;
-    padding: 0; /* Sin relleno interno para que la imagen mande */
-    box-shadow: none;
+    padding: 0.8rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 440px;
-    aspect-ratio: 3 / 4; /* Mantiene el formato vertical alto */
-    min-height: 560px; /* Altura generosa para que sea alargada */
+    max-width: 440px; /* Ancho cómodo y destacado */
+    aspect-ratio: 3 / 4; /* Formato vertical tipo libro */
+    min-height: 560px; /* Altura generosa para que crezca hacia abajo */
     margin: 0 auto;
     box-sizing: border-box;
+    overflow: hidden;
         }
 
         .detail-book-img {
             width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que la portada llene absolutamente todo el espacio vertical y horizontal de manera uniforme */
-    border-radius: 18px; /* Bordes redondeados elegantes para la portada */
-    box-shadow: 0 12px 30px rgba(0,0,0,0.18); /* Sombra elegante propia de la portada */
+    object-fit: cover; /* Llena toda el área disponible con excelente calidad */
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .detail-content-side {
@@ -2045,7 +2046,7 @@ function updateWhatsappMessage() {
     const message = encodeURIComponent(
         `Hola, deseo comprar este libro:\n` +
         `Título: ${currentActiveBook.title}\n` +
-        `Nivel: ${currentActiveBook.levelLabel}\n` +
+        `Para: ${currentActiveBook.levelLabel}\n` +
         `Cantidad: ${selectedQuantity}\n` +
         `Precio: ${currentActiveBook.price}\n` +
         `${bookPageUrl}`
