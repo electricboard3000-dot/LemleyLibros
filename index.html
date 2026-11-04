@@ -869,27 +869,27 @@
         }
 
         .detail-main-img-card {
-            background-color: #ffffff;
+            background-color: transparent; /* Quitamos el fondo blanco de la caja contenedora */
     border-radius: 20px;
-    padding: 0.6rem; /* Reducimos el relleno para que la foto ocupe casi todo el cuadro */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    padding: 0; /* Sin relleno interno para que la imagen mande */
+    box-shadow: none;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     max-width: 440px;
     aspect-ratio: 3 / 4; /* Mantiene el formato vertical alto */
-    min-height: 540px;
+    min-height: 560px; /* Altura generosa para que sea alargada */
     margin: 0 auto;
     box-sizing: border-box;
-    overflow: hidden; /* Evita que la imagen se salga de los bordes redondeados */
         }
 
         .detail-book-img {
             width: 100%;
     height: 100%;
-    object-fit: cover; /* Hace que la portada se expanda y llene todo el rectángulo verticalmente */
-    border-radius: 14px;
+    object-fit: cover; /* Hace que la portada llene absolutamente todo el espacio vertical y horizontal de manera uniforme */
+    border-radius: 18px; /* Bordes redondeados elegantes para la portada */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18); /* Sombra elegante propia de la portada */
         }
 
         .detail-content-side {
