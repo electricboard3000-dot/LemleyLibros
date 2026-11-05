@@ -1977,30 +1977,36 @@
             });
         }
 
-        function renderCatalogBooks(listToRender) {
-            const container = document.getElementById('books-grid-container');
-            if(!container) return;
-            container.innerHTML = '';
+        function renderCatalogBooks(listToRender) {const container = document.getElementById('books-grid-container');
+    if(!container) return;
+    container.innerHTML = '';
 
-            listToRender.forEach((book, index) => {
-                const pastelClass = pastelClasses[index % pastelClasses.length];
-                container.innerHTML += `
-                    <div class="book-card" onclick="navigateToProduct(${book.id}, 'catalogo')">
-                        <div class="card-top-pastel ${pastelClass}">
-                            <span class="card-badge">NIVEL: ${book.levelLabel}</span>
-                            <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">${book.title}</h3>
-                            <p class="card-desc">${book.description}</p>
-                            <div class="card-footer-info">
-                                <span class="card-price-text">${book.price || 'S/. 0.00'}</span>
-                                <span class="consult-link">Ver libro &rarr;</span>
-                            </div>
-                        </div>
+    listToRender.forEach((book, index) => {
+        const pastelClass = pastelClasses[index % pastelClasses.length];
+        
+        // Convertimos el levelKey a un formato corto y limpio para la tarjeta
+        let shortLevelText = "PRIMARIA";
+        if (book.levelKey === 'jardin') shortLevelText = "INICIAL";
+        else if (book.levelKey === 'secundaria') shortLevelText = "SECUNDARIA";
+        else if (book.levelKey === 'primaria') shortLevelText = "PRIMARIA";
+
+        container.innerHTML += `
+            <div class="book-card" onclick="navigateToProduct(${book.id}, 'catalogo')">
+                <div class="card-top-pastel ${pastelClass}">
+                    <span class="card-badge">NIVEL: ${shortLevelText}</span>
+                    <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${book.title}</h3>
+                    <p class="card-desc">${book.description}</p>
+                    <div class="card-footer-info">
+                        <span class="card-price-text">${book.price || 'S/. 0.00'}</span>
+                        <span class="consult-link">Ver libro &rarr;</span>
                     </div>
-                `;
-            });
+                </div>
+            </div>
+        `;
+    });
         }
 
         function navigateToProduct(bookId, origin) {
