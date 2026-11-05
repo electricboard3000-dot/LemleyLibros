@@ -2097,7 +2097,7 @@ function updatePriceAndWhatsapp() {
 
     // 2. Construir el mensaje detallado para WhatsApp
     const bookPageUrl = window.location.href;
-    const detalleOferta = isOferta ? " *(Descuento por mayor aplicado)*" : "";
+    const detalleOferta = isOferta ? " (Por descuento)" : "";
 
     const message = encodeURIComponent(
         `Hola, deseo comprar este libro:\n` +
@@ -2130,7 +2130,7 @@ function updateWhatsappMessage() {
     const bookPageUrl = window.location.href;
     const activePrice = getEffectivePrice(currentActiveBook, selectedQuantity);
     
-    // Indicador especial si se aplicó precio mayorista
+    // Indica  el descuento de 20 
     const isOferta = selectedQuantity >= 20 && currentActiveBook.oferta;
     const detalleOferta = isOferta ? " (Precio mayorista por oferta de 20+ unidades)" : "";
 
