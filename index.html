@@ -2210,10 +2210,17 @@ function updateWhatsappMessage() {
 
             otherBooks.forEach((otherBook, index) => {
                 const pastelClass = pastelClasses[index % pastelClasses.length];
+                
+                // Texto corto según el nivel del libro relacionado
+                let shortLevelText = "PRIMARIA";
+                if (otherBook.levelKey === 'jardin') shortLevelText = "INICIAL";
+                else if (otherBook.levelKey === 'secundaria') shortLevelText = "SECUNDARIA";
+                else if (otherBook.levelKey === 'primaria') shortLevelText = "PRIMARIA";
+
                 relatedContainer.innerHTML += `
                     <div class="book-card" onclick="navigateToProduct(${otherBook.id}, '${fromOrigin || 'catalogo'}')">
                         <div class="card-top-pastel ${pastelClass}">
-                            <span class="card-badge">NIVEL: ${otherBook.levelLabel}</span>
+                            <span class="card-badge">NIVEL: ${shortLevelText}</span>
                             <img src="${otherBook.cover}" alt="${otherBook.title}" class="card-book-img" loading="lazy">
                         </div>
                         <div class="card-content">
