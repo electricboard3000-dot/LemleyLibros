@@ -436,26 +436,27 @@
             flex-direction: column;
             flex-grow: 1;
             justify-content: space-between;
+            height: 220px;
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-main);
             font-family: 'Playfair Display', serif;
-            margin-bottom: 0.6rem;
+             margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         .card-desc {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-            flex-grow: 1;
-
-            /* Propiedades para cortar el texto con tres puntos (...) */
+            line-height: 1.4;
+            margin-bottom: 1rem;
+    
+            /* Control estricto de líneas para evitar que se mueva o se encime */
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* Número máximo de líneas visibles (puedes cambiarlo a 2 o 4 si prefieres) */
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
