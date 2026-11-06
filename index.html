@@ -2027,9 +2027,22 @@
 
         function scrollRelatedSlider(direction) {
             const container = document.getElementById('related-books-container');
-            if (container) {
-                container.scrollBy({ left: direction * 290, behavior: 'smooth' });
-            }
+    if (!container) return;
+
+    const scrollAmount = 290; // Ancho aproximado de cada tarjeta + su separación
+    
+    // Si intentan avanzar y ya estamos al final del todo, regresamos al inicio (scroll 0)
+    if (direction > 0 && container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+    } 
+    // Si intentan retroceder y estamos al inicio, nos mandamos al final del carrusel
+    else if (direction < 0 && container.scrollLeft <= 0) {
+        container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+    } 
+    // Comportamiento normal de desplazamiento lateral
+    else {
+        container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
         }
 
         let selectedQuantity = 1;
@@ -2209,7 +2222,7 @@ function updateWhatsappMessage() {
 
             const relatedContainer = document.getElementById('related-books-container');
             relatedContainer.innerHTML = '';
-
+                relatedContainer.scrollLeft = 0;
             // Verificamos si el libro actual es de inglés
             const isCurrentEnglish = book.levelLabel && book.levelLabel.toLowerCase().includes('inglés');
 
