@@ -55,8 +55,11 @@
             background-color: var(--brand-orange);
             position: sticky;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             width: 100%;
+            margin: 0;
             box-shadow: 0 4px 12px rgba(243, 112, 33, 0.2);
         }
 
@@ -428,26 +431,35 @@
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 1.2rem 1.5rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
+            justify-content: space-between;
+            height: 220px;
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--text-main);
             font-family: 'Playfair Display', serif;
-            margin-bottom: 0.6rem;
+             margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
         .card-desc {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.5;
-            flex-grow: 1;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+    
+            /* Control estricto de líneas para evitar que se mueva o se encime */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .card-footer-info {
@@ -526,7 +538,7 @@
             font-weight: 800;
             color: #a82ba1;
             margin-bottom: 3rem;
-            text-transform: lowercase;
+            text-transform: capitalize;
             font-family: 'Playfair Display', serif;
         }
 
@@ -598,7 +610,7 @@
             font-size: 2.3rem;
             font-weight: 800;
             color: #a82ba1;
-            text-transform: lowercase;
+            text-transform: none;
             font-family: 'Playfair Display', serif;
             line-height: 1.15;
         }
@@ -818,16 +830,21 @@
         /* VISTA DETALLE DE PRODUCTO */
         #productView {
             max-width: 1240px;
-            margin: 3rem auto 5rem;
-            padding: 0 1.5rem;
+    width: 100%;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
         }
 
         .detail-layout-grid {
             display: grid;
-            grid-template-columns: 100px 520px 1fr;
-            gap: 2.5rem;
-            align-items: start;
-            margin-bottom: 4rem;
+    grid-template-columns: 100px 420px 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 4rem;
+    width: 100%;
+    box-sizing: border-box;
         }
 
         .detail-gallery-thumbs {
@@ -853,24 +870,28 @@
         }
 
         .detail-main-img-card {
-            background-color: #ffffff;
-            border-radius: 20px;
-            padding: 1.8rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            max-height: 540px;
+            background-color: transparent !important;
+    border-radius: 20px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    max-width: 450px !important;
+    height: 580px !important; /* <--- Forzamos una altura alta y vertical */
+    min-height: 580px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
         }
 
         .detail-book-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 14px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important; /* <--- Esto hace que la foto completa encaje sin recortar nada */
+    border-radius: 16px !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2) !important;
         }
 
         .detail-content-side {
@@ -955,20 +976,35 @@
 
         .price-action-box {
             background-color: #ffffff;
-            border-radius: 16px;
-            padding: 1.2rem 1.8rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.04);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 1rem;
+    border-radius: 16px;
+    padding: 1.2rem 1.5rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+    display: flex;
+    flex-wrap: wrap; /* Permite que baje de línea ordenadamente si falta espacio */
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    width: 100%;
+    box-sizing: border-box;
         }
 
         .price-amount-text {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--text-main);
+            font-size: 1.8rem; /* Ajustado ligeramente para que luzca proporcional */
+    font-weight: 800;
+    color: var(--text-main);
+    white-space: nowrap; /* Evita que el "S/." y el "15.00" se separen en dos líneas */
         }
+
+        .quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #fdfbf7;
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
 
         .btn-pedir-libro {
             background-color: var(--brand-orange);
@@ -1162,35 +1198,45 @@
         /* MEDIA QUERIES PARA MÓVIL */
         @media (max-width: 992px) {
             .hero-banner-slider { height: 460px; }
-            
             .levels-grid {
-                display: flex;
-                flex-direction: row;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-                gap: 1rem;
-                padding: 0.5rem 0.2rem 1.2rem;
-                scrollbar-width: none;
-                -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            gap: 1rem;
+            padding: 0.5rem 0.2rem 1.2rem;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
             }
             .levels-grid::-webkit-scrollbar {
-                display: none;
+            display: none;
             }
             .level-card {
-                flex: 0 0 280px;
-                min-width: 280px;
+            flex: 0 0 280px;
+            min-width: 280px;
             }
 
             .detail-layout-grid { 
-                grid-template-columns: 1fr; 
-                gap: 1.5rem; 
+            grid-template-columns: 1fr; 
+            gap: 1.5rem; 
+            justify-items: center; /* <--- Centra los elementos horizontalmente */
             }
             .detail-gallery-thumbs {
-                flex-direction: row;
-                justify-content: center;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%; /* <--- Ocupa el ancho completo para que las miniaturas queden al centro */
             }
             .detail-content-side {
-                padding-left: 0;
+            padding-left: 0;
+            width: 100%; /* <--- Asegura que el texto y precios usen el ancho correcto */
+            }
+            .detail-main-img-card {
+        max-width: 320px; /* Tamaño perfecto y cómodo para la pantalla del celular */
+        margin: 0 auto;
+        padding: 0.8rem;
+            }
+            .detail-book-img {
+        max-height: 400px; /* Evita que la portada sea demasiado gigante en vertical */
             }
 
             .books-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1364,8 +1410,8 @@
             <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
         </div>
 
-        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Foto Biografía Lemley Libros" class="nosotros-photo">
-    </div>
+            <img src="fotos/FotosLemley/Nosotros.jpeg" alt="Foto Biografía Lemley Libros" class="nosotros-photo"> 
+   </div>
 
     <!-- 3. VISTA NUESTROS LIBROS (ZIGZAG) -->
     <div id="booksView">
@@ -1387,16 +1433,6 @@
             <a href="https://wa.me/51925340081?text=Hola,%20deseo%20realizar%20una%20consulta%20general%20sobre%20los%20libros%20de%20Lemley%20Libros." target="_blank" rel="noopener noreferrer" class="contact-whatsapp-btn">
                 <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i> Escríbenos por WhatsApp
             </a>
-        </div>
-
-        <h2 class="bio-section-title">Biografía</h2>
-        
-        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1200&q=80" alt="Biografía Lemley Libros" class="bio-image-provisional">
-
-        <div class="bio-text-content">
-            <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
-            <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
-            <p>Seguimos escribiendo y expandiendo este hermoso sueño literario, llevando magia a cada rincón y acompañando a las nuevas generaciones de lectores en su camino.</p>
         </div>
 
         <div class="bio-multimedia-container">
@@ -1457,11 +1493,11 @@
                 </div>
 
                 <div>
-                    <h3 class="section-subheading">Ficha</h3>
+                    <h3 class="section-subheading">Información</h3>
                     <div class="ficha-list">
                         <div><strong>Autor(a):</strong> <span id="fichaAutor">Maricarmen Lemley</span></div>
                         <div><strong>Fecha publicación:</strong> <span id="fichaFecha"></span></div>
-                        <div><strong>Público objetivo:</strong> <span id="fichaNivel">Inicial</span></div>
+                        <div><strong>Para:</strong> <span id="fichaNivel">Inicial</span></div>
                     </div>
                 </div>
 
@@ -1472,6 +1508,14 @@
 
                 <div class="price-action-box">
                     <div class="price-amount-text" id="priceText">S/. XX</div>
+
+                    <div class="quantity-selector">
+                    <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">Cant:</span>
+                    <button type="button" onclick="changeQuantity(-1)" style="width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border-color); background: #ffffff; font-weight: bold; font-size: 1rem; cursor: pointer;">-</button>
+                    <span id="bookQuantityDisplay" style="font-size: 1.1rem; font-weight: 800; min-width: 20px; text-align: center;">1</span>
+                    <button type="button" onclick="changeQuantity(1)" style="width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border-color); background: #ffffff; font-weight: bold; font-size: 1rem; cursor: pointer;">+</button>
+                    </div>
+
                     <a id="detailWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-pedir-libro">
                         Pedir Libro
                     </a>
@@ -1538,13 +1582,13 @@
             { 
                 id: 3, 
                 levelKey: 'primaria', 
-                levelLabel: 'PRIMARIA', 
+                levelLabel: 'Niños de 3er a 6to grado de primaria', 
                 title: '15 Cuentos Geniales', 
-                author: 'Maricarmen Lemley',
-                price: 'S/. 25.00',
-                description: '', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                author: 'Rodnal & Maricarmen Lemley',
+                price: 'S/. 15.00',
+                description: 'Son 15 Cuentos más largos, más complicados, también con diálogos y mensajes positivos. También son imaginativos como Carolina y los 3 Cuyes, los Cuyes Profesionales, los Cuyes Fantásticos; cuentos y ciencias cómo Panchita y las papas mágicas; o sociales como Mamá Mireya y la Eterna Ernestina.', 
+                fecha: 'Febrero  2025',
+                oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/15cuentos/15-cuentos1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/15cuentos/15-cuentos1.png',
@@ -1556,13 +1600,13 @@
             { 
                 id: 4, 
                 levelKey: 'primaria', 
-                levelLabel: 'PRIMARIA', 
-                title: '22 Cuentos Geniales', 
+                levelLabel: 'Niños de 1ro a 3ro grado de primaria', 
+                title: '22 Cuentitos Geniales', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 25.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 15.00', 
+                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, cómo en el Hombre Infeliz, el Padre de las Nieves, la Reina de las serpientes o Sueños de un hombre pobre.',
+                fecha: 'Junio 2025',
+                oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/22cuentos/22-cuentos1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/22cuentos/22-cuentos1.png',
@@ -1573,68 +1617,70 @@
             },
             { 
                 id: 5, 
-                levelKey: 'primaria', 
-                levelLabel: 'PRIMARIA', 
+                levelKey: 'primaria',
+                levelLabel: 'Inicial, primaria, secundaria', 
                 title: 'Adivina adivinador', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 10.00',
+                description: 'Las adivinanzas son un recurso muy valioso en la educación infantil. Desarrollan el lenguaje oral, ejercitan la mente; te hacen recordar información y son juegos mentales divertidos y desafiantes, aparte de que mejorarán tu lectura y ortografía.', 
+                fecha: 'Diciembre 2025',
+                oferta: 'A partir de 20 unidades S/8', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina1.png',
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina2.png',
-                    'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina3.png',
-                    'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina4.png'
+                    'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina4.png',
+                    'fotos/DESCOMPRIMIDOS, PRIMARIA/adivina/adivina3.png'
                 ]
             },
             { 
                 id: 6, 
                 levelKey: 'primaria', 
-                levelLabel: 'PRIMARIA',     
+                levelLabel: 'Niños de 4to a 6to grado de primaria',     
                 title: 'Cuentos Fantásticos', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 25.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 15.00',
+                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, cómo en el Hombre Infeliz, el Padre de las Nieves, la Reina de las serpientes o Sueños de un hombre pobre.', 
+                fecha: 'Febrero 2026',
+                oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta1.png',
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta2.png',
-                    'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta3.png',
-                    'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta4.png'
+                    'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta4.png',
+                    'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta3.png'
                 ]
             },
             { 
                 id: 7, 
                 levelKey: 'primaria', 
-                levelLabel: 'PRIMARIA', 
+                levelLabel: 'Niños de 4to grado de primaria en adelante', 
                 title: 'Harry cuy', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 25.00',
+                price: 'S/. 15.00',
                 description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
                 fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
-                cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry1.png',
+                oferta: 'A partir de 20 unidades S/10', 
+                cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry2.png',
                 gallery: [
-                    'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry1.png',
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry2.png',
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry3.png',
-                    'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry4.png'
+                    'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry4.png',
+                    'fotos/DESCOMPRIMIDOS, PRIMARIA/harry el cuy/harry1.png'
                 ]
             },
+
+            //Jardin
             { 
                 id: 8, 
                 levelKey: 'jardin', 
-                levelLabel: 'INICIAL', 
+                levelLabel: 'Niños de inicial y de 1ro de primaria', 
                 title: 'Paulino y los Deportes', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 7.00',
+                description: 'A Paulino le gusta hacer deportes: juega fútbol, baloncesto, hace gimnasia, tiro al blanco. Le gusta nadar y patinar.', 
+                fecha: 'Julio  2024',
+                oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/PAU-Y-LOS-DEPORTE/PAU-Y-LOS-DEPORTE1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/PAU-Y-LOS-DEPORTE/PAU-Y-LOS-DEPORTE1.png',
@@ -1646,13 +1692,13 @@
             {   
                 id: 9, 
                 levelKey: 'jardin', 
-                levelLabel: 'INICIAL', 
+                levelLabel: 'Niños de inicial y de 1ro de primaria', 
                 title: 'Paulino en el Campo', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 7.00',
+                description: 'En el campo Paulino quiere atrapar mariposas, observa caracoles, nada y pesca en el río. Paulino disfruta la naturaleza en el campo.', 
+                fecha: 'Noviembre 2024',
+                oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/Paulino en el campo/PAU-en-el-campo1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/Paulino en el campo/PAU-en-el-campo1.png',
@@ -1664,13 +1710,13 @@
             { 
                 id: 10, 
                 levelKey: 'jardin', 
-                levelLabel: 'INICIAL', 
+                levelLabel: 'Niños de inicial y de 1ro de primaria', 
                 title: 'Los trabajos de Paulino', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 7.00',
+                description: 'Paulino es pintor, carpintero, pescador, médico, músico y bombero. A Paulino le encanta hacer sus trabajos y los hace muy bien.', 
+                fecha: 'Noviembre 2024',
+                oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino trabajos/paulino-los-trabajos1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino trabajos/paulino-los-trabajos1.png',
@@ -1682,13 +1728,13 @@
             { 
                 id: 11, 
                 levelKey: 'jardin', 
-                levelLabel: 'INICIAL',  
-                title: 'Paulino en casa', 
+                levelLabel: 'Niños de inicial y de 1ro de primaria',  
+                title: 'Paulino en Casa', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 7.00',
+                description: 'Paulino come sano, ayuda en la cocina, mantiene ordenado su cuarto y armario de ropa, celebra su cumpleaños con su amigo y va al mercado a comprar diferentes frutas.', 
+                fecha: 'Noviembre  2024',
+                oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/PAULINO CASA/PAULINO-EN-CASA1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/PAULINO CASA/PAULINO-EN-CASA1.png',
@@ -1700,13 +1746,13 @@
             { 
                 id: 12, 
                 levelKey: 'jardin', 
-                levelLabel: 'INICIAL', 
+                levelLabel: 'Niños de inicial y de 1ro de primaria', 
                 title: 'Paulino en su pueblo', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 7.00',
+                description: 'Paulino llega a la casa de su tía, en dónde hay un gallo y varias gallinas. Él va a arreglar la casita, limpiar el pozo. En su tiempo libre, Él toca el acordeón y recoge manzanas. A Paulino le gusta cuidar el medio ambiente y quiere que la gente aprenda a reciclar y colocar la basura en su lugar.', 
+                fecha: 'Agosto  2025',
+                oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino en su pueblo/PAULINO-EN-SU-PUEBLO1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino en su pueblo/PAULINO-EN-SU-PUEBLO1.png',
@@ -1718,13 +1764,13 @@
             {
                 id: 13,
                 levelKey: 'jardin',
-                levelLabel: 'INICIAL', 
+                levelLabel: 'Niños de inicial y de 1ro de primaria', 
                 title: 'Paulino en la feria', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 7.00',
+                description: 'En la feria, Paulino compra un molinillo, una paleta y un globo. También se divierte con sus amigos en el carrusel, en las sillas voladoras, conduciendo un auto y montando el caballito.', 
+                fecha: 'Agosto  2025',
+                oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino feria/PAULINO-feria1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino feria/PAULINO-feria1.png',
@@ -1736,13 +1782,13 @@
             {
                 id: 14,
                 levelKey: 'jardin',
-                levelLabel: 'INICIAL', 
-                title: 'Paulino aprende a contar', 
+                levelLabel: 'Niños de inicial y de 1ro de primaria', 
+                title: 'Paulino Aprende a Contar', 
                 author: 'Maricarmen Lemley',
-                price: 'S/. 20.00',
-                description: 'Una tierna historia ilustrada creada para despertar la imaginación y el amor por la lectura en los más pequeños.', 
-                fecha: '15 de Enero de 2026',
-                oferta: '15% de descuento por pack escolar', 
+                price: 'S/. 7.00',
+                description: 'Paulino aprende a contar del 1 al 12, contando globos, gatitos, galletas, peces, flores, mariposas y estrellas.', 
+                fecha: 'Agosto  2025',
+                oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/paulinoaprendeacontar/Paulino-aprende-a-contar1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, PRIMARIA/paulinoaprendeacontar/Paulino-aprende-a-contar1.png',
@@ -1755,13 +1801,13 @@
             {
                 id: 15,
                 levelKey: 'secundaria',
-                levelLabel: 'SECUNDARIA',
+                levelLabel: 'Secundaria',
                 title: 'Relatos para pensar',
                 author: 'Maricarmen Lemley',
-                price: 'S/. 30.00',
-                description: 'Anécdotas dedicadas para poder tocar y reflexionar acerca de sentidos en la vida diaria',
+                price: 'S/. 20.00',
+                description: 'Son 20 relatos escritos desde el punto de vista de un adolescente. A través de estas lecturas, se promueve, el pensamiento crítico y reflexivo; los valores, la empatía, la toma de decisiones responsables y el hábito lector entre otros. Este libro también está dirigido a adultos, docentes y otros',
                 fecha: 'Agosto 2025',
-                oferta: '15% de descuento por pack escolar',
+                oferta: 'A partir de 20 unidades S/15',
                 cover: 'fotos/DESCOMPRIMIDOS, SECUNDARIA/relatos/relatos1.png',
                 gallery: [
                     'fotos/DESCOMPRIMIDOS, SECUNDARIA/relatos/relatos1.png',
@@ -1774,13 +1820,13 @@
             {
                 id: 16,
                 levelKey: 'primaria',
-                levelLabel: 'INGLÉS',
+                levelLabel: 'Inglés avanzado',
                 title: 'Shorty Gets Around',
-                author: 'Maricarmen Lemley',
-                price: 'S/. 35.00',
+                author: 'Ronald Lemley',
+                price: 'S/. 15.00',
                 description: 'Shorty the black bear lives in San Francisco, California and decides to take a tour of Mill Valley, Sausalito. He hikes on Mt Tamalpais and drives his 63 Ford Fairlane up to Humboldt county to visit some radio DJs at KHSU radio station.',
                 fecha: 'Noviembre 2025',
-                oferta: 'A partir de 20 unidades s/10',
+                oferta: 'A partir de 20 unidades S/10',
                 cover: 'fotos/fotos de ingles/Shorty Gets Around.jpeg',
                 gallery: [
                     'fotos/fotos de ingles/Shorty Gets Around.jpeg',
@@ -1792,13 +1838,13 @@
             {
                 id: 17,
                 levelKey: 'secundaria',
-                levelLabel: 'INGLÉS',
+                levelLabel: 'Inglés avanzado',
                 title: 'Lo Mejor del Sabor Peruano',
-                author: 'Maricarmen Lemley',
-                price: 'S/. 35.00',
+                author: 'Ronald y Maricarmen Lemley',
+                price: 'S/. 15.00',
                 description: 'A color illustrated and practical cookbook of the most popular Peruvian main dishes, drinks and desserts. It offers alternatives for the English speaking cook in finding substitutes, if necessary, for Peruvian ingredients such as chiles that form the basis for the cuisine.',
                 fecha: 'Noviembre 2025',
-                oferta: 'A partir de 20 unidades s/10',
+                oferta: 'A partir de 20 unidades S/10',
                 cover: 'fotos/fotos de ingles/Lo Mejor del Sabor Peruano.jpeg',
                 gallery: [
                     'fotos/fotos de ingles/Lo Mejor del Sabor Peruano.jpeg',
@@ -1932,30 +1978,36 @@
             });
         }
 
-        function renderCatalogBooks(listToRender) {
-            const container = document.getElementById('books-grid-container');
-            if(!container) return;
-            container.innerHTML = '';
+        function renderCatalogBooks(listToRender) {const container = document.getElementById('books-grid-container');
+    if(!container) return;
+    container.innerHTML = '';
 
-            listToRender.forEach((book, index) => {
-                const pastelClass = pastelClasses[index % pastelClasses.length];
-                container.innerHTML += `
-                    <div class="book-card" onclick="navigateToProduct(${book.id}, 'catalogo')">
-                        <div class="card-top-pastel ${pastelClass}">
-                            <span class="card-badge">NIVEL: ${book.levelLabel}</span>
-                            <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
-                        </div>
-                        <div class="card-content">
-                            <h3 class="card-title">${book.title}</h3>
-                            <p class="card-desc">${book.description}</p>
-                            <div class="card-footer-info">
-                                <span class="card-price-text">${book.price || 'S/. 0.00'}</span>
-                                <span class="consult-link">Ver libro &rarr;</span>
-                            </div>
-                        </div>
+    listToRender.forEach((book, index) => {
+        const pastelClass = pastelClasses[index % pastelClasses.length];
+        
+        // Convertimos el levelKey a un formato corto y limpio para la tarjeta
+        let shortLevelText = "PRIMARIA";
+        if (book.levelKey === 'jardin') shortLevelText = "INICIAL";
+        else if (book.levelKey === 'secundaria') shortLevelText = "SECUNDARIA";
+        else if (book.levelKey === 'primaria') shortLevelText = "PRIMARIA";
+
+        container.innerHTML += `
+            <div class="book-card" onclick="navigateToProduct(${book.id}, 'catalogo')">
+                <div class="card-top-pastel ${pastelClass}">
+                    <span class="card-badge">NIVEL: ${shortLevelText}</span>
+                    <img src="${book.cover}" alt="${book.title}" class="card-book-img" loading="lazy">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${book.title}</h3>
+                    <p class="card-desc">${book.description}</p>
+                    <div class="card-footer-info">
+                        <span class="card-price-text">${book.price || 'S/. 0.00'}</span>
+                        <span class="consult-link">Ver libro &rarr;</span>
                     </div>
-                `;
-            });
+                </div>
+            </div>
+        `;
+    });
         }
 
         function navigateToProduct(bookId, origin) {
@@ -1980,21 +2032,141 @@
             }
         }
 
+        let selectedQuantity = 1;
+let currentActiveBook = null;
+
+
+            // Extrae el valor numérico del precio (ejemplo: "S/. 15.00" -> 15)
+function parsePriceNumber(priceString) {
+    if (!priceString) return 0;
+    const match = priceString.match(/(\d+(\.\d+)?)/);
+    return match ? parseFloat(match[1]) : 0;
+}
+
+
+// Determina el precio unitario según la cantidad (normal u oferta de 20+)
+function getUnitPrice(book, qty) {
+    if (!book) return 0;
+    
+    // Si elige 20 o más y el libro tiene oferta
+    if (qty >= 20 && book.oferta && book.oferta.trim() !== "") {
+        const matchOferta = book.oferta.match(/S\/?\s*(\d+(\.\d+)?)/i);
+        if (matchOferta && matchOferta[1]) {
+            return parseFloat(matchOferta[1]);
+        }
+    }
+    
+    // Si es menor a 20 unidades, se usa el precio regular
+    return parsePriceNumber(book.price);
+}
+
+
+
+
+
+// Función auxiliar para obtener el precio según la cantidad elegida
+function getEffectivePrice(book, qty) {
+    if (!book) return "S/. 0.00";
+    
+    // Si la cantidad es 20 o más y el libro tiene una oferta definida
+    if (qty >= 20 && book.oferta && book.oferta.trim() !== "") {
+        // Extrae el número de la oferta (ej: "A partir de 20 unidades S/10" -> "10")
+        const match = book.oferta.match(/S\/?\s*(\d+(\.\d+)?)/i);
+        if (match && match[1]) {
+            return `S/. ${parseFloat(match[1]).toFixed(2)}`;
+        }
+    }
+    
+    // Si es menor a 20 unidades, se mantiene el precio regular
+    return book.price || "S/. 0.00";
+}
+
+function updatePriceAndWhatsapp() {
+    if (!currentActiveBook) return;
+
+    const unitPrice = getUnitPrice(currentActiveBook, selectedQuantity);
+    const totalPrice = unitPrice * selectedQuantity;
+    const isOferta = selectedQuantity >= 20 && currentActiveBook.oferta;
+
+    // 1. Actualizar el total en pantalla
+    // Ejemplo: "S/. 160.00 (20 x S/. 8.00 c/u)" o "S/. 40.00 (4 x S/. 10.00 c/u)"
+    const priceDisplay = document.getElementById('priceText');
+    if (priceDisplay) {
+        priceDisplay.innerText = `S/. ${totalPrice.toFixed(2)}`;
+    }
+
+    // 2. Construir el mensaje detallado para WhatsApp
+    const bookPageUrl = window.location.href;
+    const detalleOferta = isOferta ? " (Por descuento)" : "";
+
+    const message = encodeURIComponent(
+        `Hola, deseo comprar este libro:\n` +
+        `Título: ${currentActiveBook.title}\n` +
+        `Nivel: ${currentActiveBook.levelLabel}\n` +
+        `Cantidad: ${selectedQuantity}\n` +
+        `Precio unitario: S/. ${unitPrice.toFixed(2)}${detalleOferta}\n` +
+        `Total a pagar: S/. ${totalPrice.toFixed(2)}\n\n` +
+        `Enlace del libro: ${bookPageUrl}`
+    );
+
+    document.getElementById('detailWhatsappLink').href = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
+}
+
+
+function changeQuantity(delta) {
+    selectedQuantity += delta;
+    if (selectedQuantity < 1) selectedQuantity = 1;
+
+    // Actualizar el contador en la vista
+    document.getElementById('bookQuantityDisplay').innerText = selectedQuantity;
+    
+    // Recalcular precio total y enlace de WhatsApp
+    updatePriceAndWhatsapp();
+}
+
+function updateWhatsappMessage() {
+    if (!currentActiveBook) return;
+
+    const bookPageUrl = window.location.href;
+    const activePrice = getEffectivePrice(currentActiveBook, selectedQuantity);
+    
+    // Indica  el descuento de 20 
+    const isOferta = selectedQuantity >= 20 && currentActiveBook.oferta;
+    const detalleOferta = isOferta ? " (Precio mayorista por oferta de 20+ unidades)" : "";
+
+    const message = encodeURIComponent(
+        `Hola, deseo comprar este libro:\n` +
+        `Título: ${currentActiveBook.title}\n` +
+        `Para: ${currentActiveBook.levelLabel}\n` +
+        `Cantidad: ${selectedQuantity}\n` +
+        `Precio unitario: ${activePrice}${detalleOferta}\n` +
+        `${bookPageUrl}`
+    );
+
+    document.getElementById('detailWhatsappLink').href = `https://wa.me/${defaultWhatsAppNumber}?text=${message}`;
+}
+
         function renderProductDetail(bookId, fromOrigin) {
+
+
             const book = books.find(b => b.id == bookId);
-            if (!book) {
-                showHomeView();
-                return;
-            }
+    if (!book) {
+        showHomeView();
+        return;
+    }
 
-            document.getElementById('breadcrumbTitle').innerText = book.title;
+    currentActiveBook = book;
+    selectedQuantity = 1;
+    document.getElementById('bookQuantityDisplay').innerText = selectedQuantity;
 
-            const navWrapper = document.getElementById('breadcrumbNavWrapper');
-            if (fromOrigin === 'nuestros-libros') {
-                navWrapper.innerHTML = ` <span>></span> <span>Nuestros libros</span> <span>></span> <span>${book.levelLabel}</span> <span>></span> `;
-            } else {
-                navWrapper.innerHTML = ` <span>></span> <span>Catálogo</span> <span>></span> `;
-            }
+    document.getElementById('breadcrumbTitle').innerText = book.title;
+
+    const navWrapper = document.getElementById('breadcrumbNavWrapper');
+    if (fromOrigin === 'nuestros-libros') {
+        navWrapper.innerHTML = ` <span>></span> <span>Nuestros libros</span> <span>></span> <span>${book.levelLabel}</span> <span>></span> `;
+    } else {
+        navWrapper.innerHTML = ` <span>></span> <span>Catálogo</span> <span>></span> `;
+    }
 
             document.getElementById('detailTitle').innerText = book.title;
             document.getElementById('detailDesc').innerText = book.description;
@@ -2037,14 +2209,75 @@
 
             const relatedContainer = document.getElementById('related-books-container');
             relatedContainer.innerHTML = '';
-            const otherBooks = books.filter(b => b.id != bookId);
 
-            otherBooks.forEach((otherBook, index) => {
+            // Verificamos si el libro actual es de inglés
+            const isCurrentEnglish = book.levelLabel && book.levelLabel.toLowerCase().includes('inglés');
+
+            // 1. Filtramos con lógica inteligente
+            const sameGroupBooks = books.filter(b => {
+                if (b.id == bookId) return false;
+                const bIsEnglish = b.levelLabel && b.levelLabel.toLowerCase().includes('inglés');
+                
+                if (isCurrentEnglish) {
+                    return bIsEnglish; // Si es de inglés, prioriza el otro libro de inglés
+                }
+                return !bIsEnglish && b.levelKey === book.levelKey; // Si es normal, busca por su levelKey
+            });
+
+            // 2. El resto de libros para completar el carrusel
+            const otherGroupBooks = books.filter(b => {
+                if (b.id == bookId) return false;
+                const bIsEnglish = b.levelLabel && b.levelLabel.toLowerCase().includes('inglés');
+                
+                if (isCurrentEnglish) {
+                    return !bIsEnglish; // Después de los de inglés, trae el resto
+                }
+                return bIsEnglish || b.levelKey !== book.levelKey;
+            });
+
+            // 3. Unimos ambos grupos (una sola vez)
+            const sortedOtherBooks = [...sameGroupBooks, ...otherGroupBooks];
+
+            sortedOtherBooks.forEach((otherBook, index) => {
                 const pastelClass = pastelClasses[index % pastelClasses.length];
+                
+                // Texto corto según el nivel del libro relacionado
+                let shortLevelText = "PRIMARIA";
+                if (otherBook.levelKey === 'jardin') shortLevelText = "INICIAL";
+                else if (otherBook.levelKey === 'secundaria') shortLevelText = "SECUNDARIA";
+                else if (otherBook.levelKey === 'primaria') shortLevelText = "PRIMARIA";
+
                 relatedContainer.innerHTML += `
                     <div class="book-card" onclick="navigateToProduct(${otherBook.id}, '${fromOrigin || 'catalogo'}')">
                         <div class="card-top-pastel ${pastelClass}">
-                            <span class="card-badge">NIVEL: ${otherBook.levelLabel}</span>
+                            <span class="card-badge">NIVEL: ${shortLevelText}</span>
+                            <img src="${otherBook.cover}" alt="${otherBook.title}" class="card-book-img" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="card-title">${otherBook.title}</h3>
+                            <p class="card-desc">${otherBook.description}</p>
+                            <div class="card-footer-info">
+                                <span class="card-price-text">${otherBook.price || 'S/. 0.00'}</span>
+                                <span class="consult-link">Ver libro &rarr;</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            sortedOtherBooks.forEach((otherBook, index) => {
+                const pastelClass = pastelClasses[index % pastelClasses.length];
+                
+                // Texto corto según el nivel del libro relacionado
+                let shortLevelText = "PRIMARIA";
+                if (otherBook.levelKey === 'jardin') shortLevelText = "INICIAL";
+                else if (otherBook.levelKey === 'secundaria') shortLevelText = "SECUNDARIA";
+                else if (otherBook.levelKey === 'primaria') shortLevelText = "PRIMARIA";
+
+                relatedContainer.innerHTML += `
+                    <div class="book-card" onclick="navigateToProduct(${otherBook.id}, '${fromOrigin || 'catalogo'}')">
+                        <div class="card-top-pastel ${pastelClass}">
+                            <span class="card-badge">NIVEL: ${shortLevelText}</span>
                             <img src="${otherBook.cover}" alt="${otherBook.title}" class="card-book-img" loading="lazy">
                         </div>
                         <div class="card-content">
@@ -2083,6 +2316,8 @@
                 filterCatalog('all');
             }
         }
+
+        
 
         window.addEventListener('hashchange', checkRoute);
 
