@@ -1298,6 +1298,14 @@
             .detail-title-main { font-size: 2.2rem; }
             .price-action-box { flex-direction: column; gap: 1rem; text-align: center; }
         }
+        #qrModal {
+    backdrop-filter: blur(4px);
+    animation: fadeInModal 0.3s ease;
+}
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
     </style>
 </head>
 <body>
@@ -1537,7 +1545,7 @@
                     <button type="button" onclick="changeQuantity(1)" style="width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border-color); background: #ffffff; font-weight: bold; font-size: 1rem; cursor: pointer;">+</button>
                     </div>
 
-                    <a id="detailWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-pedir-libro">
+                   <a id="detailWhatsappLink" href="#" onclick="openQrModal(event)" class="btn-pedir-libro">
                         Pedir Libro
                     </a>
                 </div>
@@ -1582,6 +1590,27 @@
             </div>
         </div>
     </footer>
+
+    <!-- VENTANA MODAL (POPUP) PARA EL QR Y PEDIDO -->
+<div id="qrModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; padding: 1rem;">
+    <div style="background: #ffffff; padding: 2rem 1.5rem; border-radius: 20px; max-width: 450px; width: 100%; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+        <!-- Botón para cerrar la ventana (X) -->
+        <button onclick="closeQrModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
+        
+        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem;">Escanea para Pagar</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">Escanea el código QR para realizar el pago. Y envia la captura  por WhatsApp.</p>
+        
+        <!-- Imagen del QR cargada desde tu ruta local -->
+        <div style="width: 280px; height: 360px; margin: 0 auto 1.5rem; border-radius: 16px; overflow: hidden; border: 2px solid var(--border-color); display: flex; align-items: center; justify-content: center; background: #ffffff; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <img src="fotos/FotosLemley/QR.png" alt="Código QR de Pago" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+
+        <!-- Botón para continuar a WhatsApp con el mensaje listo -->
+        <a id="modalWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" style="background-color: var(--whatsapp-green); color: #ffffff; text-decoration: none; padding: 0.85rem 1.5rem; border-radius: 12px; font-weight: 700; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); transition: transform 0.2s;">
+            <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Pedir por WhatsApp
+        </a>
+    </div>
+</div>
 
     <!-- SCRIPT JS -->
     <script>
@@ -1897,6 +1926,24 @@
                 `;
             });
         }
+
+        // Función para abrir la ventana modal del QR
+function openQrModal(event) {
+    if (event) event.preventDefault(); // Evita que abra el enlace de golpe
+    
+    // Actualizamos el enlace de WhatsApp del modal con la información actual del libro y cantidad
+    updateWhatsappMessage(); 
+    const currentWhatsappHref = document.getElementById('detailWhatsappLink').href;
+    document.getElementById('modalWhatsappBtn').href = currentWhatsappHref;
+
+    // Mostramos el modal
+    document.getElementById('qrModal').style.display = 'flex';
+}
+
+// Función para cerrar la ventana modal del QR
+function closeQrModal() {
+    document.getElementById('qrModal').style.display = 'none';
+}
 
         function moveSlide(n) {
             const slides = document.querySelectorAll('.hero-slide');
