@@ -260,8 +260,8 @@
 
         .levels-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            grid-template-columns: repeat(4, 1fr); /* <--- Cambiado de 3 a 4 columnas */
+            gap: 1.2rem;
         }
 
         .level-card {
@@ -1386,6 +1386,19 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- INGLÉS (NUEVO) -->
+                <div class="level-card" id="card-ingles" onclick="filterCatalog('ingles')">
+                    <div class="level-card-body">
+                        <div class="level-img-box">
+                            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=400&q=80" alt="Estudiantes de Inglés">
+                        </div>
+                        <div class="level-card-text-side">
+                            <h3 class="level-card-title">Inglés</h3>
+                            <p class="level-card-desc">Material didáctico interactivo diseñado específicamente para el aprendizaje del idioma inglés de forma dinámica.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1406,8 +1419,9 @@
         <div class="nosotros-subtitle">¿Quiénes somos?</div>
         
         <div class="nosotros-text-content">
-            <p><strong>Lemley Libros</strong> nace de la profunda pasión por crear universos mágicos, historias entrañables y aventuras inolvidables para niños, niñas y jóvenes lectores. Cada título está pensado para encender la chispa de la imaginación y sembrar el amor eterno por la lectura en las aulas y en los hogares.</p>
-            <p>A través de nuestros cuentos para los niveles Inicial, Primaria y Secundaria, buscamos tender puentes entre la fantasía y los valores humanos, fomentando la comprensión lectora con relatos dinámicos y reflexivos.</p>
+            <p>Somos Ronald y Maricarmen Lemley, escritores de libros infantiles y juveniles que radicamos en Cajamarca, Perú.</p>
+            <p>Ronald se graduó de Sonoma State University y Maricarmen de San Francisco State University, ambas universidades ubicadas en California, Estados Unidos. Además, los dos contamos con una maestría en Lengua y Cultura Españolas por la Universidad de Salamanca, España.</p>
+            <p>Durante muchos años, hemos ejercido la docencia en educación bilingüe en diferentes escuelas de California. Esta valiosa experiencia educativa y cultural ha enriquecido nuestra trayectoria y nos ha motivado a escribir libros que despierten en niños y jóvenes el interés por la lectura, el aprendizaje y el conocimiento de otras culturas.</p>
         </div>
 
             <img src="fotos/FotosLemley/Nosotros.jpeg" alt="Foto Biografía Lemley Libros" class="nosotros-photo"> 
@@ -1584,9 +1598,9 @@
                 levelKey: 'primaria', 
                 levelLabel: 'Niños de 3er a 6to grado de primaria', 
                 title: '15 Cuentos Geniales', 
-                author: 'Rodnal & Maricarmen Lemley',
+                author: 'Ronald & Maricarmen Lemley',
                 price: 'S/. 15.00',
-                description: 'Son 15 Cuentos más largos, más complicados, también con diálogos y mensajes positivos. También son imaginativos como Carolina y los 3 Cuyes, los Cuyes Profesionales, los Cuyes Fantásticos; cuentos y ciencias cómo Panchita y las papas mágicas; o sociales como Mamá Mireya y la Eterna Ernestina.', 
+                description: 'Son 15 Cuentos más largos, más complicados, también con diálogos y mensajes positivos. También son imaginativos como Carolina y los 3 Cuyes, los Cuyes Profesionales, los Cuyes Fantásticos; cuentos y ciencias cómo Panchita y Las Papas Mágicas; o sociales como Mamá Mireya y la Eterna Ernestina.', 
                 fecha: 'Febrero  2025',
                 oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/15cuentos/15-cuentos1.png',
@@ -1602,9 +1616,9 @@
                 levelKey: 'primaria', 
                 levelLabel: 'Niños de 1ro a 3ro grado de primaria', 
                 title: '22 Cuentitos Geniales', 
-                author: 'Maricarmen Lemley',
+                author: 'Maricarmen Lemley y Carlo Viale-Lemley Lemley',
                 price: 'S/. 15.00', 
-                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, cómo en el Hombre Infeliz, el Padre de las Nieves, la Reina de las serpientes o Sueños de un hombre pobre.',
+                description: 'Son cuentos cortos, simples, con diálogos para entretener y educar a los niños como: El Zorro y los 7 Cuyes, Paco, Pecos y Pecosvil, o el Pato Granjero.',
                 fecha: 'Junio 2025',
                 oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/22cuentos/22-cuentos1.png',
@@ -1640,7 +1654,7 @@
                 title: 'Cuentos Fantásticos', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 15.00',
-                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, cómo en el Hombre Infeliz, el Padre de las Nieves, la Reina de las serpientes o Sueños de un hombre pobre.', 
+                description: 'Son 20 cuentos adaptados de diferentes países. Entre reyes, reinas y animales que hablan, estas historias son las que más me han entretenido al leerlas, espero que les hagan el mismo efecto, cómo en el Hombre Infeliz, el Padre de las Nieves, la Reina de las Serpientes o Sueños de un Hombre Pobre.', 
                 fecha: 'Febrero 2026',
                 oferta: 'A partir de 20 unidades S/10', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/cuentos fantas/cuentos-Fansta1.png',
@@ -1750,7 +1764,7 @@
                 title: 'Paulino en su pueblo', 
                 author: 'Maricarmen Lemley',
                 price: 'S/. 7.00',
-                description: 'Paulino llega a la casa de su tía, en dónde hay un gallo y varias gallinas. Él va a arreglar la casita, limpiar el pozo. En su tiempo libre, Él toca el acordeón y recoge manzanas. A Paulino le gusta cuidar el medio ambiente y quiere que la gente aprenda a reciclar y colocar la basura en su lugar.', 
+                description: 'Paulino llega a la casa de su tía, en dónde hay un gallo y varias gallinas. Él va a arreglar la casita, limpiar el pozo. En su tiempo libre, él toca el acordeón y recoge manzanas. A Paulino le gusta cuidar el medio ambiente y quiere que la gente aprenda a reciclar y colocar la basura en su lugar.', 
                 fecha: 'Agosto  2025',
                 oferta: 'A partir de 20 unidades S/5', 
                 cover: 'fotos/DESCOMPRIMIDOS, PRIMARIA/paulino en su pueblo/PAULINO-EN-SU-PUEBLO1.png',
@@ -1930,7 +1944,12 @@
 
             let filteredList = books;
             if (levelKey !== 'all') {
-                filteredList = books.filter(b => b.levelKey === levelKey);
+                if (levelKey === 'ingles') {
+                    // Filtra los libros que tengan "inglés" en su levelLabel
+                    filteredList = books.filter(b => b.levelLabel && b.levelLabel.toLowerCase().includes('inglés'));
+                } else {
+                    filteredList = books.filter(b => b.levelKey === levelKey);
+                }
                 const activeCard = document.getElementById(`card-${levelKey}`);
                 if (activeCard) activeCard.classList.add('active-filter');
             }
