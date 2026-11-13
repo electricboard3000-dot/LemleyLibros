@@ -1545,8 +1545,8 @@
                     <button type="button" onclick="changeQuantity(1)" style="width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--border-color); background: #ffffff; font-weight: bold; font-size: 1rem; cursor: pointer;">+</button>
                     </div>
 
-                   <a id="detailWhatsappLink" href="#" onclick="openQrModal(event)" class="btn-pedir-libro">
-                        Pedir Libro
+                   <a id="detailWhatsappLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-pedir-libro">
+                         Pedir Libro
                     </a>
                 </div>
             </div>
@@ -1590,39 +1590,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- VENTANA MODAL (POPUP) PARA EL QR Y PEDIDO -->
-<div id="qrModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 10000; justify-content: center; align-items: center; padding: 1rem;">
-    <div style="background: #ffffff; padding: 2rem 1.5rem; border-radius: 20px; max-width: 450px; width: 100%; text-align: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-        <!-- Botón para cerrar la ventana (X) -->
-        <button onclick="closeQrModal()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);">&times;</button>
-        
-        <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.3rem;">Escanea para Pagar</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem;">Escanea el código QR y elige una opción para enviar tu mensaje por WhatsApp.</p>
-        
-        <!-- Imagen del QR -->
-        <div style="width: 220px; height: 290px; margin: 0 auto 0.8rem; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--border-color); display: flex; align-items: center; justify-content: center; background: #72109b;">
-            <img src="fotos/FotosLemley/QR.png" alt="Código QR Yape" style="width: 100%; height: 100%; object-fit: contain;">
-        </div>
-        <!-- CAJA DE TOTAL DINÁMICO (Borde gris continuo y limpio) -->
-        <div style="margin-bottom: 1.2rem; background: #ffffff; border: 1.5px solid var(--border-color); padding: 0.8rem 1.2rem; border-radius: 12px; display: inline-block;">
-            <span style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--text-main); font-size: 1.35rem;" id="modalTotalPrice">S/. 0.00</span>
-        </div>
-
-        <!-- CONTENEDOR DE LOS DOS BOTONES -->
-       <div style="display: flex; flex-direction: row; gap: 0.8rem; justify-content: center; width: 100%;">
-            <!-- Botón 1: Confirmar pago -->
-            <a id="modalConfirmarPagoBtn" href="#" target="_blank" rel="noopener noreferrer" style="flex: 1; background-color: var(--whatsapp-green); color: #ffffff; text-decoration: none; padding: 0.75rem 0.8rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); transition: transform 0.2s;">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> Confirmar pago
-            </a>
-
-            <!-- Botón 2: Pedir por WhatsApp -->
-            <a id="modalWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" style="flex: 1; background-color: var(--brand-dark); color: #ffffff; text-decoration: none; padding: 0.75rem 0.8rem; border-radius: 12px; font-weight: 700; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 0.4rem; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.2s;">
-                <i class="fa-brands fa-whatsapp" style="font-size: 1.1rem;"></i> Pedir por WhatsApp
-            </a>
-        </div>
-    </div>
-</div>
 
     <!-- SCRIPT JS -->
     <script>
@@ -1939,51 +1906,8 @@
             });
         }
 
-        // Función para abrir la ventana modal del QR
-function openQrModal(event) {
-    if (event) event.preventDefault();
-    
-    // 1. Configurar el botón tradicional (Pedir por WhatsApp)
-    updateWhatsappMessage(); 
-    const currentWhatsappHref = document.getElementById('detailWhatsappLink').href;
-    document.getElementById('modalWhatsappBtn').href = currentWhatsappHref;
-
-    // 2. Configurar el botón de Confirmar pago con Nivel incluido
-    if (currentActiveBook) {
-        const qty = parseInt(document.getElementById('bookQuantityDisplay').innerText) || 1;
-        const unitPrice = getUnitPrice(currentActiveBook, qty);
-        const totalPrice = unitPrice * qty;
-        const bookPageUrl = window.location.href;
-
-        const confirmMessage = encodeURIComponent(
-            `Hola, he hecho el pago de este libro:\n` +
-            `Título: ${currentActiveBook.title}\n` +
-            `Nivel: ${currentActiveBook.levelLabel}\n` +
-            `Cantidad: ${qty}\n` +
-            `Precio total: S/. ${totalPrice.toFixed(2)}\n` +
-            `Link del libro: ${bookPageUrl}`
-        );
-        
-        document.getElementById('modalConfirmarPagoBtn').href = `https://wa.me/${defaultWhatsAppNumber}?text=${confirmMessage}`;
-    }
-
-    // 3. Calcular y mostrar el total dinámico en la caja con borde gris
-    let total = 0;
-    const qty = parseInt(document.getElementById('bookQuantityDisplay').innerText) || 1;
-    if (currentActiveBook) {
-        const unitPrice = getUnitPrice(currentActiveBook, qty);
-        total = unitPrice * qty;
-    }
-    document.getElementById('modalTotalPrice').innerText = `S/. ${total.toFixed(2)}`;
-
-    // Mostrar el modal
-    document.getElementById('qrModal').style.display = 'flex';
-}
 
 // Función para cerrar la ventana modal del QR
-function closeQrModal() {
-    document.getElementById('qrModal').style.display = 'none';
-}
 
         function moveSlide(n) {
             const slides = document.querySelectorAll('.hero-slide');
